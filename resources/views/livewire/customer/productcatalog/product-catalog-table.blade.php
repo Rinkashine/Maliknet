@@ -1,49 +1,12 @@
 <div>
-    <div class="grid grid-cols-12 gap-5 lg:gap-5 2xl:gap-5">
+    <div class="">
         <!-- BEGIN: Product Filter -->
-        <div class="col-span-12 lg:col-span-3 2xl:col-span-2 flex lg:block flex-col-reverse">
-            <div class="sticky top-10 right-10 box mt-5">
-                <div class="relative flex items-center p-5">
-                    <div class="ml-4 mr-auto">
-                        <div class="font-medium text-base">Product Filters</div>
-                    </div>
-                </div>
-                <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <input type="search" wire:model.lazy="search" class="form-control" name="Search" placeholder="Search Product">
-                </div>
-                <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <div class="font-medium text-base p-2">Filter By Category:</div>
-                    <div>
-                        <select wire:model="filterbycategory" class="form-select w-full" name="category">
-                            <option value="">No Filter</option>
-                            @foreach ($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <div class="font-medium text-base p-2">Filter By Brand:</div>
-                    <div>
-                        <select wire:model="filterbybrand" class="form-select w-full" name="category">
-                            <option value="">No Filter</option>
-                            @foreach ($brands as $brand)
-                                <option value="{{$brand->id}}">{{$brand->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <!-- END: Product Filter sticky top-0 right-10 w-full flex justify-end -->
-        <div class="col-span-12 lg:col-span-9 2xl:col-span-10">
+        <div class="col-span-12">
             <!-- BEGIN: Product List -->
             <div class="intro-y lg:mt-5">
-                <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400">
-                    <h2 class="mb-5 font-medium text-base ">
-                        List of Products
-                    </h2>
-                </div>
+
                 <div class="grid grid-cols-12 gap-4 mt-2">
                     <!-- Begin: Display Products -->
 
@@ -78,8 +41,7 @@
                                     </div>
                                     <div class="px-2 pt-3 pb-2 border-t border-slate-200/60 dark:border-darkmode-400">
                                         <div class="flex w-full text-xs text-slate-500">
-                                            <div class="mr-auto"> Price: <span class="">₱{{ number_format($product->sprice,2) }}</span> </div>
-                                            <div class="text-xs">{{$product->brand->name }}</div>
+                                            <div class="mr-auto"> Price: <span class="">₱{{ number_format($product->price,2) }}</span> </div>
                                         </div>
                                     </div>
                                 </div>

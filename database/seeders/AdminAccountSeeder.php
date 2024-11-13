@@ -16,7 +16,7 @@ class AdminAccountSeeder extends Seeder
     {
         $user = User::create([
             'name' => 'Mark Joseph Manalo',
-            'email' => 'godentalph@gmail.com',
+            'email' => 'markjosephmanalo@gmail.com',
             'phone_number' => '09452692274',
             'address' => '283 Ramos Compound Baesa Quezon City',
             'password' => 'Onepiece25!',

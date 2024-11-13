@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'name' => 'Go Dental',
+    'name' => 'Maliknet',
     'manifest' => [
-        'name' => 'Go Dental',
+        'name' => 'Maliknet',
         'short_name' => 'Dental',
         'start_url' => '/',
         'background_color' => '#1e5f4e',

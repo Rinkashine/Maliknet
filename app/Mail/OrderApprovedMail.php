@@ -33,7 +33,7 @@ class OrderApprovedMail extends Mailable
         $customer = Customer::findorfail($this->details['customers_id']);
         $listofordereditems = CustomerOrderItems::where('customer_order_id',$this->details['id'])->get();
         return $this->subject('Order Being Processed #'.$this->details['id'])
-        ->from('godentalph@gmail.com', 'Go Dental')
+        ->from('markjosephmanalo1110@gmail.com', 'Maliknet')
         ->markdown('admin.mail.order-approved')
         ->with([
             'name' => $customer->name,

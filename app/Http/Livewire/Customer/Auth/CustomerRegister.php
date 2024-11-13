@@ -88,11 +88,11 @@ class CustomerRegister extends Component
 
         $message = 'Dear <b>'.$this->name.'</b>';
         $message .= ' Thanks for signing up, we just need you to verify your email address to complete setting up your account.';
-
+        $appName = env('APP_NAME');
         $details = [
             'email' => $this->email,
             'name' => $this->name,
-            'subject' => 'Go Dental Email Verification',
+            'subject' => compact(appName) +' Email Verification',
             'body' => $message,
             'actionLink' => $verifyURL,
         ];

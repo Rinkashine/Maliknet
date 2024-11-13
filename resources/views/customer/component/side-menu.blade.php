@@ -5,11 +5,7 @@
                 <div class="top-menu__title"> Home</div>
             </a>
         </li>
-        <li>
-            <a href="{{Route('product')}}" class="top-menu {{ (request()->is('product')) ? 'top-menu--active' : '' }}">
-                <div class="top-menu__title"> Product</div>
-            </a>
-        </li>
+
         @if(!Auth::guard('customer')->check())
         <li>
             <a href="{{Route('CLogin.index')}}" class="top-menu {{ (request()->is('CLogin')) ? 'top-menu--active' : '' }}">

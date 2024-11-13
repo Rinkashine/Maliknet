@@ -6,9 +6,9 @@
       <div class="flex flex-col w-10/12 mx-auto gap-9 md:flex-row">
         <!-- GO DENTAL / Div1 -->
         <div class="flex-auto text-gray-200 intro-x md:w-72 ">
-            <p class="mb-4 text-lg font-semibold md:text-center">GO DENTAL</p>
+            <p class="mb-4 text-lg font-semibold md:text-center">{{ env('APP_NAME') }}</p>
             <span class="text-xl font-light mb-7">
-            Launched in 2023, Go Dental is an eCommerce platform in the Philippines tailored for easy, secure, fast dental product shopping experience.
+                Motorcycle Repair Shop
             </span>
         </div>
         <!-- Contact Us / Div2 -->
@@ -46,7 +46,7 @@
         </div>
         <!-- Customer Care / Div3 -->
         <div class="text-gray-200 intro-x md:w-48">
-            <h4 class="mb-2 text-lg font-semibold text-gray-200">Go Dental</h4>
+            <h4 class="mb-2 text-lg font-semibold text-gray-200">{{ env('APP_NAME') }} </h4>
             <ul>
 
               <li>
@@ -74,8 +74,7 @@
           <div class="intro-x md:w-96">
             <h4 class="mb-2 text-lg font-semibold text-gray-200 intro-x">Our Address</h4>
                 <p class="inline-block mb-2 text-base leading-loose text-gray-200">
-                Grand Royale Subdivision, Brgy. Pinagbakahan, City of Malolos
-                Bulacan 3000
+                    {{ env('APP_ADDRESS') }}
                 </p>
                 <h4 class="mb-2 text-lg font-semibold text-center text-gray-200">Follow Us</h4>
                 <div class="flex flex-row mx-auto justify-evenly">

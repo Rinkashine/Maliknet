@@ -26,13 +26,9 @@ class ProductController extends Controller
     {
         abort_if(Gate::denies('product_create'), 403);
         $categories = Category::orderBy('name')->get();
-        $brands = Brand::orderBy('name')->get();
-        $suppliers = Supplier::orderBy('name')->get();
 
         return view('admin.page.product.productadd', [
             'categories' => $categories,
-            'brands' => $brands,
-            'suppliers' => $suppliers,
         ]);
     }
 
@@ -43,14 +39,10 @@ class ProductController extends Controller
         abort_if(Gate::denies('product_edit'), 403);
         //$product = Product::findorFail($id);
         $categories = Category::orderBy('name')->get();
-        $brands = Brand::orderBy('name')->get();
-        $suppliers = Supplier::orderBy('name')->get();
         $images = $product->images;
 
         return view('admin.page.product.productedit', compact('product'), [
             'categories' => $categories,
-            'brands' => $brands,
-            'suppliers' => $suppliers,
             'images' => $images,
         ]);
     }

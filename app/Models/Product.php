@@ -15,15 +15,7 @@ class Product extends Model
     protected $fillable = [
         'name',
         'category_id',
-        'brand_id',
-        'suppliers_id',
-        'stock',
-        'stock_warning',
-        'SKU',
-        'cprice',
-        'sprice',
-        'weight',
-        'weight_measurement',
+        'price',
         'status',
         'description',
     ];
@@ -35,10 +27,6 @@ class Product extends Model
         ->orWhere('stock', 'like', '%'.$search.'%');
     }
 
-    public function brand()
-    {
-        return $this->belongsTo(Brand::class);
-    }
 
      public function category()
      {

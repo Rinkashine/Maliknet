@@ -31,7 +31,7 @@
                                 <div class="flex">
                                     <i data-lucide="monitor" class="report-box__icon text-primary"></i>
                                 </div>
-                                <div class="text-3xl font-medium leading-8 mt-6">{{ $uniquevisitor }}</div>
+                                <div class="text-3xl font-medium leading-8 mt-6"></div>
                                 <div class="text-base text-slate-500 mt-1">Unique Visitor</div>
                             </div>
                         </div>
@@ -215,20 +215,7 @@
                         </h2>
                     </div>
                     <div class="mt-5">
-                        @foreach ($mostvisitedpage as $page)
-                            <div class="intro-x">
-                                <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
-                                    <div class="ml-4 mr-auto">
-                                        <div class="font-medium">{{$page['pageTitle']}}</div>
-                                    </div>
-                                    <div class="text-success">{{number_format($page['pageViews'])}} Views</div>
 
-                                </div>
-                            </div>
-                        @endforeach
-                        @can('report_access')
-                            <a href="{{Route('report.MostVisitedPageIndex')}}" class="intro-x w-full block text-center rounded-md py-3 border border-dotted border-slate-400 dark:border-darkmode-300 text-slate-500">View More</a>
-                        @endcan
                     </div>
                 </div>
                 <!-- END: Recent Activities -->

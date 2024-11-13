@@ -14,16 +14,10 @@ class ProductCatalogTable extends Component
 
     public $search;
 
-    public $filterbycategory;
-
-    public $filterbybrand;
-
     public $perPage = 24;
 
     protected $queryString = [
         'search' => ['except' => ''],
-        'filterbycategory' => ['except' => ''],
-        'filterbybrand' => ['except' => ''],
     ];
 
     protected $paginationTheme = 'bootstrap';
@@ -43,65 +37,16 @@ class ProductCatalogTable extends Component
         $this->resetPage();
     }
 
-    public function updatingFilterbycategory()
-    {
-        $this->resetPage();
-    }
-
-    public function updatingFilterbybrand()
-    {
-        $this->resetPage();
-    }
-
     public function render()
     {
-        $categories = Category::orderby('name')->get();
-        $brands = Brand::orderby('name')->get();
-
-        if ($this->filterbybrand == null && $this->filterbycategory == null) {
-            $products = Product::where('status', 1)
-            ->where('name', 'like', '%'.$this->search.'%')
-            ->with('images', 'category', 'brand')
-            ->orderby('name', 'asc')
-            ->paginate($this->perPage);
-        } elseif ($this->filterbybrand != null && $this->filterbycategory != null) {
-            $products = Product::where('status', 1)
-            ->where('name', 'like', '%'.$this->search.'%')
-            ->where('category_id', $this->filterbycategory)
-            ->where('brand_id', '=', $this->filterbybrand)
-            ->with('images', 'category', 'brand')
-            ->orderby('name', 'asc')
-            ->paginate($this->perPage);
-        } elseif ($this->filterbybrand == null && $this->filterbycategory != null) {
-            $products = Product::where('status', 1)
-            ->where('name', 'like', '%'.$this->search.'%')
-            ->where('category_id', $this->filterbycategory)
-            //->where('brand_id', '=' , $this->filterbybrand)
-            ->with('images', 'category', 'brand')
-            ->orderby('name', 'asc')
-            ->paginate($this->perPage);
-        } elseif ($this->filterbybrand != null && $this->filterbycategory == null) {
-            $products = Product::where('status', 1)
-            ->where('name', 'like', '%'.$this->search.'%')
-            //->where('category_id', $this->filterbycategory)
-            ->where('brand_id', '=', $this->filterbybrand)
-            ->with('images', 'category', 'brand')
-            ->orderby('name', 'asc')
-            ->paginate($this->perPage);
-        } else {
-            $products = Product::where('status', 1)
-            ->where('name', 'like', '%'.$this->search.'%')
-            ->where('category_id', $this->filterbycategory)
-            ->where('brand_id', '=', $this->filterbybrand)
-            ->with('images', 'category', 'brand')
-            ->orderby('name', 'asc')
-            ->paginate($this->perPage);
-        }
+        $products = Product::where('status', 1)
+        ->where('name', 'like', '%'.$this->search.'%')
+        ->with('images', 'category')
+        ->orderby('name', 'asc')
+        ->paginate($this->perPage);
 
         return view('livewire.customer.productcatalog.product-catalog-table', [
             'products' => $products,
-            'categories' => $categories,
-            'brands' => $brands,
 
         ]);
     }

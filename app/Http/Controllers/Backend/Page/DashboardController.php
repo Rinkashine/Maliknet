@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend\Page;
 
-use Analytics;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Customer;
@@ -108,12 +107,8 @@ class DashboardController extends Controller
         ->orderBy('ave', 'desc')
         ->get()->take(5);
 
-       $mostvisitedpage = Analytics::fetchMostVisitedPages(Period::months(6), 5);
-       $usertype = Analytics::fetchUserTypes(Period::months(1));
-       $uniquevisitor = $usertype[0]['sessions'];
 
         return view('admin.page.dashboard', [
-            'mostvisitedpage' => $mostvisitedpage,
             'totalsales' => $totalsales,
             'activeproductcount' => $activeproductcount,
             'inactiveproductcount' => $inactiveproductcount,
@@ -126,7 +121,6 @@ class DashboardController extends Controller
             'topCustomers' => $topCustomers,
             'feautredProducts' => $feautredProducts,
             'ratedProducts' => $ratedProducts,
-            'uniquevisitor' => $uniquevisitor
         ]);
     }
 }

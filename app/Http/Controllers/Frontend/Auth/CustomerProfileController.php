@@ -170,7 +170,7 @@ class CustomerProfileController extends Controller
         $details = [
             'email' => Auth::guard('customer')->user()->email,
             'name' => Auth::guard('customer')->user()->name,
-            'subject' => 'Go Dental Email Verification',
+            'subject' => 'Maliknet Email Verification',
             'body' => $message,
             'actionLink' => $verifyURL,
         ];

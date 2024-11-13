@@ -29,9 +29,9 @@ class CustomerResetPassword extends Mailable
      */
     public function build()
     {
-        return $this->subject('Go Dental Reset Password')
+        return $this->subject('Maliknet Reset Password')
         ->markdown('customer.mail.forgot-pass')
-        ->from('godentalnoreply@gmail.com', 'Go Dental')
+        ->from('godentalnoreply@gmail.com', 'Maliknet')
         ->with([
             'email' => $this->details['email'],
             'action_link' => $this->details['action_link'],

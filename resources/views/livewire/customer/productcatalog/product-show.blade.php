@@ -30,41 +30,15 @@
                         <div class="col-span-12 intro-y box lg:col-span-6">
                             <div class="flex items-center px-5 py-5 border-b sm:py-3 border-slate-200/60 dark:border-darkmode-400">
                                 <h2 class="mr-auto text-base font-medium">
-                                    Product Details
+                                    Product Description
                                 </h2>
                                 @livewire('customer.productcatalog.add-to-wishlist',['product'=> $product])
                             </div>
                             <div class="p-5">
-                                <div class="flex items-center">
-                                    <div class="ml-4">
-                                        <h3 class="text-base font-medium">Brand Name:</h3>
-                                        <div class="text-slate-500 text-base mt-0.5">{{ $product->brand->name }}</div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="flex items-center">
-                                    <div class="ml-4">
-                                        <h3 class="text-base font-medium">Category Name:</h3>
-                                        <div class="text-slate-500 text-base mt-0.5">{{ $product->category->name }}</div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="flex items-center">
-                                    <div class="ml-4">
-                                        <h3 class="text-base font-medium">Stocks:</h3>
-                                        <div class="text-slate-500 text-base mt-0.5">{{ $product->stock }} pcs</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center mt-5">
-                                    <div class="ml-4">
-                                        <h3 class="text-base font-medium">Weight:</h3>
-                                        <div class="text-slate-500 text-base mt-0.5">{{ $product->weight }}{{ $product->weight_measurement }}</div>
-                                    </div>
-                                </div>
-
+                                <div class="text-slate-500 text-base	 mt-0.5">{!! $product->description !!}</div>
                             </div>
-                            </div>
-                            <!-- END: Product Details -->
+                        </div>
+                        <!-- END: Product Details -->
                         <!-- BEGIN: Product Image -->
                         <div class="col-span-12 intro-y box lg:col-span-6">
                             <div class="flex items-center px-5 py-5 border-b sm:py-3 border-slate-200/60 dark:border-darkmode-400">
@@ -120,20 +94,7 @@
             </div>
         </div>
     </div>
-    <!-- Begin Product Description -->
-    <div class="flex items-center justify-center">
-        <div class="px-1 pt-1 intro-y box mt-7 " style="width: 60rem">
-            <div class="flex items-center px-5 py-5 border-b sm:py-3 border-slate-200/60 dark:border-darkmode-400">
-                <h2 class="mr-auto text-base font-medium">
-                    Product Description
-                </h2>
-            </div>
-            <div class="flex items-center px-5 py-5 border-b sm:py-3 border-slate-200/60 dark:border-darkmode-400">
-                <div class="text-slate-500 text-base	 mt-0.5">{!! $product->description !!}</div>
-            </div>
-        </div>
-    </div>
-    <!-- END Product Description -->
+
     <!-- Begin Product Rating -->
     <div class="flex items-center justify-center">
         <div style="width: 60rem">

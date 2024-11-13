@@ -1,7 +1,7 @@
 <nav class="side-nav">
     <div class="intro-x flex items-center pl-5 pt-4 mt-3">
-        <img alt="Go Dental" class="w-10" src="{{asset('dist/images/MainLogo.png')}}" data-action="zoom">
-        <span class="hidden xl:block text-white text-lg ml-3"> Go Dental </span>
+        <img alt="Go Dental" class="w-10" src="{{asset('dist/images/MaliknetLogo.jpg')}}" data-action="zoom">
+        <span class="hidden xl:block text-white text-lg ml-3"> {{ env('APP_NAME') }}  </span>
     </div>
     <div class="side-nav__devider my-6"></div>
     <ul>
@@ -13,7 +13,7 @@
             </a>
         </li>
         <!--Product Attribute-->
-        @if (Auth::guard('web')->user()->can('brand_access') || Auth::guard('web')->user()->can('category_access'))
+        @if (Auth::guard('web')->user()->can('category_access'))
         <li>
             <a href="javascript:;" class="side-menu {{ (request()->is('admin/brand')) || (request()->is('admin/category'))  ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i class="fa-solid fa-truck-ramp-box fa-lg p-1"></i> </div>
@@ -23,14 +23,7 @@
                     </div>
             </a>
             <ul class="">
-                @can('brand_access')
-                <li>
-                    <a href="{{ route('brand.index') }}" class="side-menu">
-                        <div class="side-menu__icon"> <i class="fa-solid fa-b p-1 fa-lg"></i> </div>
-                        <div class="side-menu__title"> Brand </div>
-                    </a>
-                </li>
-                @endcan
+
                 @can('category_access')
                 <li>
                     <a href="{{ route('category.index') }}" class="side-menu">

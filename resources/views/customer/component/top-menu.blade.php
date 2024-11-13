@@ -2,13 +2,13 @@
     <div class="h-full flex items-center">
         <!-- BEGIN: Logo -->
         <div href="" class="-intro-x hidden md:flex w-auto">
-            <img alt="Go Dental Logo" class="w-12" src="{{asset('dist/images/MainLogo.png')}}" data-action="zoom">
+            <img alt="Go Dental Logo" class="w-12" src="{{asset('dist/images/MaliknetLogo.jpg')}}" data-action="zoom">
         </div>
 
         <!-- END: Logo -->
         <nav aria-label="breadcrumb" class="-intro-x h-full mr-auto">
             <ol class="breadcrumb breadcrumb-light">
-                <li class="breadcrumb-item w-20 "><p>Go Dental</p></li>
+                <li class="breadcrumb-item w-20 "><p>{{ env('APP_NAME') }}  </p></li>
                 <li class="breadcrumb-item active" aria-current="page">@yield('title')</li>
             </ol>
         </nav>
@@ -20,11 +20,7 @@
                         <div class="top-menu__title"> Home</div>
                     </a>
                 </li>
-                <li>
-                    <a href="{{Route('product')}}" class="top-menu {{ (request()->is('productcatalog')) ? 'top-menu--active' : '' }}">
-                        <div class="top-menu__title"> Product</div>
-                    </a>
-                </li>
+
                 @if(!Auth::guard('customer')->check())
                 <li>
                     <a href="{{Route('CLogin.index')}}" class="top-menu {{ (request()->is('CLogin')) ? 'top-menu--active' : '' }}">

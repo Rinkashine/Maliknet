@@ -57,7 +57,9 @@ class CustomerLoginForm extends Component
 
         if (count($restrictedcustomers) == 0) {
             if (Auth::guard('customer')->attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-                Alert::success('Login Successfully ', 'Welcome to Go Dental');
+                $appName = env('APP_NAME');
+
+                Alert::success('Login Successfully ', 'Welcome to ', compact(appName));
                 return redirect()->route('home');
             } else {
                 return back()->with('fail', 'Your Account and/or password is incorrect, please try again')->withInput();

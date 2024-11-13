@@ -14,13 +14,8 @@ class ProductAddForm extends Component
 {
     use WithFileUploads;
 
-    public $name,$category,$brand,$description,$sprice,$cprice,$sku,$weight,$status,$margin,$profit;
+    public $name,$category,$description,$price,$status;
 
-    public $weight_measurement = 'g';
-
-    public $stock = 0;
-
-    public $w_stock = 0;
 
     public $images = [];
 
@@ -32,45 +27,20 @@ class ProductAddForm extends Component
     {
         $this->name = null;
         $this->category = null;
-        $this->brand = null;
         $this->description = null;
-        $this->sprice = null;
-        $this->cprice = null;
-        $this->sku = null;
-        $this->weight = null;
-        $this->weight_measurement = null;
+        $this->price = null;
         $this->status = null;
-        $this->stock = null;
-        $this->w_stock = null;
     }
 
     public function render()
     {
-        if ($this->sprice == null) {
-            $this->sprice = 0;
+        if ($this->price == null) {
+            $this->price = 0;
         }
-        if ($this->cprice == null) {
-            $this->cprice = 0;
-        }
-
-        if($this->sprice == 0 || $this->cprice == 0){
-            $this->profit = 0;
-        }else{
-            $this->profit = $this->sprice - $this->cprice;
-            if ($this->sprice != null) {
-                $this->margin = ($this->profit / $this->sprice) * 100;
-            }
-        }
-
-
         $categories = Category::orderBy('name')->get();
-        $brands = Brand::orderBy('name')->get();
-        $suppliers = Supplier::orderBy('name')->get();
 
         return view('livewire.admin.product.product-add-form', [
             'categories' => $categories,
-            'brands' => $brands,
-            'suppliers' => $suppliers,
         ]);
     }
 
@@ -79,14 +49,8 @@ class ProductAddForm extends Component
         $this->validateOnly($fields, [
             'name' => 'required',
             'category' => 'required',
-            'brand' => 'required',
-            'stock' => 'integer|min:0',
-            'cprice' => 'required|numeric|min:1',
-            'sprice' => 'numeric|min:0',
-            'weight' => 'required|numeric|min:0',
-            'weight_measurement' => 'required',
+            'price' => 'required|numeric|min:1',
             'description' => 'required',
-            'sku' => 'required|unique:product,SKU',
             'status' => 'required',
             'images.*' => 'image',
         ]);
@@ -97,14 +61,8 @@ class ProductAddForm extends Component
         return [
             'name' => 'required',
             'category' => 'required',
-            'brand' => 'required',
-            'stock' => 'integer|min:0',
-            'cprice' => 'required|numeric|min:1',
-            'sprice' => 'numeric|min:0',
-            'weight' => 'required|numeric|min:0',
-            'weight_measurement' => 'required',
+            'price' => 'required|numeric|min:1',
             'description' => 'required',
-            'sku' => 'required|unique:product,SKU',
             'status' => 'required',
             'images.*' => 'image',
         ];
@@ -116,15 +74,8 @@ class ProductAddForm extends Component
         $product = Product::create([
             'name' => $this->name,
             'category_id' => $this->category,
-            'brand_id' => $this->brand,
-            'stock' => $this->stock,
-            'SKU' => $this->sku,
-            'cprice' => $this->cprice,
-            'sprice' => $this->sprice,
-            'weight' => $this->weight,
-            'weight_measurement' => $this->weight_measurement,
+            'price' => $this->price,
             'status' => $this->status,
-            'stock_warning' => $this->w_stock,
             'description' => $this->description,
         ]);
         if ($product) {

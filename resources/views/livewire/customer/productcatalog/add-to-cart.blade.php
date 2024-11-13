@@ -15,42 +15,35 @@
                 </div>
                 <div class="text-slate-500">Quantity</div>
                 <br>
-                @if(Auth::guard('customer')->check() && $stock_limit != 0)
+                @if(Auth::guard('customer')->check())
                     <button type="submit" class="intro-x btn btn-primary mt-5 w-full" >Add to Cart</button>
-                @elseif(Auth::guard('customer')->check() && $stock_limit == 0)
-                    <button type="button" class="intro-x btn btn-primary mt-5 w-full" >Product Out of Stock</button>
                 @else
-                    @if($stock_limit != 0)
-                        <!-- BEGIN: Modal Toggle -->
-                        <div class="text-center">
-                            <button class="btn btn-primary" type="button" wire:click="LoginModal">Add to Cart</button>
-                        </div> <!-- END: Modal Toggle -->
-                        <!-- BEGIN: Modal Content -->
-                        <div id="warning-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body p-0">
-                                        <div class="p-5 text-center">
-                                            <i data-lucide="x-circle" class="w-16 h-16 text-warning mx-auto mt-3"></i>
-                                            <div class="text-3xl mt-5">Hi Customer</div>
-                                            <div class="text-slate-500 mt-2">Before Ordering Create Account First</div>
-                                        </div>
-                                        <div class="px-5 pb-8 text-center">
-                                            <button  data-tw-dismiss="modal" class="btn w-24 btn-primary">Ok</button>
-                                        </div>
-                                        <div class="p-5 text-center border-t border-slate-200/60 dark:border-darkmode-400">
-                                            <a href="{{ Route('CLogin.index') }}" class="text-primary">Please Login your Go Dental Account First Before Ordering</a>
-                                        </div>
+                    <!-- BEGIN: Modal Toggle -->
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="button" wire:click="LoginModal">Add to Cart</button>
+                    </div> <!-- END: Modal Toggle -->
+                    <!-- BEGIN: Modal Content -->
+                    <div id="warning-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <div class="p-5 text-center">
+                                        <i data-lucide="x-circle" class="w-16 h-16 text-warning mx-auto mt-3"></i>
+                                        <div class="text-3xl mt-5">Hi Customer</div>
+                                        <div class="text-slate-500 mt-2">Before Ordering Create Account First</div>
+                                    </div>
+                                    <div class="px-5 pb-8 text-center">
+                                        <button  data-tw-dismiss="modal" class="btn w-24 btn-primary">Ok</button>
+                                    </div>
+                                    <div class="p-5 text-center border-t border-slate-200/60 dark:border-darkmode-400">
+                                        <a href="{{ Route('CLogin.index') }}" class="text-primary">Please Login your Go Dental Account First Before Ordering</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- END: Modal Content -->
-                    @elseif($stock_limit == 0)
-                        <div class="text-center">
-                            <div class="btn btn-primary">Product Out of Stock</div>
-                        </div>
-                    @endif
+                    </div>
+                    <!-- END: Modal Content -->
+
                 @endif
                 @push('scripts')
                     <script>

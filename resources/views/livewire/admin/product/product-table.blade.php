@@ -47,7 +47,6 @@
                        <tr>
                            <th class="whitespace-nowrap ">Product Name</th>
                            <th class="whitespace-nowrap text-center">Category</th>
-                           <th class="whitespace-nowrap text-center">Inventory</th>
                            <th class="whitespace-nowrap text-center">Status</th>
                            @if (Auth::guard('web')->user()->can('product_show') || Auth::guard('web')->user()->can('product_edit') || Auth::guard('web')->user()->can('product_archive'))
                             <th class="whitespace-nowrap text-center">Actions</th>
@@ -59,17 +58,11 @@
                        <tr class="intro-x">
                            <td class="whitespace-nowrap font-medium">
                             <a href="{{ Route('productshow', $product) }}" target="_blank">
-                              <div class="hover:underline">{{$product->name}}</div>   <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{$product->brand->name}}</div>
+                              <div class="hover:underline">{{$product->name}}</div>
                             </a>
                             </td>
                            <td class="whitespace-nowrap text-center">{{$product->category->name}}</td>
-                           <td class="whitespace-nowrap text-center">
-                            @if($product->stock <= $product->stock_warning)
-                            <div class="text-danger">{{$product->stock}} in stock</div>
-                            @else
-                                {{$product->stock}} in stock
-                            @endif
-                        </td>
+
                            <td class="whitespace-nowrap">
                                @if($product->status == 1)
                                    <div class="flex items-center justify-center text-success"> <i class="fa-regular fa-square-check w-4 h-4 mr-1"></i> Active </div>

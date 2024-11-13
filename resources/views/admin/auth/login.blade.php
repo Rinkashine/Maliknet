@@ -6,9 +6,9 @@
     <div class="block xl:grid grid-cols-2 gap-4">
         <div class="hidden xl:flex flex-col min-h-screen">
             <p class="-intro-x flex items-center pt-5">
-                <img alt="Go Dental Logo" class="w-12" data-action="zoom" src="{{asset('dist/images/MainLogo.png')}}">
+                <img alt="Maliknet Logo" class="w-12" data-action="zoom" src="{{asset('dist/images/MaliknetLogo.jpg')}}">
                 <span class="text-white text-lg ml-3">
-                    Go Dental
+                    {{ env('APP_NAME') }}
                 </span>
             </p>
             <div class="my-auto">
@@ -17,7 +17,7 @@
                     A few more clicks to <br> sign in to your account.
                 </div>
                 <div class="intro-x mt-5 text-lg text-white text-opacity-70 dark:text-slate-400">
-                     Go Dental Seller Center
+                    {{ env('APP_NAME') }}                    Seller Center
                 </div>
             </div>
         </div>

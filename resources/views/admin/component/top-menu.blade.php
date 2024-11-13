@@ -2,7 +2,7 @@
     <!-- BEGIN: Breadcrumb -->
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><p href="#">Go Dental</p></li>
+            <li class="breadcrumb-item"><p href="#">{{ env('APP_NAME') }} </p></li>
             <li class="breadcrumb-item active" aria-current="page"> @yield('title')</li>
         </ol>
     </nav>
