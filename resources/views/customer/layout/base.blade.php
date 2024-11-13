@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="{{ $dark_mode ? 'dark' : '' }}{{ $color_scheme != 'default' ? ' ' . $color_scheme : '' }}">
+    <!-- BEGIN: Head -->
+    <head>
+            <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-268210889-2"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-268210889-2');
+        </script>
+
+        <!-- Google tag (gtag.js) -->
+        <meta charset="utf-8">
+        <link href="{{asset('dist/images/MainLogo.png')}}" rel="shortcut icon">
+        <link rel="stylesheet" href="{{ asset('dist/css/build.css') }}" />
+        <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Go Dental E-Commerce Seller">
+        <meta name="keywords" content="Go Dental">
+        <meta name="author" content="Mark Joseph Manalo">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>@yield('title')</title>
+        <!-- BEGIN: CSS Assets-->
+        <script src="https://kit.fontawesome.com/1cff19edbf.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <!-- END: CSS Assets-->
+        @laravelPWA
+        @livewireStyles
+    </head>
+    <!-- END: Head -->
+    <body class="py-5 md:py-0 bg-black/[0.15] dark:bg-transparent">
+
+        <livewire:offline/>
+        <!-- BEGIN: Mobile Menu -->
+        @include('customer.component.mobile-menu')
+        <!-- END: Mobile Menu -->
+
+        @include('customer.component.top-menu')
+        <!-- BEGIN: Top Bar -->
+        @include('customer.component.side-menu')
+        <!-- Content -->
+
+        <div class="content content--top-nav">
+            @yield('content')
+        </div>
+        <!-- END: Top Menu -->
+        @include('customer.component.footer')
+        <!-- BEGIN: JS Assets-->
+        <script src="{{ asset('dist/js/app.js') }}"></script>
+        @include('sweetalert::alert')
+        @livewireScripts
+        <!-- END: JS Assets-->
+        <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+        @stack('scripts')
+
+        <!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "125209980500014");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v17.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    </body>
+</html>
+

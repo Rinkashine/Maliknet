@@ -1,0 +1,30 @@
+[
+    {
+        "code": "133900000",
+        "name": "First District(NCR)",
+        "regionCode": "130000000",
+        "islandGroupCode": "luzon",
+        "psgc10DigitCode": ""
+    },
+    {
+        "code": "137400000",
+        "name": "Second District(NCR)",
+        "regionCode": "130000000",
+        "islandGroupCode": "luzon",
+        "psgc10DigitCode": ""
+    },
+    {
+        "code": "137500000",
+        "name": "Third District(NCR)",
+        "regionCode": "130000000",
+        "islandGroupCode": "luzon",
+        "psgc10DigitCode": ""
+    },
+    {
+        "code": "137600000",
+        "name": "Fourth District(NCR)",
+        "regionCode": "130000000",
+        "islandGroupCode": "luzon",
+        "psgc10DigitCode": ""
+    }
+]
