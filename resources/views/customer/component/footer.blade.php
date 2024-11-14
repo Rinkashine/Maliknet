@@ -8,12 +8,13 @@
         <div class="flex-auto text-gray-200 intro-x md:w-72 ">
             <p class="mb-4 text-lg font-semibold md:text-center">{{ env('APP_NAME') }}</p>
             <span class="text-xl font-light mb-7">
-                Motorcycle Repair Shop
+                Our products are Original and Genuine. usually may video muna ng order/pacel bago i-pack and i-ship out. You can chat with us
+                if you have any question. Happy shopping! from Team Pasay
             </span>
         </div>
         <!-- Contact Us / Div2 -->
         <div class="text-gray-200 intro-x md:w-48">
-            <h4 class="mb-2 text-lg font-semibold text-gray-200">Customer Care</h4>
+            <h4 class="mb-2 text-md font-semibold text-gray-200">Customer Care</h4>
               <ul>
                     <li>
                         <a href="{{ Route('faq') }}" class="relative inline-block mb-2 text-base leading-loose text-body-color group">

@@ -89,7 +89,8 @@ class DashboardController extends Controller
         ->groupBy('customers.name', 'customers.id', 'customers.email')
         ->orderBy('total_spent', 'desc')
         ->get()->take(3);
-        $feautredProducts = Product::where('featured', 1)->with('images')->get()->take(6);
+
+        $productCount = Product::get()->count();
 
         $ratedProducts = Product::select([
             'product.name',
@@ -119,7 +120,7 @@ class DashboardController extends Controller
             'completedorderscount' => $completedorderscount,
             'topSellingProducts' => $topSellingProducts,
             'topCustomers' => $topCustomers,
-            'feautredProducts' => $feautredProducts,
+            'productCount' => $productCount,
             'ratedProducts' => $ratedProducts,
         ]);
     }

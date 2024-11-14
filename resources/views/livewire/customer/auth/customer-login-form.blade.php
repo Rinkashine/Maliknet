@@ -9,7 +9,7 @@
         <div class="box  ">
             <div class="p-5 border-b-2 border-slate-100 ">
                 <h2 class="intro-x text-2xl sm:text-xl font-medium  text-center mr-auto ">
-                    Welcome to Go-Dental! Please Login
+                    Welcome to {{ env('APP_NAME') }} Please Login
                 </h2>
             </div>
             <div class="p-5">
@@ -65,7 +65,7 @@
 
                         </div>
                         <div class="pt-5 text-center intro-x " >
-                            <a class="text-primary font-normal" href="{{Route('register.index')}}">New to Go Dental? Click here.</a>
+                            <a class="text-primary font-normal" href="{{Route('register.index')}}">New to {{ env('APP_NAME') }} Click here.</a>
                         </div>
                     </div>
                 </form>

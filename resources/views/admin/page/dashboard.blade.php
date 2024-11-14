@@ -31,8 +31,8 @@
                                 <div class="flex">
                                     <i data-lucide="monitor" class="report-box__icon text-primary"></i>
                                 </div>
-                                <div class="text-3xl font-medium leading-8 mt-6"></div>
-                                <div class="text-base text-slate-500 mt-1">Unique Visitor</div>
+                                <div class="text-3xl font-medium leading-8 mt-6">{{ number_format($productCount) }}</div>
+                                <div class="text-base text-slate-500 mt-1">Product Count</div>
                             </div>
                         </div>
                     </div>
@@ -100,62 +100,7 @@
                     @endcan
                 </div>
             </div>
-            <!-- BEGIN: Weekly Top Products -->
-            <div class="col-span-12 mt-2">
-                <div class="intro-y block sm:flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">
-                       Featured Products
-                    </h2>
-                </div>
-                <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                    <table class="table table-report sm:mt-2">
-                        <thead>
-                            <tr>
-                                <th class="whitespace-nowrap">IMAGES</th>
-                                <th class="whitespace-nowrap">PRODUCT NAME</th>
-                                 <th class="text-center whitespace-nowrap">SKU</th>
-                                <th class="text-center whitespace-nowrap">STOCK</th>
-                                {{-- <th class="text-center whitespace-nowrap">ACTIONS</th> --}}
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($feautredProducts as $product)
-                            <tr class="intro-x">
-                                <td class="w-40">
-                                    <div class="w-10 h-10 image-fit zoom-in">
-                                        @foreach ($product->images->take(1) as $model)
-                                            <img alt="Product Image Not Found" class="object-scale-down w-full h-48 rounded-md" src="{{ url('storage/product_photos/'.$model->images) }}" onerror="this.onerror=null;this.src='{{ asset('dist/images/ImageNotFound.png') }}'">
-                                        @endforeach
-                                    </div>
-                                </td>
-                                <td>
-                                    <a href="{{ Route('product.edit',$product) }}" class="font-medium whitespace-nowrap">{{$product->name}}</a>
-                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{$product->brand->name}}</div>
-                                </td>
-                                <td class="text-center">{{$product->SKU}}</td>
-                                <td class="w-40">
-                                    @if ($product->stock <= $product->stock_warning)
-                                        <div class="flex items-center justify-center text-danger"> <i class="w-4 h-4 mr-2"></i> {{$product->stock}} </div>
-                                    @else
-                                    <div class="flex items-center justify-center text-success"> <i class="w-4 h-4 mr-2"></i> {{$product->stock}} </div>
-                                    @endif
-                                </td>
-                                {{-- <td class="table-report__action w-56">
-                                    <div class="flex justify-center items-center">
-                                        <a class="flex items-center mr-3" href=""> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-                                        <a class="flex items-center text-danger" href=""> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
-                                    </div>
-                                </td> --}}
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    @can('product_edit')
-                        <a href="{{Route('product.FeaturedProduct')}}" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-slate-400 dark:border-darkmode-300 text-slate-500">View More</a>
-                    @endcan
-                </div>
-            </div>
-            <!-- END: Weekly Top Products -->
+
         </div>
     </div>
     <div class="col-span-12 2xl:col-span-3">

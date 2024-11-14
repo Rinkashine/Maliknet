@@ -14,90 +14,26 @@
         </li>
         <!--Product Attribute-->
         @if (Auth::guard('web')->user()->can('category_access'))
-        <li>
-            <a href="javascript:;" class="side-menu {{ (request()->is('admin/brand')) || (request()->is('admin/category'))  ? 'side-menu--active' : '' }}">
-                <div class="side-menu__icon"> <i class="fa-solid fa-truck-ramp-box fa-lg p-1"></i> </div>
-                    <div class="side-menu__title">
-                        Product Attribute
-                        <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
-                    </div>
-            </a>
-            <ul class="">
+        @can('category_access')
+            <li>
+                <a href="{{ route('category.index') }}" class="side-menu {{ (request()->is('admin/category'))  ? 'side-menu--active' : '' }}">
+                    <div class="side-menu__icon"> <i class="fa-solid fa-truck-ramp-box p-1 fa-lg"></i> </div>
+                    <div class="side-menu__title"> Category </div>
+                </a>
+            </li>
+        @endcan
 
-                @can('category_access')
-                <li>
-                    <a href="{{ route('category.index') }}" class="side-menu">
-                        <div class="side-menu__icon"> <i class="fa-solid fa-c p-1 fa-lg"></i> </div>
-                        <div class="side-menu__title"> Category </div>
-                    </a>
-                </li>
-                @endcan
-            </ul>
-        </li>
         @endif
         <!--Product-->
-        @if (Auth::guard('web')->user()->can('product_create') || Auth::guard('web')->user()->can('product_access') || Auth::guard('web')->user()->can('inventory_access'))
-        <li>
-            <a href="javascript:;" class="side-menu {{ (request()->is('admin/product')) || (request()->is('admin/inventory')) || (request()->is('admin/addproduct')) ? 'side-menu--active' : '' }}">
-                <div class="side-menu__icon"><i class="fa-brands fa-product-hunt  fa-lg p-1"></i></div>
-                    <div class="side-menu__title">
-                        Product
-                    <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
-                </div>
-            </a>
-            <ul class="">
-                @can('product_access')
-                <li>
-                    <a href="{{Route('product.index')}}" class="side-menu">
-                        <div class="side-menu__icon"> <i class="fa-solid fa-p fa-lg p-1"></i> </div>
-                        <div class="side-menu__title"> Product </div>
-                    </a>
-                </li>
-                @endcan
-                @can('inventory_access')
-                <li>
-                    <a href="{{Route('inventory.index')}}" class="side-menu">
-                        <div class="side-menu__icon"> <i class="fa-solid fa-warehouse fa-lg p-1"></i> </div>
-                        <div class="side-menu__title"> Inventory </div>
-                    </a>
-                </li>
-                @endcan
-
-                @can('inventory_transfer_access')
-                    <li>
-                        <a href="{{Route('transfer.index')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i class="fa-solid fa-shuffle mr-1 fa-lg p-1"></i> </div>
-                            <div class="side-menu__title"> Purchase Order </div>
-                        </a>
-                    </li>
-                @endcan
-                @can('product_edit')
-                <li>
-                    <a href="{{Route('product.FeaturedProduct')}}" class="side-menu">
-                        <div class="side-menu__icon"> <i class="fa-solid fa-bookmark mr-1 fa-lg p-1"></i> </div>
-                        <div class="side-menu__title"> Featured Products </div>
-                    </a>
-                </li>
-                @endcan
-                @can('product_create')
-                <li>
-                    <a href="{{Route('product.create')}}" class="side-menu">
-                        <div class="side-menu__icon"> <i class="fa-solid fa-plus mr-1 fa-lg p-1"></i> </div>
-                        <div class="side-menu__title"> Add New Product </div>
-                    </a>
-                </li>
-                @endcan
-            </ul>
-        </li>
+        @if (Auth::guard('web')->user()->can('product_access'))
+            <li>
+                <a href="{{ route('product.index') }}" class="side-menu {{ (request()->is('admin/product'))  ? 'side-menu--active' : '' }}">
+                    <div class="side-menu__icon"> <i class="fa-solid fa-boxes-packing p-1 fa-lg"></i> </div>
+                    <div class="side-menu__title"> Product </div>
+                </a>
+            </li>
         @endif
-        @can('supplier_access')
-        <li>
-            <a href="{{ route('supplier.index') }}" class="side-menu {{ (request()->is('admin/supplier')) ? 'side-menu--active' : '' }}">
-                <div class="side-menu__icon"> <i class="fa-solid fa-boxes-packing p-1 fa-lg"></i></div>
-                <div class="side-menu__title"> Supplier </div>
-            </a>
-        </li>
-        @endcan
+
         <!--Orders-->
         @can('order_access')
         <li>

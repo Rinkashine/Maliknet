@@ -42,6 +42,9 @@
                 @yield('content')
             </div>
         </div>
+        @include('admin.component.main-color-switcher')
+        @include('admin.component.dark-mode-switcher')
+
         <!-- BEGIN: JS Assets-->
         @include('sweetalert::alert')
         @livewireScripts
