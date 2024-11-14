@@ -72,24 +72,10 @@ class CheckoutForm extends Component
                     'customer_order_id' => $order_id->id,
                     'product_id' => $item->product->id,
                     'product_name' => $item->product->name,
-                    'price' => $item->product->sprice,
+                    'price' => $item->product->price,
                     'quantity' => $item->quantity,
                 ]);
-                $products = Product::where('name', $item->product->name)->get();
-                foreach ($products as $product) {
-                    $product->stock -= $item->quantity;
-                    $product->update();
-                    $operationvalue = '(-'.$item->quantity.')';
-                    $latestvalue = $product->stock;
-                    InventoryHistory::create([
-                        'product_id' => $product->id,
-                        'activity' => 'Customer Order with Order ID of ',
-                        'adjusted_by' => '',
-                        'operation_value' => $operationvalue,
-                        'latest_value' => $latestvalue,
-                        'customer_order_id' => $order_id->id
-                    ]);
-                }
+
                 $item->delete();
             }
         }
@@ -148,25 +134,10 @@ class CheckoutForm extends Component
                     'customer_order_id' => $order_id->id,
                     'product_id' => $item->product->id,
                     'product_name' => $item->product->name,
-                    'price' => $item->product->sprice,
+                    'price' => $item->product->price,
                     'quantity' => $item->quantity,
                 ]);
 
-                $products = Product::where('name', $item->product->name)->get();
-                foreach ($products as $product) {
-                    $product->stock -= $item->quantity;
-                    $product->update();
-                    $operationvalue = '(-'.$item->quantity.')';
-                    $latestvalue = $product->stock;
-                    InventoryHistory::create([
-                        'product_id' => $product->id,
-                        'activity' => 'Customer Order with Order ID of ',
-                        'adjusted_by' => '',
-                        'operation_value' => $operationvalue,
-                        'latest_value' => $latestvalue,
-                        'customer_order_id' => $order_id->id
-                    ]);
-                }
 
                 $item->delete();
             }
@@ -198,8 +169,8 @@ class CheckoutForm extends Component
 
         foreach ($this->orders as $checkoutorders) {
             $qty = $checkoutorders->quantity;
-            $sprice = $checkoutorders->product->sprice;
-            $totalprice = $qty * $sprice;
+            $price = $checkoutorders->product->price;
+            $totalprice = $qty * $price;
             $this->subtotal += $totalprice;
             //dd($qty);
         }

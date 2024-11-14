@@ -144,8 +144,8 @@
                                                 <input type="checkbox" class="form-check-input" wire:click="add({{ $cart->id }})" value="1" @if($cart->check == true) checked @endif></td>
                                             <td class="whitespace-nowrap text-center">{{ $cart->product->name }}</td>
                                             <td class="whitespace-nowrap text-center">{{ $cart->quantity }}</td>
-                                            <td class="whitespace-nowrap text-center">₱{{ $cart->product->sprice }}</td>
-                                            <td class="whitespace-nowrap text-center">₱{{    number_format($cart->product->sprice * $cart->quantity)   }}</td>
+                                            <td class="whitespace-nowrap text-center">₱{{ $cart->product->price }}</td>
+                                            <td class="whitespace-nowrap text-center">₱{{    number_format($cart->product->price * $cart->quantity)   }}</td>
                                             <td class="whitespace-nowrap flex justify-center items-center">
                                                 <button wire:click="selectItem({{ $cart->id }},'adjust')" class="flex items-center mr-3" >
                                                     <i class="fa-regular fa-pen-to-square w-4 h-4 mr-1"></i> Adjust

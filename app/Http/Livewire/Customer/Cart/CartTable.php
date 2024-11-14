@@ -70,29 +70,7 @@ class CartTable extends Component
         }
     }
 
-    public function mount()
-    {
-        $this->validatequantity();
-    }
 
-    public function validatequantity()
-    {
-        if (Auth::guard('customer')->check()) {
-            $customer_id = Auth::id();
-            $carts = CustomerCart::with('product', 'customer')->where('customers_id', $customer_id)->get();
-        } else {
-            return redirect()->route('CLogin.index');
-        }
-        foreach ($carts as $cart) {
-            $updatecart = CustomerCart::with('product', 'customer')->where('product_id', $cart->product_id)->where('customers_id', $customer_id)->get();
-            foreach ($updatecart as $items) {
-                if ($items->quantity > $cart->product->stock) {
-                    $items->quantity = $cart->product->stock;
-                    $items->update();
-                }
-            }
-        }
-    }
 
     public function render()
     {
@@ -113,8 +91,8 @@ class CartTable extends Component
 
         foreach ($checkitem as $checkitem) {
             $qty = $checkitem->quantity;
-            $sprice = $checkitem->product->sprice;
-            $totalprice = $qty * $sprice;
+            $price = $checkitem->product->price;
+            $totalprice = $qty * $price;
             $this->val += $totalprice;
         }
 
@@ -127,7 +105,6 @@ class CartTable extends Component
             $this->total = $this->subtotal + $this->shippingfee;
         }
 
-        $this->validatequantity();
         $customer_id = Auth::guard('customer')->user()->id;
         $shippingaddresscount = CustomerShippingAddress::where('customers_id', $customer_id)->count();
 

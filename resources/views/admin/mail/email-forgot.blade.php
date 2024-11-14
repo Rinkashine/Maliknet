@@ -459,7 +459,7 @@
             <tr>
               <td class="email-masthead" style="word-break: break-word; font-family: &quot;Nunito Sans&quot;, Helvetica, Arial, sans-serif; font-size: 16px; text-align: center; padding: 25px 0;" align="center">
                 <a href="http://127.0.0.1:8000/" class="f-fallback email-masthead_name" style="color: #A8AAAF; font-size: 16px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 white;">
-                    Go Dental
+                    {{ env('APP_NAME') }}
               </a>
               </td>
             </tr>
@@ -473,7 +473,7 @@
                       <div class="f-fallback">
                         <h1 style="margin-top: 0; color: #333333; font-size: 22px; font-weight: bold; text-align: left;" align="left">Forgot password Email</h1>
                         <p style="font-size: 16px; line-height: 1.625; color: #51545E; margin: .4em 0 1.1875em;">
-                            We have received a request to reset password for <b> Go Dental </b> account associated with  {!! $email !!} You can reset your password by clicking the link below
+                            We have received a request to reset password for <b>{{ env('APP_NAME') }} </b> account associated with  {!! $email !!} You can reset your password by clicking the link below
                         </p>
 
 
@@ -520,9 +520,8 @@
                     <td class="content-cell" align="center" style="word-break: break-word; font-family: &quot;Nunito Sans&quot;, Helvetica, Arial, sans-serif; font-size: 16px; padding: 45px;">
                       <p class="f-fallback sub align-center" style="font-size: 13px; line-height: 1.625; text-align: center; color: #A8AAAF; margin: .4em 0 1.1875em;" align="center">© 2022 Go Dental. All rights reserved.</p>
                       <p class="f-fallback sub align-center" style="font-size: 13px; line-height: 1.625; text-align: center; color: #A8AAAF; margin: .4em 0 1.1875em;" align="center">
-                        Go Dental
-                        <br />1234 Street Rd.
-                        <br />Suite 1234
+                        {{ env('APP_NAME') }}
+                        <br />{{ env('APP_ADDRESS') }}
                       </p>
                     </td>
                   </tr>

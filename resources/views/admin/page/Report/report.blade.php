@@ -12,48 +12,6 @@
         </div>
         <!-- Report Container -->
         <div class="grid grid-cols-12 gap-4">
-            <!-- Browser -->
-            <div class="col-span-6 p-2 text-xs bg-white border rounded-md shadow-md md:col-span-3 lg:col-span-2 w-fit zoom-in">
-                <a href="{{ Route('report.browser') }}">
-                    <div>
-                        <img class="object-scale-down w-full max-w-md max-h-56" src="{{ asset('dist/images/Browser.svg') }}">
-                    </div>
-                    <div>
-                        <div class="mb-5 ml-1 sm:mb-0 sm:text-sm">Browser</div>
-                    </div>
-                    <div class="p-1 mt-1 text-sm text-center border-t">
-                        <p class="sm:text-base">View Details</p>
-                    </div>
-                </a>
-            </div>
-            <!-- Most Visited Page -->
-            <div class="col-span-6 p-2 text-xs bg-white border rounded-md shadow-md md:col-span-3 lg:col-span-2 w-fit zoom-in">
-                <a href="{{ Route('report.MostVisitedPageIndex') }}">
-                    <div>
-                        <img class="object-scale-down w-full max-w-md max-h-56" src="{{ asset('dist/images/MostVisitedPage.svg') }}">
-                    </div>
-                    <div>
-                        <div class="mb-5 ml-1 sm:mb-0 sm:text-sm">Most Visited Page</div>
-                    </div>
-                    <div class="p-1 mt-1 text-sm text-center border-t">
-                        <p class="sm:text-base">View Details</p>
-                    </div>
-                </a>
-            </div>
-            <!-- User Type -->
-            <div class="col-span-6 p-2 text-xs bg-white border rounded-md shadow-md md:col-span-3 lg:col-span-2 w-fit zoom-in">
-                <a href="{{ Route('report.UserType') }}">
-                    <div>
-                        <img class="object-scale-down w-full max-w-md max-h-56" src="{{ asset('dist/images/UserType.svg') }}">
-                    </div>
-                    <div>
-                        <div class="mb-5 ml-1 sm:mb-0 sm:text-sm">User Type</div>
-                    </div>
-                    <div class="p-1 mt-1 text-sm text-center border-t">
-                        <p class="sm:text-base">View Details</p>
-                    </div>
-                </a>
-            </div>
             <!-- Gender -->
             <div class="col-span-6 p-2 text-xs bg-white border rounded-md shadow-md md:col-span-3 lg:col-span-2 w-fit zoom-in">
                 <a href="{{ Route('report.Gender') }}">
@@ -68,21 +26,7 @@
                     </div>
                 </a>
             </div>
-            <!-- Payment By Type -->
-            <div class="col-span-6 p-2 text-xs bg-white border rounded-md shadow-md md:col-span-3 lg:col-span-2 w-fit zoom-in">
-                <a  href="{{ Route('report.PaymentByType') }}">
-                    <div>
-                        <img class="object-scale-down w-full max-w-md max-h-56" src="{{ asset('dist/images/PaymentByType.svg') }}">
-                    </div>
-                    <div>
-                        <div class="mb-5 ml-1 sm:mb-0 sm:text-sm">Payment By Type</div>
 
-                    </div>
-                    <div class="p-1 mt-1 text-sm text-center border-t">
-                        <p class="sm:text-base">View Details</p>
-                    </div>
-                </a>
-            </div>
 
             <!-- Customer's Cancelled Orders -->
             <div class="col-span-6 p-2 text-xs bg-white border rounded-md shadow-md md:col-span-3 lg:col-span-2 w-fit zoom-in">
@@ -265,18 +209,7 @@
                     <a class="sm:text-base" href="{{ Route('report.CustomersTotalSpent') }}">View Details</a>
                 </div>
             </div>
-            <!-- Brand Sales  -->
-            <div class="col-span-6 p-2 text-xs bg-white border rounded-md shadow-md md:col-span-3 lg:col-span-2 w-fit zoom-in">
-                <div>
-                    <img class="object-scale-down w-full max-w-md max-h-56" src="{{ asset('dist/images/BrandSales.svg') }}">
-                </div>
-                <div>
-                    <div class="ml-1 sm:text-sm">Brand Sales</div>
-                </div>
-                <div class="p-1 mt-1 text-sm text-center border-t">
-                    <a class="sm:text-base" href="{{ Route('report.BrandSales') }}">View Details</a>
-                </div>
-            </div>
+
             <!-- Category Sales -->
             <div class="col-span-6 p-2 text-xs bg-white border rounded-md shadow-md md:col-span-3 lg:col-span-2 w-fit zoom-in">
                 <div>
@@ -287,20 +220,6 @@
                 </div>
                 <div class="p-1 mt-1 text-sm text-center border-t">
                     <a class="sm:text-base" href="{{ Route('report.CategorySales') }}">View Details</a>
-                </div>
-            </div>
-
-
-            <!-- Brand Order Volume -->
-            <div class="col-span-6 p-2 text-xs bg-white border rounded-md shadow-md md:col-span-3 lg:col-span-2 w-fit zoom-in">
-                <div>
-                    <img class="object-scale-down w-full max-w-md max-h-56" src="{{ asset('dist/images/BrandOrderVolume.svg') }}">
-                </div>
-                <div>
-                    <div class="ml-1 sm:text-sm">Brand Order Volume</div>
-                </div>
-                <div class="p-1 mt-1 text-sm text-center border-t">
-                    <a class="sm:text-base" href="{{ Route('report.BrandVolume') }}">View Details</a>
                 </div>
             </div>
             <!-- Category Order Volume -->

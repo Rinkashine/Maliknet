@@ -8,7 +8,7 @@
                     <button type="button" wire:click="DecrementQuantity" class="btn-secondary text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-7 rounded-l cursor-pointer outline-none">
                         <span class="m-auto text-2xl font-thin">−</span>
                     </button>
-                    <input type="number" wire:model.debounce.500ms="quantity" id="quantity" onkeypress="return event.charCode >= 48" min="1" max="{{ $stock_limit }}" class="h-8 outline-none focus:outline-none text-center w-14 bg-gray-300 font-medium text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" />
+                    <input type="number" wire:model.debounce.500ms="quantity" id="quantity" onkeypress="return event.charCode >= 48" min="1" class="h-8 outline-none focus:outline-none text-center w-14 bg-gray-300 font-medium text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" />
                     <button type="button" wire:click="IncrementQuantity" class="btn-secondary text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-7 rounded-l cursor-pointer outline-none">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>

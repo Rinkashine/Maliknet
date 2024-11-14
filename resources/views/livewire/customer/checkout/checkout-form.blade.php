@@ -82,8 +82,8 @@
                                     @foreach ($orders as $order)
                                         <tr>
                                             <td class="whitespace-nowrap">{{ $order->product->name }}</td>
-                                            <td class="text-center whitespace-nowrap">₱{{ number_format($order->product->sprice) }}</td>
-                                            <td class="text-center whitespace-nowrap">₱{{ number_format($order->product->sprice * $order->quantity) }}</td>
+                                            <td class="text-center whitespace-nowrap">₱{{ number_format($order->product->price) }}</td>
+                                            <td class="text-center whitespace-nowrap">₱{{ number_format($order->product->price * $order->quantity) }}</td>
                                             <td class="text-center whitespace-nowrap">{{ $order->quantity }}</td>
                                             <td class="flex items-center justify-center whitespace-nowrap" >
                                                 @if(count($orders)  == 1)

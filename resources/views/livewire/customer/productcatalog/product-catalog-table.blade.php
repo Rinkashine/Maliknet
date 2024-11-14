@@ -24,7 +24,7 @@
                                     <div class="p-5">
                                         <div class="h-full">
                                             @if(count($product->images) == 0)
-                                                <img alt="Missing Image" class="object-contain h-full rounded-md w-full" src="{{ asset('dist/images/logo.png') }}" onerror="this.onerror=null;this.src='{{ asset('dist/images/ImageNotFound.png') }}'">
+                                                <img alt="Missing Image" class="object-contain h-full rounded-md w-full" src="{{ asset('dist/images/MaliknetLogo.jpg') }}" onerror="this.onerror=null;this.src='{{ asset('dist/images/ImageNotFound.png') }}'">
                                             @else
                                                 @foreach ($product->images->take(1)  as $model)
                                                     @if (Storage::disk('public')->exists('product_photos/'.$model->images))
@@ -37,7 +37,7 @@
                                         </div>
                                     </div>
                                     <div class="ml-3">
-                                        <div class="font-medium truncate ">{{ $product->name }}</div>
+                                        <div class="font-medium truncate ">{{ $product->name }} </div>
                                     </div>
                                     <div class="px-2 pt-3 pb-2 border-t border-slate-200/60 dark:border-darkmode-400">
                                         <div class="flex w-full text-xs text-slate-500">

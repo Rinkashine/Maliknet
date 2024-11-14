@@ -14,8 +14,6 @@ class AddToCart extends Component
 
     public $price;
 
-    public $stock_limit;
-
     protected function rules()
     {
         return[
@@ -71,9 +69,8 @@ class AddToCart extends Component
 
     public function mount($product)
     {
-        $this->price = $product->sprice;
+        $this->price = $product->price;
         $this->product_id = $product->id;
-        $this->stock_limit = $product->stock;
     }
 
     public function LoginModal(){
@@ -84,9 +81,6 @@ class AddToCart extends Component
     {
         if ($this->quantity == null || $this->quantity <= 0) {
             $this->quantity = 1;
-        }
-        if ($this->quantity > $this->stock_limit) {
-            $this->quantity = $this->stock_limit;
         }
 
         return view('livewire.customer.productcatalog.add-to-cart');

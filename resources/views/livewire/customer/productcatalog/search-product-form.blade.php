@@ -18,7 +18,7 @@
                                     @endforeach
                                 @endif
                             </div>
-                            <div class="ml-3 truncate w-full">{{ $product->name }}</div>
+                            <div class="ml-3 truncate w-full">{{ $product->name }} <span class="text-slate-500">({{ $product->category->name }})</span></div>
                         </a>
                      @endforeach
                @else

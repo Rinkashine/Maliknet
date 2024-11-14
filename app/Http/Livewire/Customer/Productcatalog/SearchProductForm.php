@@ -32,7 +32,7 @@ class SearchProductForm extends Component
 
     public function updatedQuery()
     {
-        $this->products = Product::where('name', 'like', '%'.$this->query.'%')->orderby('name', 'asc')->take(10)
+        $this->products = Product::with('category')->where('name', 'like', '%'.$this->query.'%')->orderby('name', 'asc')->take(10)
         ->get();
     }
 
