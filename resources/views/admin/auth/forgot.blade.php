@@ -6,7 +6,7 @@
         <div class="hidden xl:flex flex-col min-h-screen">
             <a href="#" class="-intro-x flex items-center pt-5">
                 <img alt="Maliknet Logo" class="w-6" src="{{asset('icons/log.png')}}">
-                <span class="text-white text-lg ml-3">Go Dental</span>
+                <span class="text-white text-lg ml-3">{{ env('APP_NAME')  }}</span>
             </a>
             <div class="my-auto">
                 <img alt="Maliknet Image " class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/login_shop.svg') }}">

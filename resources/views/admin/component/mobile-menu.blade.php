@@ -12,91 +12,24 @@
                 <div class="menu__title"> Dashboard </div>
             </a>
         </li>
-        @if (Auth::guard('web')->user()->can('brand_access') || Auth::guard('web')->user()->can('category_access'))
-        <li>
-            <a href="javascript:;" class="menu">
-                <div class="menu__icon"><i class="fa-solid fa-truck-ramp-box fa-lg p-1"></i> </div>
-                <div class="menu__title">Product Attribute <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
-            </a>
-            <ul class="">
-                @can('brand_access')
-                <li>
-                    <a href="{{Route('brand.index')}}" class="menu">
-                        <div class="menu__icon"> <i class="fa-solid fa-b p-1 fa-lg"></i></div>
-                        <div class="menu__title"> Brand </div>
-                    </a>
-                </li>
-                @endcan
-                @can('category_access')
-                <li>
-                    <a href="{{Route('category.index')}}" class="menu">
-                        <div class="menu__icon"> <i class="fa-solid fa-c p-1 fa-lg"></i> </div>
-                        <div class="menu__title"> Category </div>
-                    </a>
-                </li>
-                @endcan
-            </ul>
-        </li>
-        @endif
-        @if (Auth::guard('web')->user()->can('product_create') || Auth::guard('web')->user()->can('product_access') || Auth::guard('web')->user()->can('inventory_access'))
-        <li>
-            <a href="javascript:;" class="menu">
-                <div class="menu__icon"><i class="fa-brands fa-product-hunt  fa-lg p-1"></i> </div>
-                <div class="menu__title">Product <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
-            </a>
-            <ul class="">
-                @can('product_access')
-                <li>
-                    <a href="{{Route('product.index')}}" class="menu">
-                        <div class="menu__icon"> <i class="fa-solid fa-p fa-lg p-1"></i> </div>
-                        <div class="menu__title"> Product </div>
-                    </a>
-                </li>
-                @endcan
-                @can('inventory_access')
-                <li>
-                    <a href="{{Route('inventory.index')}}" class="menu">
-                        <div class="menu__icon"> <i class="fa-solid fa-warehouse fa-lg p-1"></i> </div>
-                        <div class="menu__title"> Inventory </div>
-                    </a>
-                </li>
-                @endcan
-                @can('inventory_transfer_access')
-                <li>
-                    <a href="{{Route('transfer.index')}}" class="menu">
-                        <div class="menu__icon"> <i class="fa-solid fa-shuffle mr-1 fa-lg p-1"></i> </div>
-                        <div class="menu__title">  Purchase Order </div>
-                    </a>
-                </li>
 
-                @endcan
-                @can('product_edit')
-                    <li>
-                        <a href="{{Route('product.FeaturedProduct')}}" class="menu">
-                            <div class="menu__icon">  <i class="fa-solid fa-bookmark mr-1 fa-lg p-1"></i> </div>
-                            <div class="menu__title">   Featured Products</div>
-                        </a>
-                    </li>
-                @endcan
-                @can('product_create')
-                <li>
-                    <a href="{{Route('product.create')}}" class="menu">
-                        <div class="menu__icon"> <i class="fa-solid fa-plus mr-1 fa-lg p-1"></i> </div>
-                        <div class="menu__title"> Add New Product </div>
-                    </a>
-                </li>
-                @endcan
-            </ul>
-        </li>
+        @if (Auth::guard('web')->user()->can('category_access'))
+            <li>
+                <a href="{{ route('category.index') }}" class="menu">
+                    <div class="menu__icon"> <i class="fa-solid fa-truck-ramp-box p-1 fa-lg"></i></div>
+                    <div class="menu__title">Category </div>
+                </a>
+            </li>
         @endif
-        @can('supplier_access')
-        <li>
-            <a href="{{ route('supplier.index') }}" class="menu">
-                <div class="menu__icon"> <i class="fa-solid fa-boxes-packing p-1 fa-lg"></i></div>
-                <div class="menu__title"> Supplier </div>
-            </a>
-        </li>
-        @endcan
+        @if (Auth::guard('web')->user()->can('product_access'))
+            <li>
+                <a href="{{ route('category.index') }}" class="menu">
+                    <div class="menu__icon"> <i class="fa-solid fa-boxes-packing p-1 fa-lg"></i></div>
+                    <div class="menu__title">Product </div>
+                </a>
+            </li>
+        @endif
+
 
         @can('order_access')
         <li>

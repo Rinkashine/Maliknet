@@ -48,28 +48,17 @@ Route::group(['prefix' => 'admin'], function () {
             //Begin: Dashboard Module
             Route::resource('dashboard', DashboardController::class)->only(['index']);
             //Begin: Product Attribute Module
-            Route::resource('brand', BrandController::class)->only(['index']);
             Route::resource('category', CategoryController::class)->only('index');
-            //Begin: Inventory Module
-            Route::resource('inventory', InventoryController::class)->except(['edit', 'show', 'create']);
-            Route::get('product/inventory_history/{id}', [ProductController::class, 'ProductInventoryHistory'])->name('ProductInventoryHistory');
-            //Begin: Purchase Order Module
-            Route::resource('transfer', InventoryTransferController::class);
-            Route::get('/receive/{id}', [InventoryTransferController::class, 'receive'])->name('inventory.receive');
             //Begin: Product Module
             Route::get('/product/archive', [ProductController::class, 'ProductArchiveIndex'])->name('ProductArchiveIndex');
             Route::delete('/product/archive/{id}', [ProductController::class, 'ProductArchiveDestroy']);
             Route::put('/product/archive/{id}', [ProductController::class, 'ProductArchiveRestore']);
-            Route::get('/product/featuredproducts', [ProductController::class, 'FeaturedProductIndex'])->name('product.FeaturedProduct');
             Route::resource('product', ProductController::class);
             //Begin: Order
             Route::get('/orders/print_waybill/{id}',[OrderController::class, 'Invoice'])->name('invoice');
             Route::resource('orders', OrderController::class)->only('index', 'show');
             //End: Order Module
             Route::resource('banner', PostController::class)->only('index');
-            //Begin: Supplier Module
-            Route::get('/supplier/archive', [SupplierController::class, 'SupplierArchiveIndex'])->name('SupplierArchiveIndex');
-            Route::resource('supplier', SupplierController::class);
             //Begin: Profile Module
             Route::get('/profile/changepassword', [ProfileController::class, 'changepass'])->name('AdminChangePass');
             Route::post('/profile/changepassword', [ProfileController::class, 'resetpass']);

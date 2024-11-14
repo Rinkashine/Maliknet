@@ -37,9 +37,6 @@
             <a class="flex items-center mt-5 {{ (request()->is('customer/wishlist'))  ? 'text-primary font-medium' : '' }}" href="{{ Route('wishlist.index') }}">
                 <i class="fa-solid fa-heart mr-2"></i>My Wishlist
             </a>
-            <a class="flex items-center mt-5 {{ (request()->is('customer/returns')) ? 'text-primary font-medium' : '' }}" href="{{ Route('returns.index') }}">
-                <i class="fa-solid fa-arrow-rotate-left mr-2"></i>My Returns
-            </a>
             <a class="flex items-center mt-5 {{ (request()->is('customer/reviews')) ? 'text-primary font-medium' : '' }}" href="{{ Route('reviews.index') }}">
                 <i class="fa-solid fa-receipt mr-2"></i>My Reviews
             </a>
