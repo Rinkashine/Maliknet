@@ -142,7 +142,7 @@
                                         <tr>
                                             <td class="whitespace-nowrap text-center w-20">
                                                 <input type="checkbox" class="form-check-input" wire:click="add({{ $cart->id }})" value="1" @if($cart->check == true) checked @endif></td>
-                                            <td class="whitespace-nowrap text-center">{{ $cart->product->name }}</td>
+                                            <td class="whitespace-nowrap text-center">{{ $cart->product->name }} <span class="text-slate-500">({{ $cart->product->category->name }})</span></td>
                                             <td class="whitespace-nowrap text-center">{{ $cart->quantity }}</td>
                                             <td class="whitespace-nowrap text-center">₱{{ $cart->product->price }}</td>
                                             <td class="whitespace-nowrap text-center">₱{{    number_format($cart->product->price * $cart->quantity)   }}</td>

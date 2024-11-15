@@ -20,8 +20,11 @@ class ProviderController extends Controller
         return Socialite::driver($provider)->redirect();
     }
     public function callback($provider){
-        $SocialUser =  Socialite::driver($provider)->user();
-
+        try {
+            $SocialUser =  Socialite::driver($provider)->stateless()->user();
+        } catch (\Exception $e) {
+            return redirect()->route('CLogin.index');
+         }
         $user = Customer::where('email', $SocialUser->getEmail())->first();
 
 

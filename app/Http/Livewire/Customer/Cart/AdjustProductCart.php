@@ -11,7 +11,6 @@ class AdjustProductCart extends Component
 
     public $product_name;
 
-    public $stocksleft;
 
     public $quantity;
 
@@ -43,22 +42,21 @@ class AdjustProductCart extends Component
         $this->modelId = $modelId;
         $cart = CustomerCart::findorfail($this->modelId);
         $this->quantity = $cart->quantity;
-        $this->unitprice = $cart->product->sprice;
+        $this->unitprice = $cart->product->price;
         $this->product_name = $cart->product->name;
-        $this->stocksleft = $cart->product->stock;
     }
 
     public function updated($fields)
     {
         $this->validateOnly($fields, [
-            'quantity' => 'required|numeric|min:1|max:'.$this->stocksleft,
+            'quantity' => 'required|numeric|min:1',
         ]);
     }
 
     protected function rules()
     {
         return [
-            'quantity' => 'required|numeric|min:1|max:'.$this->stocksleft,
+            'quantity' => 'required|numeric|min:1',
         ];
     }
 
@@ -79,7 +77,6 @@ class AdjustProductCart extends Component
         $this->modelId = null;
         $this->quantity = null;
         $this->product_name = null;
-        $this->stocksleft = null;
         $this->unitprice = null;
         $this->totalprice = null;
     }
