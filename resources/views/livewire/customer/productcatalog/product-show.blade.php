@@ -14,7 +14,6 @@
                             <div class="flex flex-col items-center justify-center mt-4 lg:items-start">
                                 <div class="flex items-center truncate sm:whitespace-normal"> Sold:  {{ $sold }}</div>
                                 <div class="flex items-center mt-3 truncate sm:whitespace-normal">Ratings: {{ number_format($ave_rate,2)}}</div>
-                                <div class="flex items-center mt-3 truncate sm:whitespace-normal">Stocks: {{ $product->stock }} </div>
                             </div>
                         </div>
                     </div>
@@ -51,7 +50,7 @@
                                     @if(count($product->images) == 0)
                                         <!-- Begin: Product Image if there is no image -->
                                         <div>
-                                            <img alt="Missing Image" class="object-fill w-full h-full" src="{{ asset('dist/images/logo.png') }}">
+                                            <img alt="Missing Image" class="object-fill w-full h-full" src="{{ asset('dist/images/MaliknetLogo.jpg') }}">
                                         </div>
                                         <!-- END: Product Image if there is no image -->
                                     @elseif(count($product->images) == 1)

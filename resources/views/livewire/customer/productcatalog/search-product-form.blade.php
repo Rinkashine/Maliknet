@@ -11,7 +11,7 @@
                         <a href="{{ Route('productshow',$product->id) }}" class="flex items-center h-full p-1">
                             <div class="w-8 h-8  text-success flex items-center justify-center rounded-full">
                                 @if(count($product->images) == 0)
-                                    <img src="{{ asset('dist/images/logo.png') }}"  class="rounded-full" alt="">
+                                    <img src="{{ asset('dist/images/MaliknetLogo.jpg') }}"  class="rounded-full" alt="">
                                 @else
                                     @foreach ($product->images->take(1)  as $model)
                                         <img alt="Missing Image" class="rounded-full"  src="{{ url('storage/product_photos/'.$model->images) }}">

@@ -3,7 +3,7 @@
     <!-- BEGIN: Head -->
     <head>
         <meta charset="utf-8">
-        <link href="{{asset('icons/log.png')}}" rel="shortcut icon">
+        <link href="{{asset('dist/images/MaliknetLogo.jpg')}}" rel="shortcut icon">
 
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1">

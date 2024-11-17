@@ -47,7 +47,7 @@ class CategoryExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
         $drawing = new Drawing();
         $drawing->setName('My Image');
         $drawing->setDescription('This is my image');
-        $drawing->setPath(public_path('/dist/images/MainLogo.png'));
+        $drawing->setPath(public_path('/dist/images/MaliknetLogo.jpg'));
         $drawing->setHeight(90);
         $drawing->setCoordinates('A1');
 

@@ -129,7 +129,7 @@
     <main>
         <div class="mt-10 add-detail">
             <div class="float-left mt-10 w-50">
-                <img src="{{ public_path('dist/images/MainLogo.png') }}" alt="Logo">
+                <img src="{{ public_path('dist/images/MaliknetLogo.jpg') }}" alt="Logo">
             </div>
             <div class="float-left mt-10 text-right start w-50">
                 <p class="gray-color">#{{ $orderdetails->id }}</p>
