@@ -38,7 +38,7 @@
     <div class="col-span-12 py-10 intro-y lg:col-span-4 box">
         <i data-lucide="trending-up" class="block w-12 h-12 mx-auto text-primary"></i>
         <div class="mt-3 text-base font-medium text-center">Core Values</div>
-        <div class="w-3/4 mx-auto mt-2 text-center text-slate-500">To define who we are - how we talk, behave or react to any given situation - in essence, we are Simple, Happy and Together. These key attributes are visible at every step of the Go Dental journey.</div>
+        <div class="w-3/4 mx-auto mt-2 text-center text-slate-500">To define who we are - how we talk, behave or react to any given situation - in essence, we are Simple, Happy and Together. These key attributes are visible at every step of the {{ env('APP_NAME') }} journey.</div>
     </div>
 </div>
 </div>

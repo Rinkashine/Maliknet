@@ -147,10 +147,6 @@ Route::group(['prefix' => 'admin'], function () {
            //Begin:
            Route::get('/report/CustomerExpenditure', [CustomerTotalSpentController::class, 'CustomersTotalSpent'])->name('report.CustomersTotalSpent');
            //Begin:
-           Route::get('/report/BrandSales', [SalesByBrandController::class, 'BrandSalesIndex'])->name('report.BrandSales');
-           //Begin:
-           Route::get('/report/BrandOrderVolume', [BrandOrderVolumeController::class, 'BrandVolumeIndex'])->name('report.BrandVolume');
-           //Begin:
            Route::get('/report/CategorySales', [SalesByCategoryController::class, 'CategorySalesIndex'])->name('report.CategorySales');
            //Begin:
            Route::get('/report/CategoryVolume', [CategoryVolumeController::class, 'CategoryVolumeIndex'])->name('report.CategoryVolume');

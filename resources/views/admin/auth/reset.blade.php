@@ -5,13 +5,13 @@
     <div class="block xl:grid grid-cols-2 gap-4">
         <div class="hidden xl:flex flex-col min-h-screen">
             <a href="#" class="-intro-x flex items-center pt-5">
-                <img alt="Go Dental Logo" class="w-6" src="{{asset('icons/log.png')}}">
-                <span class="text-white text-lg ml-3">Go Dental</span>
+                <img alt="{{ env('APP_NAME') }} Logo" class="w-6" src="{{asset('icons/log.png')}}">
+                <span class="text-white text-lg ml-3">{{ env('APP_NAME') }}</span>
             </a>
             <div class="my-auto">
-                <img alt="Go Dental Image" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/undraw_inspiration.svg') }}">
+                <img alt="{{ env('APP_NAME') }} Image" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/undraw_inspiration.svg') }}">
                 <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">Forgotten Password?</div>
-                <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-slate-400">No Worries Go Dental got you</div>
+                <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-slate-400">No Worries {{ env('APP_NAME') }} got you</div>
             </div>
         </div>
         <div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
@@ -21,7 +21,7 @@
                     @csrf
                     <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">Reset Password</h2>
                     <div class="intro-x mt-2 text-slate-400 dark:text-slate-400 xl:hidden text-center">
-                        Forgotten Password? No Worries Go Dental got you
+                        Forgotten Password? No Worries {{ env('APP_NAME') }} got you
                     </div>
                     <div class="intro-x mt-8">
                         @if(session('success'))

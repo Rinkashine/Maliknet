@@ -6,13 +6,13 @@
     <div class="block xl:grid grid-cols-2 gap-4">
         <div class="hidden xl:flex flex-col min-h-screen">
             <p class="-intro-x flex items-center pt-5">
-                <img alt="Maliknet Logo" class="w-12" data-action="zoom" src="{{asset('dist/images/MaliknetLogo.jpg')}}">
+                <img alt="{{ env('APP_NAME') }} Logo" class="w-12" data-action="zoom" src="{{asset('dist/images/MaliknetLogo.jpg')}}">
                 <span class="text-white text-lg ml-3">
                     {{ env('APP_NAME') }}
                 </span>
             </p>
             <div class="my-auto">
-                <img alt="Maliknet" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/login_shop.svg') }}">
+                <img alt="{{ env('APP_NAME') }}" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/login_shop.svg') }}">
                 <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
                     A few more clicks to <br> sign in to your account.
                 </div>

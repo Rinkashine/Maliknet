@@ -19,8 +19,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'birthday',
-        'gender', 'address', 'phone_number', 'photo',
+        'name', 'email', 'password',
+        'phone_number', 'photo',
     ];
 
     public static function search($search)

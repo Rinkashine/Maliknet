@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('received_by');
             $table->string('phone_number');
-            $table->string('notes');
+            $table->string('notes')->nullable();
             $table->string('house');
             $table->string('province');
             $table->string('city');
