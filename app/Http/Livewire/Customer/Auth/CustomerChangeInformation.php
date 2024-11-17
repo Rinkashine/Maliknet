@@ -12,10 +12,6 @@ class CustomerChangeInformation extends Component
 
     public $phone;
 
-    public $gender;
-
-    public $birthday;
-
     public $customer_id;
 
     protected $listeners = [
@@ -30,8 +26,6 @@ class CustomerChangeInformation extends Component
         $customerinfo = Customer::findorfail($this->customer_id);
         $this->name = $customerinfo->name;
         $this->phone = $customerinfo->phone_number;
-        $this->gender = $customerinfo->gender;
-        $this->birthday = $customerinfo->birthday;
     }
 
     protected function rules()
@@ -39,8 +33,6 @@ class CustomerChangeInformation extends Component
         return [
             'name' => 'required|max:50',
             'phone' => 'required|phone:PH',
-            'gender' => 'required',
-            'birthday' => 'required|date',
         ];
     }
 
@@ -49,8 +41,6 @@ class CustomerChangeInformation extends Component
         $this->validateOnly($fields, [
             'name' => 'required|max:50',
             'phone' => 'required|phone:PH',
-            'gender' => 'required',
-            'birthday' => 'required|date',
         ]);
     }
 
@@ -58,8 +48,6 @@ class CustomerChangeInformation extends Component
     {
         $this->name = null;
         $this->phone = null;
-        $this->gender = null;
-        $this->birthday = null;
     }
 
     public function UpdateProfileInformation()
@@ -68,8 +56,6 @@ class CustomerChangeInformation extends Component
         $updatecustomerinfo = Customer::findorfail($this->customer_id);
         $updatecustomerinfo->name = $this->name;
         $updatecustomerinfo->phone_number = $this->phone;
-        $updatecustomerinfo->gender = $this->gender;
-        $updatecustomerinfo->birthday = $this->birthday;
         $updatecustomerinfo->update();
         Alert::success('Success', 'Profile Information was updated successfully');
 
