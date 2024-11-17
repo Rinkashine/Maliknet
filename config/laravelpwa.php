@@ -4,10 +4,10 @@ return [
     'name' => 'Maliknet',
     'manifest' => [
         'name' => 'Maliknet',
-        'short_name' => 'Dental',
+        'short_name' => 'Maliknet',
         'start_url' => '/',
-        'background_color' => '#1e5f4e',
-        'theme_color' => '#054232',
+        'background_color' => '#201A15',
+        'theme_color' => '#201A15',
         'display' => 'standalone',
         'orientation'=> 'any',
         'status_bar'=> 'black',

@@ -26,7 +26,7 @@
                             @if (Storage::disk('public')->exists('banner/'.$banner->featured_image))
                                 <img alt="Image Not Found" class="object-contain h-full w-full " src="{{ url('storage/banner/'.$banner->featured_image) }}" data-action="zoom">
                             @else
-                                <img alt="Missing Image" class="object-fill h-full w-96 " src="{{  asset('dist/images/ImageNotFound.png') }}" data-action="zoom">
+                                <img alt="Missing Image" class="object-fill h-full w-96 " src="{{  asset('dist/images/MaliknetLogo.jpg') }}" data-action="zoom">
                             @endif
                         </div>
                     </div>

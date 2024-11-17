@@ -15,23 +15,7 @@ use Livewire\Component;
 
 class CustomerRegister extends Component
 {
-    public $name;
-
-    public $email;
-
-    public $phone;
-
-    public $gender;
-
-    public $password;
-
-    public $password_confirmation;
-
-    public $birthday;
-
-    public $recaptcha;
-
-    public $maxdate;
+    public $name,$email,$phone,$password,$password_confirmation;
 
     protected function rules()
     {
@@ -39,10 +23,7 @@ class CustomerRegister extends Component
             'name' => 'required|max:50',
             'email' => 'required|max:60|email|unique:customers,email',
             'phone' => 'required|phone:PH',
-            'gender' => 'required',
             'password' => ['required', Password::defaults(), 'same:password_confirmation'],
-            'birthday' => 'required|date',
-            'recaptcha' => 'required',
         ];
     }
 
@@ -52,10 +33,7 @@ class CustomerRegister extends Component
             'name' => 'required|max:50',
             'email' => 'required|max:60|email|unique:customers,email',
             'phone' => 'required|phone:PH',
-            'gender' => 'required',
             'password' => ['required', Password::defaults()],
-            'birthday' => 'required|date',
-            'recaptcha' => 'required',
         ]);
     }
 

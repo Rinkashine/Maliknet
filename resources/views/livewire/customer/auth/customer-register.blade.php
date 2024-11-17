@@ -33,18 +33,7 @@
                             <input type="tel"  class="form-control" placeholder="Phone Number" wire:model.lazy="phone">
                             <div class="text-danger mt-2">@error('phone'){{$message}}@enderror</div>
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-6">
-                            <label class="form-label w-full flex flex-col sm:flex-row">
-                                Gender
-                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required</span>
-                            </label>
-                            <select name="gender" class="form-select" wire:model.lazy="gender">
-                                <option value="">Select Gender</option>
-                                <option value="Male" >Male</option>
-                                <option value="Female">Female</option>
-                            </select>
-                            <div class="text-danger mt-2">@error('gender'){{$message}}@enderror</div>
-                        </div>
+
                         <div class="intro-y col-span-12 sm:col-span-6">
                             <label class="form-label w-full flex flex-col sm:flex-row">
                                 Password
@@ -58,23 +47,7 @@
                             <input type="password" wire:model.lazy="password_confirmation" class="form-control" placeholder="Password Confirmation" >
                             <div class="text-danger mt-2">@error('password_confirmation'){{$message}}@enderror</div>
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-6">
-                            <label class="form-label w-full flex flex-col sm:flex-row">
-                                Birthday
-                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required</span>
-                            </label>
-                            <input type="date" max="{{ $maxdate }}" class="form-control" wire:model.lazy="birthday" id="birthday">
-                            <div class="text-danger mt-2">@error('birthday'){{$message}}@enderror</div>
-                        </div>
-                        <div class="intro-y col-span-12 md:col-span-6">
-                            <div class="w-full" >
-                                <div wire:ignore>
-                                    {!! NoCaptcha::renderJs() !!}
-                                    {!! NoCaptcha::display(['data-callback' => 'onloadCallback']) !!}
-                                </div>
-                                <div class="text-danger mt-2">@error('recaptcha'){{$message}}@enderror</div>
-                            </div>
-                        </div>
+
                     </div>
                     <button class="intro-x btn btn-primary mt-5 w-full">Register</button>
                     <div class="text-slate-500 text-justify mt-4 intro-x">
@@ -86,25 +59,4 @@
             </div>
         </div>
     </div>
-    @push('scripts')
-        <script type="text/javascript">
-             document.addEventListener('livewire:load', function () {
-                var todayDate = new Date();
-                var month = todayDate.getMonth() + 1;
-                var year =  todayDate.getUTCFullYear();
-                var tdate = todayDate.getDate();
-                if(month < 9){
-                    month = "0" + month;
-                }
-                if(tdate < 10){
-                    tdate = "0" + tdate;
-                }
-                var maxDate = year + "-" + month + "-" + tdate;
-                @this.maxdate = maxDate;
-            });
-          var onloadCallback = function() {
-                @this.set('recaptcha',grecaptcha.getResponse());
-            };
-        </script>
-    @endpush
 </div>
