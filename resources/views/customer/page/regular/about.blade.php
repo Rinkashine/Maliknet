@@ -15,7 +15,7 @@
             Continuously serving high quality, wide variety of dental supplies ranging from tools, appliances and materials to dental clinics around Bulacan, Metro Manila.
             </div>
             <br>
-            With our passion and strong focus on bringing value to our customer, Roman Dental Supplies launched Go Dental.
+            With our passion and strong focus on bringing value to our customer, Roman Dental Supplies launched {{ env('APP_NAME') }}.
             an online shopping app that offers easy and quick ordering and buying of dental supplies.
             A way for Roman Dental Supplies Trading to share its services, allowing many more Filipino Dental Clinics to aquire products they need.
             </div>
@@ -41,23 +41,6 @@
         <div class="w-3/4 mx-auto mt-2 text-center text-slate-500">To define who we are - how we talk, behave or react to any given situation - in essence, we are Simple, Happy and Together. These key attributes are visible at every step of the Go Dental journey.</div>
     </div>
 </div>
-
-
-<!-- Begin: Go Dental Map -->
-<div class="px-5 py-10 mt-5 bg-white intro-y box sm:py-20 ">
-    <div class="px-2 mt-2">
-        <div class="mb-5 text-4xl font-medium text-center">Know Where to Find Us <i class="text-red-400 fa-sharp fa-solid fa-location-dot "></i> </div>
-        <div class="w-full m-auto text-lg text-center sm:w-1/2 text-slate-500">
-            We are located at Grand Royale Subdivision, Barangay. Pinagbakahan, City of Malolos,
-            Bulacan.
-        </div>
-
-    </div>
-    <div class="p-3 mt-5 border-b box intro-y border-slate-200/60">
-        <div id="map"  class="w-full h-96 "></div>
-    </div>
-</div>
-<!-- End: Go Dental Map -->
 </div>
 
 @endsection

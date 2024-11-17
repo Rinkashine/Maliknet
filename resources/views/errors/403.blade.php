@@ -7,8 +7,8 @@
 
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Go Dental E-Commerce Seller">
-        <meta name="keywords" content="Go Dental">
+        <meta name="description" content="{{ env('APP_NAME') }} E-Commerce Seller">
+        <meta name="keywords" content="{{ env('APP_NAME') }}">
         <meta name="author" content="Mark Joseph Manalo">
         <meta name="_token" content="{{csrf_token()}}" />
         <title>Action Forbidden</title>
@@ -20,7 +20,7 @@
             <!-- BEGIN: Error Page -->
             <div class="error-page flex flex-col lg:flex-row items-center justify-center h-screen text-center lg:text-left">
                 <div class="-intro-x lg:mr-20">
-                    <img alt="Go Dental Image" class="h-48 lg:h-auto" src="{{ asset('dist/images/error-illustration.svg') }}">
+                    <img alt="{{ env('APP_NAME') }} Image" class="h-48 lg:h-auto" src="{{ asset('dist/images/error-illustration.svg') }}">
                 </div>
                 <div class="text-white mt-10 lg:mt-0">
                     <div class="intro-x text-8xl font-medium">403</div>

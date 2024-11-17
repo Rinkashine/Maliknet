@@ -1,6 +1,6 @@
 <nav class="side-nav">
     <div class="intro-x flex items-center pl-5 pt-4 mt-3">
-        <img alt="Go Dental" class="w-10" src="{{asset('dist/images/MaliknetLogo.jpg')}}" data-action="zoom">
+        <img alt="{{ env('APP_NAME') }}" class="w-10" src="{{asset('dist/images/MaliknetLogo.jpg')}}" data-action="zoom">
         <span class="hidden xl:block text-white text-lg ml-3"> {{ env('APP_NAME') }}  </span>
     </div>
     <div class="side-nav__devider my-6"></div>

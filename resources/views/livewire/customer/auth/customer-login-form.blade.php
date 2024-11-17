@@ -2,7 +2,7 @@
 <div class="container w-full flex flex-col lg:flex-row items-center py-5 mt-10 px-5">
     <!-- Image -->
     <div class="intro-y flex justify-center flex-1 z-10  hidden  sm:hidden md:hidden lg:hidden xl:block 2xl:block	">
-        <img  src="{{ asset('dist/images/login.svg') }}" alt="Go Dental Login Image" />
+        <img  src="{{ asset('dist/images/login.svg') }}" alt="{{ env('APP_NAME') }} Login Image" />
     </div>
     <!-- Content -->
     <div class="items-center justify-center flex flex-1 w-full ">

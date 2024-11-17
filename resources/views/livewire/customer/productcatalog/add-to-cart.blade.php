@@ -36,7 +36,7 @@
                                         <button  data-tw-dismiss="modal" class="btn w-24 btn-primary">Ok</button>
                                     </div>
                                     <div class="p-5 text-center border-t border-slate-200/60 dark:border-darkmode-400">
-                                        <a href="{{ Route('CLogin.index') }}" class="text-primary">Please Login your Go Dental Account First Before Ordering</a>
+                                        <a href="{{ Route('CLogin.index') }}" class="text-primary">Please Login your {{ env('APP_NAME') }} Account First Before Ordering</a>
                                     </div>
                                 </div>
                             </div>

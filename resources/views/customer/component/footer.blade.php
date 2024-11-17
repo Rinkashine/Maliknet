@@ -4,7 +4,7 @@
  <footer class="pt-10 bg-success">
     <div>
       <div class="flex flex-col w-10/12 mx-auto gap-9 md:flex-row">
-        <!-- GO DENTAL / Div1 -->
+        <!-- Div1 -->
         <div class="flex-auto text-gray-200 intro-x md:w-72 ">
             <p class="mb-4 text-lg font-semibold md:text-center">{{ env('APP_NAME') }}</p>
             <span class="text-xl font-light mb-7">

@@ -12,7 +12,7 @@
                 </span>
             </p>
             <div class="my-auto">
-                <img alt="Go Dental" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/login_shop.svg') }}">
+                <img alt="Maliknet" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/login_shop.svg') }}">
                 <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
                     A few more clicks to <br> sign in to your account.
                 </div>

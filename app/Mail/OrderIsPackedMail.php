@@ -30,8 +30,8 @@ class OrderIsPackedMail extends Mailable
     public function build()
     {
         $orderinfo = CustomerOrder::find($this->details['id']);
-        return $this->subject('Your Go Dental Order is ready for delivery')
-        ->from('godentalph@gmail.com', 'Go Dental')
+        return $this->subject('Your Maliknet Order is ready for delivery')
+        ->from('godentalph@gmail.com', 'Malikne')
         ->view('admin.mail.order-packed')
         ->with([
            'name' => $orderinfo->customers->name,

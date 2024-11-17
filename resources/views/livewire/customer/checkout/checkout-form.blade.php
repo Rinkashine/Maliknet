@@ -179,7 +179,7 @@
                                 <div id="paypal-button-container"></div>
                             </div>
                         <div>
-                            By proceeding to checkout, I acknowledge that I have read and consented to Go Dental
+                            By proceeding to checkout, I acknowledge that I have read and consented to {{ env('APP_NAME') }}
                             <a href="{{ Route('terms') }}" class="text-primary">
                                 Terms of Use
                             </a>
