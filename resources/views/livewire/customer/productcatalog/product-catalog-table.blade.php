@@ -1,17 +1,17 @@
 <div>
-    <div class="">
-        <!-- BEGIN: Product Filter -->
-
-        <!-- END: Product Filter sticky top-0 right-10 w-full flex justify-end -->
+    @forelse ($categories as $category)
+    <div>
+        <p class="text-2xl italic font-normal text-center border-b-2 border-slate-300 text-bookmark-grey lg:text-left">
+            {{ $category->name }}
+        </p>
+    </div>
+    <div class="my-5 pb-5 pl-2 pr-2">
         <div class="col-span-12">
             <!-- BEGIN: Product List -->
             <div class="intro-y lg:mt-5">
-
                 <div class="grid grid-cols-12 gap-4 mt-2">
                     <!-- Begin: Display Products -->
-
-
-                    @forelse ($products as $product)
+                    @foreach ($category->categoryTransactions as $product)
                         <div class="intro-y col-span-6 sm:col-span-5 md:col-span-4 lg:cols-span-3 2xl:col-span-2  w-full">
                             <a href="{{ Route('productshow', $product) }}">
                                 <div class="box w-full">
@@ -47,24 +47,16 @@
                                 </div>
                             </a>
                         </div>
-                    @empty
-                        <div class="col-span-12">
-                            <h2 class="intro-y text-lg font-medium mt-10">
-                                <div class="flex justify-center flex-col">
-                                    <img alt="Missing Image" class="object-fill rounded-md h-48 " src="{{ asset('dist/images/NoResultFound.svg') }}">
-                                    <div class="flex justify-center">No Product Found <strong class="ml-1"> {{ $search }}</strong>  </div>
-                                </div>
-                            </h2>
-                        </div>
-                    @endforelse
-                    <!-- End: Display Products -->
+                    @endforeach
+
                 </div>
-                @if($perPage <= $products->count())
-                    <div class="intro-y flex justify-center items-center mt-5">
-                        <a wire:click="load" class="btn btn-primary">Load More</a>
-                    </div>
-                @endif
+
             </div>
         </div>
     </div>
+    @empty
+
+    @endforelse
+
+
 </div>

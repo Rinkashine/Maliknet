@@ -35,12 +35,8 @@ use App\Http\Controllers\Backend\Reports\YearlySalesController;
 
 Route::group(['prefix' => 'admin'], function () {
     Route::middleware(['auth:web'])->group(function () {
-        //Begin: Export Files for Browser Type
-        Route::get('/report/browser/{startdate}/{enddate}/pdf', [BrowserTypeController::class, 'exportbrowsertype'])->name('export.browser');
         //Begin: Export Files for User Type
         Route::get('/report/UserType/{startdate}/{enddate}/pdf', [UserTypeController::class, 'exportUserType'])->name('export.UserType');
-        //Begin: Export Files for List of Most Visited Page
-        Route::get('/report/MostVisitedPage/{startdate}/{enddate}/pdf/', [MostVisitedPageController::class, 'exportMostVisitedPage'])->name('export.MostVisitedPage');
         //Begin: Export Files for Number of Cancelled Orders
         Route::get('/report/cancelledorders/pdf',[CancelledOrderController::class,'exportCancelledOrders'])->name('export.CancelledOrders');
         //Begin: Export Files  for Cancellation Reason
@@ -77,12 +73,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/report/MonthlySales/pdf', [MonthlySalesController::class, 'exportMonthlySales'])->name('export.MonthlySales');
         //Begin: Export Files for Sales by Product
         Route::get('/report/salesprod/pdf/{sorting}/{startdate}/{enddate}', [SalesByProductController::class, 'exportProductSales'])->name('export.ProductSales');
-        //Begin Export Files for Sales by Brand
-        Route::get('/report/BrandSales/pdf/{sorting}/{startdate}/{enddate}', [SalesByBrandController::class, 'exportBrandSales'])->name('export.BrandSales');
         //Begin: Export Files For Sales by Category
         Route::get('/report/CategorySales/pdf/{sorting}/{startdate}/{enddate}', [SalesByCategoryController::class, 'exportCategorySales'])->name('export.CategorySales');
-        //Begin: Export Files for number of brand ordered
-        Route::get('/report/BrandOrderVolume/pdf/{sorting}/{startdate}/{enddate}', [BrandOrderVolumeController::class, 'exportBrandVolume'])->name('export.BrandVolume');
         //Begin: Export Files for number of category ordered
         Route::get('/report/CategoryVolume/pdf/{sorting}/{startdate}/{enddate}', [CategoryVolumeController::class, 'exportCategoryVolume'])->name('export.CategoryVolume');
         //Begin: Export Files for customers total spent
@@ -98,8 +90,6 @@ Route::group(['prefix' => 'admin'], function () {
             Route::resource('report', ReportController::class)->only(['index']);
             //Begin: Yearly Sales
             Route::get('/report/YearlySales', [YearlySalesController::class, 'YearlySales'])->name('report.YearlySales');
-            //Begin: Browser Type
-            Route::get('/report/browser', [BrowserTypeController::class, 'BrowserIndex'])->name('report.browser');
             //Begin: Cancelled Orders
             Route::get('/report/cancelledorders',[CancelledOrderController::class,'CancelledOrders'])->name('report.CancelledOrders');
             //Begin: Cancellation Reasons
@@ -116,10 +106,6 @@ Route::group(['prefix' => 'admin'], function () {
            Route::get('/report/MonthlyGainedCustomer/{month}/{year}', [CustomerGainedPerMonthListController::class,'CustomerPerMonthList'])->name('report.ShowCustomerPerMonth');
            //Begin: Payment By Type
            Route::get('/report/PaymentByType', [PaymentByTypeController::class, 'PaymentTypeIndex'])->name('report.PaymentByType');
-           //Begin: User Type
-           Route::get('/report/UserType', [UserTypeController::class, 'UserTypeIndex'])->name('report.UserType');
-           //Begin: Most Visited Page
-           Route::get('/report/MostVisitedPage', [MostVisitedPageController::class, 'MostVisitedPageIndex'])->name('report.MostVisitedPageIndex');
            //Begin: Sales Over Time
            Route::get('/report/MonthlySales', [MonthlySalesController::class, 'SalesOvertimeIndex'])->name('report.MonthlySales');
            //Begin: Account Verification

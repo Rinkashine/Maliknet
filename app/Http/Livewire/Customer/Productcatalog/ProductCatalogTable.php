@@ -10,44 +10,16 @@ use Livewire\WithPagination;
 
 class ProductCatalogTable extends Component
 {
-    use WithPagination;
-
-    public $search;
-
-    public $perPage = 24;
-
-    protected $queryString = [
-        'search' => ['except' => ''],
-    ];
-
-    protected $paginationTheme = 'bootstrap';
-
-    protected $listeners = [
-        'refreshParent' => '$refresh',
-        'load-more' => 'loadMore',
-    ];
-
-    public function load()
-    {
-        $this->perPage = $this->perPage + 24;
-    }
-
-    public function updatingSearch()
-    {
-        $this->resetPage();
-    }
-
     public function render()
     {
-        $products = Product::where('status', 1)
-        ->where('name', 'like', '%'.$this->search.'%')
-        ->with('images', 'category')
-        ->orderby('name', 'asc')
-        ->paginate($this->perPage);
+        $categories = Category::with(['categoryTransactions' => function ($query) {
+            $query->where('status', 1)->with('images')->orderBy('name', 'asc');
+        }])->get();
+
 
         return view('livewire.customer.productcatalog.product-catalog-table', [
-            'products' => $products,
-
+            'categories' => $categories,
         ]);
+
     }
 }

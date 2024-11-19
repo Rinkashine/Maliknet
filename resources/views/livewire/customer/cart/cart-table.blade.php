@@ -7,7 +7,7 @@
                 </div>
                 <div class="flex justify-center mt-2 text-lg text-slate-600 font-medium leading-none mt-3">There are no items in this cart</div>
                 <div class="flex justify-center mt-2">
-                    <a href="{{ Route('product') }}" class="btn btn-primary mt-3">Continue Shopping</a>
+                    <a href="{{ Route('home') }}" class="btn btn-primary mt-3">Continue Shopping</a>
                 </div>
             </div>
         </div>

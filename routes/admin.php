@@ -57,8 +57,6 @@ Route::group(['prefix' => 'admin'], function () {
             //Begin: Order
             Route::get('/orders/print_waybill/{id}',[OrderController::class, 'Invoice'])->name('invoice');
             Route::resource('orders', OrderController::class)->only('index', 'show');
-            //End: Order Module
-            Route::resource('banner', PostController::class)->only('index');
             //Begin: Profile Module
             Route::get('/profile/changepassword', [ProfileController::class, 'changepass'])->name('AdminChangePass');
             Route::post('/profile/changepassword', [ProfileController::class, 'resetpass']);

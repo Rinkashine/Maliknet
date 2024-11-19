@@ -13,10 +13,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $banners = Home::where('status', '=', 'Active')->get();
-
-        return view('customer.page.main.home', [
-            'banners' => $banners,
-        ]);
+        return view('customer.page.main.home');
     }
 }

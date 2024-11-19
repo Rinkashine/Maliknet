@@ -13,12 +13,6 @@
                 <div class="menu__title"> Home  </div>
             </a>
         </li>
-        <li>
-            <a href="{{Route('product')}}" class="menu">
-                <div class="menu__icon"> <i class="fa-brands fa-product-hunt"></i> </div>
-                <div class="menu__title"> Product  </div>
-            </a>
-        </li>
         @if(!Auth::guard('customer')->check())
         <li>
             <a href="{{Route('CLogin.index')}}" class="menu">

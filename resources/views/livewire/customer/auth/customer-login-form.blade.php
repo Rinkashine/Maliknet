@@ -46,8 +46,7 @@
                             <a href="{{ Route('resetcustomer.index') }}" class="text-slate-400" >Forgot Password?</a>
                         </div>
                         <div wire:ignore class="intro-x">
-                            <button type="submit" class="g-recaptcha btn btn-primary mt-5 w-full"
-                            data-sitekey="{{env('CAPTCHA_SITE_KEY')}}"
+                            <button type="submit" class="btn btn-primary mt-5 w-full"
                             data-callback='handle'
                             data-action='login' >Login</button>
                         </div>
@@ -72,17 +71,4 @@
             </div>
         </div>
     </div>
-    @push('scripts')
-        <script src="https://www.google.com/recaptcha/api.js?render={{env('CAPTCHA_SITE_KEY')}}"></script>
-        <script>
-            function handle(e) {
-                grecaptcha.ready(function () {
-                    grecaptcha.execute('{{env('CAPTCHA_SITE_KEY')}}', {action: 'login'})
-                        .then(function (token) {
-                            @this.set('captcha', token);
-                        });
-                });
-            }
-        </script>
-    @endpush
 </div>

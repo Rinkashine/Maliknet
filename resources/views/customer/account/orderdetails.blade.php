@@ -142,13 +142,6 @@
         <!-- Begin: Product Review Modal -->
         <livewire:customer.review.product-review-form :orderDetails="$orderdetails" >
         <!-- End: Product Review Modal -->
-
-        @if($orderdetails->status == "Completed" && $daysDifference <= 7)
-            <div class="flex justify-end intro-x">
-                <a  onclick="RequestRefund('{{ $orderdetails->id }}')" class="mt-5 btn btn-primary ">Request For Refund</a>
-            </div>
-        @endif
-        <livewire:customer.order.request-for-refund-modal/>
     </div>
     <!-- BEGIN: Display Information -->
 </div>
