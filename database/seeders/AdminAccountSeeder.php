@@ -15,25 +15,11 @@ class AdminAccountSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'name' => 'Mark Joseph Manalo',
-            'email' => 'markjosephmanalo1110@gmail.com',
-            'phone_number' => '09452692274',
+            'name' => 'Jay Jayme',
+            'email' => 'nightcrows016@gmail.com',
+            'phone_number' => '09175934434',
             'password' => 'Onepiece25!',
         ]);
         $user->assignRole('Super Admin');
-
-        User::create([
-            'name' => 'Rinkashine Manalo',
-            'email' => 'programmingmind1110@gmail.com',
-            'phone_number' => '09369332354',
-            'password' => 'Onepiece25!',
-        ])->assignRole('Head Manager');
-
-        User::create([
-            'name' => 'Gene Vincent Soriano',
-            'email' => 'gvasoriano2511@gmail.com',
-            'phone_number' => '09611212652',
-            'password' => 'Onepiece25!',
-        ])->assignRole('Inventory Employee');
     }
 }
