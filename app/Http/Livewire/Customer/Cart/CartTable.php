@@ -13,8 +13,6 @@ class CartTable extends Component
 
     public $val;
 
-    public $shippingfee = 0;
-
     public $total = 0;
 
     public $action;
@@ -98,11 +96,9 @@ class CartTable extends Component
 
         $this->subtotal += $this->val;
         $this->val = 0;
-        $this->shippingfee = 0;
 
         if ($this->subtotal != 0) {
-            $this->shippingfee = 100;
-            $this->total = $this->subtotal + $this->shippingfee;
+            $this->total = $this->subtotal ;
         }
 
         $customer_id = Auth::guard('customer')->user()->id;

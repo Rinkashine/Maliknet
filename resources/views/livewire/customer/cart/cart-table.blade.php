@@ -34,12 +34,10 @@
                             </div>
                         </div>
                         <div class="flex justify-between mt-3 ">
-                            <div>
-                                <h1>Shipping Fee</h1>
+                            <div class="text-slate-500">
+                                Note: Shipping fee will be shown after the seller accept the order!
                             </div>
-                            <div>
-                                <h1>₱{{ number_format($shippingfee ) }}</h1>
-                            </div>
+
                         </div>
                     </div>
                     <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">

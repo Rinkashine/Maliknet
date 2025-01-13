@@ -15,7 +15,7 @@ class ProductExport implements FromCollection, ShouldAutoSize, WithHeadings, Wit
      */
     public function collection()
     {
-        return Product::with('category', 'brand')->get();
+        return Product::with('category')->get();
     }
 
     public function map($product): array

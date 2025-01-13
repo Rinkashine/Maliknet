@@ -1,35 +1,4 @@
 <div>
-    <script src="https://www.paypal.com/sdk/js?client-id=AZzxYWHDmvZxLx99ZwQfI8pUjxZfqwA34vUUelB06kxxSeyqFzhOwGRcKn4z5YAyFdvt-epootEdtavV&currency=PHP"></script>
-    <script>
-        paypal.Buttons({
-            // Sets up the transaction when a payment button is clicked
-            createOrder: (data, actions) => {
-            return actions.order.create({
-                purchase_units: [{
-                amount: {
-                    value: '{{ $total }}' // Can also reference a variable or function
-                }
-                }]
-            });
-            },
-            // Finalize the transaction after payer approval
-            onApprove: (data, actions) => {
-            return actions.order.capture().then(function(orderData) {
-                // Successful capture! For dev/demo purposes:
-                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                const transaction = orderData.purchase_units[0].payments.captures[0];
-                if(transaction.status == "COMPLETED"){
-                    Livewire.emit('transactionEmit', transaction.id)
-                }
-                //alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-                // When ready to go live, remove the alert and show a success message within this page. For example:
-                // const element = document.getElementById('paypal-button-container');
-                // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-                // Or go to another URL:  actions.redirect('thank_you.html');
-            });
-            }
-        }).render('#paypal-button-container');
-    </script>
     <form wire:submit.prevent="StoreCustomerOrder">
         <div class="grid grid-cols-12 gap-6">
             <div class="col-span-12 lg:col-span-8 2xl:col-span-9">
@@ -175,9 +144,8 @@
 
                     <div class="p-5 border-t border-slate-200/60">
                         <button type="submit" class="w-full h-12 mb-2 btn btn-primary">Place Order (Cash on Delivery)</button>
-                            <div wire:ignore class="w-full mt-2">
-                                <div id="paypal-button-container"></div>
-                            </div>
+                        <button type="submit" class="w-full h-12 mb-2 btn btn-primary">Place Order (Cash on Delivery)</button>
+
                         <div>
                             By proceeding to checkout, I acknowledge that I have read and consented to {{ env('APP_NAME') }}
                             <a href="{{ Route('terms') }}" class="text-primary">
