@@ -15,6 +15,7 @@ class CustomerLoginForm extends Component
     public $password;
 
     public $remember;
+    public $captcha = 0;
 
 
     public function render()
@@ -34,6 +35,20 @@ class CustomerLoginForm extends Component
         $this->validateOnly($fields, [
             'email' => 'required',
         ]);
+    }
+
+
+    public function updatedCaptcha($token)
+    {
+        $response = Http::post('https://www.google.com/recaptcha/api/siteverify?secret='.env('CAPTCHA_SECRET_KEY').'&response='.$token);
+        $this->captcha = $response->json()['score'];
+        if ($this->captcha > .3) {
+            $this->login();
+        } else {
+            Alert::error('Message Successfully Sent', '');
+
+            return redirect()->route('CLogin.index');
+        }
     }
 
     public function login()

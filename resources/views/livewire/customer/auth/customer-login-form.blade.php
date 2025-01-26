@@ -68,4 +68,17 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        <script src="https://www.google.com/recaptcha/api.js?render={{env('CAPTCHA_SITE_KEY')}}"></script>
+        <script>
+            function handle(e) {
+                grecaptcha.ready(function () {
+                    grecaptcha.execute('{{env('CAPTCHA_SITE_KEY')}}', {action: 'login'})
+                        .then(function (token) {
+                            @this.set('captcha', token);
+                        });
+                });
+            }
+        </script>
+    @endpush
 </div>

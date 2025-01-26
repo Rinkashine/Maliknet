@@ -18,15 +18,7 @@ class CancellationReasonSeeder extends Seeder
             [
                 'name' => 'Duplicated Order',
             ], [
-                'name' => 'Delivery Time is too long',
-            ], [
-                'name' => 'Change Payment Method',
-            ], [
-                'name' => 'Find better price elsewhere',
-            ], [
                 'name' => 'Seller request to cancel',
-            ], [
-                'name' => 'Shipping cost too high',
             ], [
                 'name' => 'I change my mind',
             ], [
