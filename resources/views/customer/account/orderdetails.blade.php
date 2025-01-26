@@ -108,7 +108,7 @@
                 <div class="w-full mt-1 mb-2 border-t border-slate-200/60"></div>
 
                 <div class="flex justify-between">
-                    <div>Subtotal</div>
+                    <div>Total</div>
                     <div>₱
                         @php
                             $total = 0
@@ -118,15 +118,6 @@
                         @endforeach
                         {{ number_format($total,2) }}
                     </div>
-                </div>
-                <div class="flex justify-between">
-                    <div>Shipping Fee</div>
-                    <div>₱{{ number_format($orderdetails->shippingfee) }}</div>
-                </div>
-                <div class="w-full mt-1 mb-2 border-t border-slate-200/60"></div>
-                <div class="flex justify-between">
-                    <div>Total</div>
-                    <div>₱{{ number_format($total+$orderdetails->shippingfee,2) }}</div>
                 </div>
             </div>
         </div>

@@ -12,9 +12,9 @@ class ProductRatings extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $from = '2023-01-01T00:00';
+    public $from = '2025-01-01T00:00';
 
-    public $to = '2023-12-31T00:00';
+    public $to = '2030-12-31T00:00';
 
     public $sorting = 'product_name_asc';
 

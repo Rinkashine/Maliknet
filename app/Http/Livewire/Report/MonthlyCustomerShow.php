@@ -33,7 +33,6 @@ class MonthlyCustomerShow extends Component
             'customers.id',
             'customers.name',
             'customers.created_at',
-            'customers.birthday',
             'customers.email',
             'customers.phone_number',
             'customers.photo',

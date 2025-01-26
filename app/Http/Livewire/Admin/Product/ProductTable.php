@@ -65,15 +65,7 @@ class ProductTable extends Component
             $products = Product::search($this->search)->with('category', 'images')
             ->orderBy('updated_at', 'desc')
             ->paginate($this->perPage);
-        } elseif ($this->sorting == 'lowinventory') {
-            $products = Product::search($this->search)->with('category',  'images')
-            ->orderBy('stock', 'asc')
-            ->paginate($this->perPage);
-        } elseif ($this->sorting == 'highinventory') {
-            $products = Product::search($this->search)->with('category', 'images')
-            ->orderBy('stock', 'desc')
-            ->paginate($this->perPage);
-        } elseif ($this->sorting == 'cataz') {
+        }elseif ($this->sorting == 'cataz') {
             $products = Product::search($this->search)->with('category',  'images')
             ->orderBy('category_id', 'asc')
             ->paginate($this->perPage);

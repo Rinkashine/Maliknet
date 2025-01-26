@@ -11,8 +11,6 @@
                         <option value="creatednew">Created (newest first)</option>
                         <option value="updatedatold">Updated (oldest first)</option>
                         <option value="updatedat">Updated (newest first)</option>
-                        <option value="lowinventory">Low inventory</option>
-                        <option value="highinventory">High inventory</option>
                         <option value="cataz">Category A-Z</option>
                         <option value="catza">Category Z-A</option>
                     </select>

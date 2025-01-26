@@ -55,7 +55,6 @@ class DeleteCategory extends Component
                 'title' => 'Delete Failed!',
             ]);
         } else {
-            Storage::delete('public/category/'.$category->photo);
             $category->delete();
             $this->dispatchBrowserEvent('SuccessAlert', [
                 'name' => $category->name.' was successfully deleted!',

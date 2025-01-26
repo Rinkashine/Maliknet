@@ -31,7 +31,6 @@
                         </div>
                     </div>
                     <div class="text-center lg:text-left p-5">
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i class="fa-solid fa-cake mr-1"></i> {{$user->birthday}} </div>
                         <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"><i class="fa-regular fa-envelope mr-1"></i>{{ $user->email }} </div>
                         <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i class="fa-solid fa-phone mr-1"></i> {{ $user->phone_number }} </div>
                     </div>

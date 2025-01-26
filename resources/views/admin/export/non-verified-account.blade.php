@@ -143,7 +143,7 @@
 <body class="pt-x-50">
     <header class="header">
         <div style="position: absolute; top:25px; left:40px">
-            <img style="width:100px; height:100px;" src="{{ public_path('dist/images/MainLogo.png') }}" alt="Logo">
+            <img style="width:100px; height:100px;" src="{{ public_path('dist/images/MaliknetLogo.jpg')}}" alt="Logo">
         </div>
         <div class="w-100" style="padding: 20px; ">
                 <h2 class="">Roman Dental Supplies Trading</h2>

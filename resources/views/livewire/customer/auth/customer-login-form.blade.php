@@ -63,9 +63,6 @@
                             <a href="/auth/google/redirect" class="btn mt-5 w-full" ><i class="fa-brands fa-google fa-xl mr-1" style="color: #054232; "></i>Google</a>
 
                         </div>
-                        <div class="pt-5 text-center intro-x " >
-                            <a class="text-primary font-normal" href="{{Route('register.index')}}">New to {{ env('APP_NAME') }} Click here.</a>
-                        </div>
                     </div>
                 </form>
             </div>

@@ -99,66 +99,20 @@
             </div>
             <div class="flex flex-col-reverse col-span-12 lg:col-span-4 2xl:col-span-3 lg:block">
                 <div class="mt-5 intro-y box">
-
-
-
-
                     <div class="p-5 border-t border-slate-200/60">
                         <h1 class="mt-1 font-medium leading-none">Order Summary</h1>
                         <div class="flex justify-between mt-3">
                             <div>
-                                <h1>Subtotal (items)</h1>
+                                <h1>Total (items)</h1>
                             </div>
                             <div>
-                                <h1>₱{{ number_format($subtotal)}}</h1>
+                                <h1>₱{{ number_format($total) }}</h1>
                             </div>
                         </div>
-                        <div class="flex justify-between mt-3 ">
-                            <div>
-                                <h1>Shipping Fee</h1>
-                            </div>
-                            <div>
-                                <h1>₱{{ number_format($shippingfee ) }}</h1>
-                            </div>
-                        </div>
-                        <div class="border-t border-slate-200/60 dark:border-darkmode-400">
-                            <div class="flex justify-between mt-3 ">
-                                <div>
-                                    <h1 class="mt-1 mb-2 font-medium leading-none">Total</h1>
-                                </div>
-                                <div>
-                                    <h1>₱{{ number_format($total) }}</h1>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-
                     <div class="p-5 border-t border-slate-200/60">
-                        <div class="relative flex items-center">
-                            <div class="ml-4 mr-auto">
-                                <div class="text-base font-medium">Select Payment Method</div>
-                            </div>
-                        </div>
+                        <button type="submit" class="w-full h-12 mb-2 btn btn-primary">Place Order</button>
                     </div>
-
-                    <div class="p-5 border-t border-slate-200/60">
-                        <button type="submit" class="w-full h-12 mb-2 btn btn-primary">Place Order (Cash on Delivery)</button>
-                        <button type="submit" class="w-full h-12 mb-2 btn btn-primary">Place Order (Cash on Delivery)</button>
-
-                        <div>
-                            By proceeding to checkout, I acknowledge that I have read and consented to {{ env('APP_NAME') }}
-                            <a href="{{ Route('terms') }}" class="text-primary">
-                                Terms of Use
-                            </a>
-                            and
-                            <a href="{{ Route('privacy') }}" class="text-primary">
-                                Privacy Policy.
-                            </a>
-                        </div>
-
-                    </div>
-
                 </div>
             </div>
         </div>

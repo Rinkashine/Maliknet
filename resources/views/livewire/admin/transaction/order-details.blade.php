@@ -70,15 +70,7 @@
                         {{ number_format($total,2) }}
                     </div>
                 </div>
-                <div class="flex items-center mt-3">
-                   <i class="fa-solid fa-truck-fast text-slate mr-2"></i> Shipping Fee:
-                    <div class="ml-auto">₱{{ number_format($orderdetails->shippingfee,2) }}</div>
-                </div>
 
-                <div class="flex items-center border-t border-slate-200/60 dark:border-darkmode-400 pt-5 mt-5 font-medium">
-                    <i class="fa-solid fa-cash-register text-slate mr-2"></i> Grand Total:
-                    <div class="ml-auto">₱{{ number_format($total+$orderdetails->shippingfee,2) }}</div>
-                </div>
             </div>
             <div class="box p-5 rounded-md mt-5">
                 <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5 mb-5">

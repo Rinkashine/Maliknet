@@ -28,8 +28,6 @@ class CheckoutForm extends Component
 
     public $shipping;
 
-    public $shippingfee = 100;
-
     public $total;
 
     public $orders;
@@ -43,46 +41,6 @@ class CheckoutForm extends Component
         'NewAddress',
         'transactionEmit' => 'paidByPaypal',
     ];
-
-    public function paidByPaypal($value)
-    {
-        $payment_id = $value;
-        $this->modeofpayment = 'Paid by Paypal';
-
-        foreach ($this->address as $info) {
-            $order_id = CustomerOrder::create([
-                'customers_id' => $this->customer_id,
-                'subtotal' => $this->subtotal,
-                'shippingfee' => $this->shippingfee,
-                'total' => $this->total,
-                'mode_of_payment' => $this->modeofpayment,
-                'payment_id' => $payment_id,
-                'status' => $this->status,
-                'received_by' => $info->name,
-                'phone_number' => $info->phone_number,
-                'notes' => $info->notes,
-                'house' => $info->house,
-                'province' => $info->province,
-                'city' => $info->city,
-                'barangay' => $info->barangay,
-            ]);
-
-            foreach ($this->orders as $item) {
-                CustomerOrderItems::create([
-                    'customer_order_id' => $order_id->id,
-                    'product_id' => $item->product->id,
-                    'product_name' => $item->product->name,
-                    'price' => $item->product->price,
-                    'quantity' => $item->quantity,
-                ]);
-
-                $item->delete();
-            }
-        }
-        Alert::success('Successfully Checkout');
-
-        return redirect()->route('cart.index');
-    }
 
     public function NewAddress($id)
     {
@@ -115,8 +73,6 @@ class CheckoutForm extends Component
         foreach ($this->address as $info) {
             $order_id = CustomerOrder::create([
                 'customers_id' => $this->customer_id,
-                'subtotal' => $this->subtotal,
-                'shippingfee' => $this->shippingfee,
                 'total' => $this->total,
                 'mode_of_payment' => $this->modeofpayment,
                 'status' => $this->status,
@@ -172,10 +128,9 @@ class CheckoutForm extends Component
             $price = $checkoutorders->product->price;
             $totalprice = $qty * $price;
             $this->subtotal += $totalprice;
-            //dd($qty);
         }
 
-        $this->total = $this->subtotal + $this->shippingfee;
+        $this->total = $this->subtotal;
 
         return view('livewire.customer.checkout.checkout-form');
     }

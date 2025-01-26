@@ -26,10 +26,6 @@
 <!-- Begin: Category Edit Form Modal -->
 <livewire:admin.category.category-edit-form/>
 <!-- End: Category Edit Form Modal -->
-<!-- Begin: Change Photo Form Modal -->
-<livewire:admin.category.category-change-photo-form/>
-<!-- End: Change Photo Form Modal -->
-
 
 <!--Begin: Success Notification -->
 <div id="success-notification-content" class="toastify-content hidden flex non-sticky-notification-content">
@@ -82,21 +78,7 @@
         livewire.emit('forceCloseEditModal');
     });
 
-    //Show Form Modal
-    const ChangePhotoModal = tailwind.Modal.getInstance(document.querySelector("#change-item-modal"));
-    window.addEventListener('openChangePhotoModal',event => {
-        ChangePhotoModal.show();
 
-    });
-    //Hide Form Modal
-    window.addEventListener('closeChangePhotoModal',event => {
-        ChangePhotoModal.hide();
-    });
-    //Closing Modal and Refreshing its value
-    const ForceCloseChangePhotoModal = document.getElementById('change-item-modal')
-    ForceCloseChangePhotoModal.addEventListener('hidden.tw.modal', function(event) {
-        livewire.emit('forceClosePhotoModal');
-    });
     //SuccessAlert
     window.addEventListener('SuccessAlert',event => {
         let id = (Math.random() + 1).toString(36).substring(7);

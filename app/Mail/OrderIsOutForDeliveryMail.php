@@ -31,7 +31,7 @@ class OrderIsOutForDeliveryMail extends Mailable
     {
         $orderinfo = CustomerOrder::find($this->details['id']);
         return $this->subject('Your Maliknet Order is Out For Delivery')
-        ->from('markjosephmanalo1110@@gmail.com', 'Maliknet')
+        ->from('markjosephmanalo1110@gmail.com', 'Maliknet')
         ->view('admin.mail.order-out-for-delivery')
         ->with([
            'name' => $orderinfo->customers->name,

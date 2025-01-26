@@ -19,7 +19,6 @@ class CategoryForm extends Component
 
     public $oldname;
 
-    public $photo;
 
     protected $listeners = [
         'refreshChild' => '$refresh',
@@ -28,14 +27,12 @@ class CategoryForm extends Component
 
     protected $validationAttributes = [
         'name' => 'category name',
-        'photo' => 'category image',
     ];
 
     protected function rules()
     {
         return [
             'name' => ['required', Rule::unique('category')->ignore($this->modelId)],
-            'photo' => 'required|image',
         ];
     }
 
@@ -43,7 +40,6 @@ class CategoryForm extends Component
     {
         $this->validateOnly($fields, [
             'name' => 'required|unique:category,name,'.$this->modelId.'',
-            'photo' => 'required|image',
         ]);
     }
 
@@ -69,18 +65,12 @@ class CategoryForm extends Component
 
     public function StoreCategoryData()
     {
-        if (! Storage::disk('public')->exists('category')) {
-            Storage::disk('public')->makeDirectory('category', 0775, true);
-        }
         $model = Category::find($this->modelId);
         abort_if(Gate::denies('category_create'), 403);
         $this->validate();
-        if (! empty($this->photo)) {
-            $this->photo->store('public/category');
-        }
+
         $data = [
             'name' => $this->name,
-            'photo' => $this->photo->hashName(),
         ];
         Category::create($data);
         $this->dispatchBrowserEvent('SuccessAlert', [

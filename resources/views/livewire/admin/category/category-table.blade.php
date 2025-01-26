@@ -18,56 +18,46 @@
                 </div>
             </div>
         </div>
-        <!-- BEGIN: Category Layout -->
-        @forelse($category as $categories)
-            <div class="intro-y col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-3">
-                <div class="box">
-                    <div class="flex items-start px-5 pt-5">
-                        <div class="w-full flex flex-col lg:flex-row items-center">
-                            <div class="lg:ml-2 text-center lg:text-left mt-3 lg:mt-0">
-                                <a href="" class="font-medium">{{ $categories->name }}</a>
-                                <p class="text-slate-500 text-xs mt-0.5">
 
-                                </p>
-                            </div>
+        <!-- BEGIN: Category Layout -->
+        <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+            <table class="table table-report mt-2">
+                <thead>
+                    <tr>
+                        <th class="whitespace-nowrap">NAME</th>
+                        <th class="text-center whitespace-nowrap">ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @forelse($category as $categories)
+                <tr class="intro-x">
+                    <td>
+                        <p class="font-medium whitespace-nowrap" >{{$categories->name}}</p>
+                    </td>
+                    <td class="table-report__action w-72">
+                        <div class="flex justify-center items-center">
+                            @can('category_edit')
+                                <button wire:click="selectItem({{ $categories->id }},'edit')"  class="flex items-center mr-3" >
+                                    <i class="fa-regular fa-pen-to-square w-4 h-4 mr-1"></i> Edit
+                                </button>
+                            @endcan
+
+                            @can('category_delete')
+                                <button wire:click="selectItem({{$categories->id}},'delete')"  class="flex items-center mr-3 text-danger">
+                                    <i class="fa-regular fa-trash-can w-4 h-4 mr-1" ></i>  Delete
+                                </button>
+                            @endcan
                         </div>
-                        <div class="absolute right-0 top-0 mr-5 mt-3 dropdown">
-                            <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown">
-                                <i class="fa-solid fa-ellipsis-vertical text-slate-500 w-5 h-5"></i>
-                             </a>
-                            <div class="dropdown-menu w-40">
-                                <div class="dropdown-content">
-                                    @can('category_edit')
-                                        <button wire:click="selectItem({{ $categories->id }},'edit')" class="dropdown-item w-full"> <i class="fa-solid fa-pen mr-1"></i> Edit </button>
-                                    @endcan
-                                    @can('category_edit')
-                                        <button wire:click="selectItem({{ $categories->id }},'change_photo')" class="dropdown-item w-full"> <i class="fa-solid fa-images mr-1"></i> Change Photo </button>
-                                    @endcan
-                                    @can('category_delete')
-                                        <button wire:click="selectItem({{$categories->id}},'delete')"  class="dropdown-item w-full"> <i class="fa-solid fa-trash mr-1"></i> Delete </button>
-                                    @endcan
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full flex justify-center border-t border-slate-200/60 dark:border-darkmode-400 mt-2"> </div>
-                        <div class="flex justify-center text-center lg:text-left p-5 ">
-                            @if (Storage::disk('public')->exists('category/'.$categories->photo))
-                                <img src="{{ url('storage/category/'.$categories->photo) }}" data-action="zoom" class="object-contain w-full h-56" alt="Missing Category Image Image">
-                            @else
-                                <img src="{{  asset('dist/images/ImageNotFound.png') }}" data-action="zoom" class="object-contain w-full h-56" alt="Missing Category Image Image">
-                            @endif
-                        </div>
-                </div>
-            </div>
-        @empty
-            <div class="intro-y col-span-12 text-lg font-medium flex justify-center box p-10">
-                <div class="flex justify-center flex-col">
-                    <img alt="Missing Image" class="object-fill  rounded-md h-48 w-96" src="{{ asset('dist/images/NoResultFound.svg') }}">
-                    <div class="flex justify-center mt-1">No Results found <strong class="ml-1"> {{ $search }}</strong>  </div>
-                </div>
-            </div>
-        @endforelse
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="2">No Result Found</td>
+                </tr>
+                @endforelse
+                </tbody>
+            </table>
+        </div>
         <!-- END: Category Layout -->
 
         <!-- BEGIN: Pagination -->

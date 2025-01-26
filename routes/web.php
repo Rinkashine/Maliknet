@@ -45,12 +45,8 @@ Route::middleware(['PreventBackHistory'])->group(function () {
     });
 
     Route::get('/', [Homecontroller::class, 'index'])->name('home');
-    Route::get('/about', [PageController::class, 'about'])->name('about');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
     Route::post('/contact', [ContactController::class, 'store'])->name('sendemailcontact');
-    Route::get('/terms', [PageController::class, 'terms'])->name('terms');
-    Route::get('/faq', [PageController::class, 'faq'])->name('faq');
-    Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
 
     Route::get('/productcatalog', [ProductCatalogController::class, 'index'])->name('product');
     Route::get('/productcatalog/{product:id}', [ProductCatalogController::class, 'show'])->name('productshow');
@@ -59,7 +55,6 @@ Route::middleware(['PreventBackHistory'])->group(function () {
 
     Route::middleware(['guest:customer'])->group(function () {
         Route::resource('CLogin', CustomerLoginController::class)->only(['index', 'store']);
-        Route::resource('register', CustomerRegisterController::class)->only(['index']);
         Route::resource('resetcustomer', CustomerResetController::class)->only(['index', 'store']);
         Route::get('resetcustomer/password/{token}', [CustomerResetController::class, 'ShowResetForm'])->name('customer.reset.password.form');
         Route::post('resetcustomer/password', [CustomerResetController::class, 'ResetPassword'])->name('customer.reset.password');

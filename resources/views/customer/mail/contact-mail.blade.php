@@ -507,7 +507,7 @@
                       <p class="f-fallback sub align-center" style="font-size: 13px; line-height: 1.625; text-align: center; color: #A8AAAF; margin: .4em 0 1.1875em;" align="center">© 2022 {{ env('APP_NAME') }}. All rights reserved.</p>
                       <p class="f-fallback sub align-center" style="font-size: 13px; line-height: 1.625; text-align: center; color: #A8AAAF; margin: .4em 0 1.1875em;" align="center">
                         {{ env('APP_NAME') }}
-                        Grand Royale Subdivision, Brgy. Pinagbakahan, City of Malolos Bulacan 3000
+                        {{ env('APP_ADDRESS') }}
                       </p>
                     </td>
                   </tr>

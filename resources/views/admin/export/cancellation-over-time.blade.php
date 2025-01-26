@@ -141,7 +141,7 @@
 
 </style>
 <body class="pt-x-50">
-    <header class="header">asset('dist/images/MaliknetLogo.jpg')
+    <header class="header">
         <div style="position: absolute; top:25px; left:40px">
             <img style="width:100px; height:100px;" src="{{ public_path('dist/images/MaliknetLogo.jpg') }}" alt="Logo">
         </div>

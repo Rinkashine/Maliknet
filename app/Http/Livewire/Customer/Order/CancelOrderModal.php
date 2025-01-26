@@ -64,22 +64,6 @@ class CancelOrderModal extends Component
     {
         $this->validate();
         $order = CustomerOrder::findorfail($this->modelId);
-        foreach ($order->orderTransactions as $item) {
-            $products = Product::where('id', $item->product_id)->get();
-            foreach ($products as $product) {
-                $product->stock = $product->stock + $item->quantity;
-                $product->update();
-                $operationvalue = '(+'.$item->quantity.')';
-                $latestvalue = $product->stock;
-
-                InventoryHistory::create([
-                    'product_id' => $product->id,
-                    'activity' => 'Cancellation of Order with Order ID of '.$this->modelId,
-                    'operation_value' => $operationvalue,
-                    'latest_value' => $latestvalue,
-                ]);
-            }
-        }
         $order->status = 'Cancelled';
         $order->cancellation_reason_id = $this->reason;
         $order->cancellation_details = $this->details;

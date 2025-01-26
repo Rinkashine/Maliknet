@@ -14,14 +14,7 @@
         </div>
         <!-- Contact Us / Div2 -->
         <div class="text-gray-200 intro-x md:w-48">
-            <h4 class="mb-2 text-md font-semibold text-gray-200">Customer Care</h4>
               <ul>
-                    <li>
-                        <a href="{{ Route('faq') }}" class="relative inline-block mb-2 text-base leading-loose text-body-color group">
-                            <span>Help Center</span>
-                            <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-slate-100 transition-all group-hover:w-full"></span>
-                        </a>
-                    </li>
                     <a href="{{ Route('contact') }}" class="text-lg font-semibold">Contact Us</a>
                     <li>
                         <div class="flex items-center mt-2 mb-2 intro-x">
@@ -45,32 +38,7 @@
               <!-- Legal / Div2.1 -->
 
         </div>
-        <!-- Customer Care / Div3 -->
-        <div class="text-gray-200 intro-x md:w-48">
-            <h4 class="mb-2 text-lg font-semibold text-gray-200">{{ env('APP_NAME') }} </h4>
-            <ul>
 
-              <li>
-                <a href="{{ Route('about') }}" class="relative inline-block mb-2 text-base leading-loose text-body-color group">
-                  <span>About Us</span>
-                  <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-slate-100 transition-all group-hover:w-full"></span>
-                </a>
-              </li>
-              <h4 class="mb-2 text-lg font-semibold text-gray-200">Legal</h4>
-                <li>
-                    <a href="{{ Route('terms') }}" class="relative inline-block mb-2 text-base leading-loose text-body-color group">
-                        <span>Terms and Condition</span>
-                        <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-slate-100 transition-all group-hover:w-full"></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ Route('privacy') }}" class="relative inline-block mb-2 text-base leading-loose text-body-color group">
-                        <span>Privacy Policy</span>
-                        <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-slate-100 transition-all group-hover:w-full"></span>
-                    </a>
-                </li>
-              </ul>
-        </div>
         <!-- Our Address / Div4 -->
           <div class="intro-x md:w-96">
             <h4 class="mb-2 text-lg font-semibold text-gray-200 intro-x">Our Address</h4>
@@ -85,7 +53,7 @@
                         </a>
                     </div>
                     <div class="flex justify-center flex-none hover:scale-125">
-                        <a href="{{ url('https://www.facebook.com/GoDentals') }}" class="">
+                        <a href="{{ url('https://www.facebook.com/profile.php?id=61555294767667') }}" class="">
                             <i class="text-4xl text-gray-700 fa fa-facebook-f"></i>
                         </a>
                     </div>

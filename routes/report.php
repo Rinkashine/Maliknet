@@ -79,8 +79,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/report/CategoryVolume/pdf/{sorting}/{startdate}/{enddate}', [CategoryVolumeController::class, 'exportCategoryVolume'])->name('export.CategoryVolume');
         //Begin: Export Files for customers total spent
         Route::get('/report/CustomerExpenditure/pdf/{sorting}/{startdate}/{enddate}',[CustomerTotalSpentController::class,'exportCustomerTotalSpent'])->name('export.CustomerTotalSpent');
-        //Begin: Export files for List of genders
-        Route::get('/report/gender/pdf', [GenderController::class, 'exportGenderExcel'])->name('export.Gender');
         //Begin: Export Files for Account Verification
         Route::get('/report/accountverification/pdf',[AccountVerificationController::class,'exportAccountVerification'])->name('export.AccountVerification');
         //export
@@ -126,8 +124,6 @@ Route::group(['prefix' => 'admin'], function () {
            Route::get('/report/ProductRatings',[ProductRatingController::class,'ProductRatings'])->name('report.ProductRatings');
            //Begin:
            Route::get('/report/ProductRatings/{product_id}/{product_name}',[RatingsByCustomerController::class,'ProductRatingsByCustomer'])->name('report.ProductRatingsByCustomer');
-           //Begin:
-           Route::get('/report/gender', [GenderController::class, 'GenderIndex'])->name('report.Gender');
            //Begin:
            Route::get('/report/ProductSales', [SalesByProductController::class, 'SalesByProductIndex'])->name('report.ProductSales');
            //Begin:

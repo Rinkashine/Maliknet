@@ -152,18 +152,6 @@
                     </div>
                 </div>
                 <!-- END: Transactions -->
-                <!-- BEGIN: Recent Activities -->
-                <div class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-12 mt-4 2xl:mt-3">
-                    <div class="intro-x flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">
-                            Most Visited Page
-                        </h2>
-                    </div>
-                    <div class="mt-5">
-
-                    </div>
-                </div>
-                <!-- END: Recent Activities -->
             </div>
         </div>
     </div>

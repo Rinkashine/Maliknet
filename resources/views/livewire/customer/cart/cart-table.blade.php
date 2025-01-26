@@ -33,12 +33,6 @@
                                 <h1>₱{{ number_format($subtotal)}}</h1>
                             </div>
                         </div>
-                        <div class="flex justify-between mt-3 ">
-                            <div class="text-slate-500">
-                                Note: Shipping fee will be shown after the seller accept the order!
-                            </div>
-
-                        </div>
                     </div>
                     <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
                         <div class="flex justify-between mt-3 ">

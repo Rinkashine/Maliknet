@@ -46,7 +46,7 @@ class AddToCart extends Component
                 'customers_id' => $customer_id,
                 'product_id' => $this->product_id,
                 'quantity' => $this->quantity,
-                'check' => 0,
+                'check' => 1,
             ]);
         }
         $this->emit('refreshcarticon');

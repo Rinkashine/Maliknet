@@ -12,22 +12,6 @@
         </div>
         <!-- Report Container -->
         <div class="grid grid-cols-12 gap-4">
-            <!-- Gender -->
-            <div class="col-span-6 p-2 text-xs bg-white border rounded-md shadow-md md:col-span-3 lg:col-span-2 w-fit zoom-in">
-                <a href="{{ Route('report.Gender') }}">
-                    <div>
-                        <img class="object-scale-down w-full max-w-md max-h-56" src="{{ asset('dist/images/Gender.svg') }}">
-                    </div>
-                    <div>
-                        <div class="mb-5 ml-1 sm:mb-0 sm:text-sm">Gender</div>
-                    </div>
-                    <div class="p-1 mt-1 text-sm text-center border-t">
-                        <p class="sm:text-base">View Details</p>
-                    </div>
-                </a>
-            </div>
-
-
             <!-- Customer's Cancelled Orders -->
             <div class="col-span-6 p-2 text-xs bg-white border rounded-md shadow-md md:col-span-3 lg:col-span-2 w-fit zoom-in">
                 <a href="{{ Route('report.CancelledOrders') }}">
@@ -92,20 +76,6 @@
                     </div>
                     <div>
                         <div class="ml-1 text-center sm:text-sm sm:text-left">Monthly Gained Customers</div>
-                    </div>
-                    <div class="p-1 mt-1 text-sm text-center border-t">
-                        <p class="sm:text-base">View Details</p>
-                    </div>
-                </a>
-            </div>
-            <!-- Account Verification -->
-            <div class="col-span-6 p-2 text-xs bg-white border rounded-md shadow-md md:col-span-3 lg:col-span-2 w-fit zoom-in">
-                <a href="{{ Route('report.AccountVerification') }}">
-                    <div>
-                        <img class="object-scale-down w-full max-w-md max-h-56" src="{{ asset('dist/images/AccountVerification.svg') }}">
-                    </div>
-                    <div>
-                        <div class="mb-5 ml-1 sm:mb-0 sm:text-sm">Account Verification</div>
                     </div>
                     <div class="p-1 mt-1 text-sm text-center border-t">
                         <p class="sm:text-base">View Details</p>

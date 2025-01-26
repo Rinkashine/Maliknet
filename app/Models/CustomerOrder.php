@@ -13,7 +13,6 @@ class CustomerOrder extends Model
 
     protected $fillable = [
         'customers_id',
-        'shippingfee',
         'mode_of_payment',
         'payment_id',
         'status',
@@ -28,7 +27,6 @@ class CustomerOrder extends Model
         'barangay',
         'cancellation_reason_id',
         'cancellation_details',
-        'refund_reason_id',
         'details',
     ];
 
