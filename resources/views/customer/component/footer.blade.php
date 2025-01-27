@@ -1,7 +1,7 @@
  <!-- Footer -->
 
 
- <footer class="pt-10 bg-success">
+ <footer class="pt-10 pb-10 bg-success">
     <div>
       <div class="flex flex-col w-10/12 mx-auto gap-9 md:flex-row">
         <!-- Div1 -->
@@ -18,22 +18,35 @@
                     <a href="{{ Route('contact') }}" class="text-lg font-semibold">Contact Us</a>
                     <li>
                         <div class="flex items-center mt-2 mb-2 intro-x">
-                            <i class="text-base fas fa-phone"></i>
+                            <i class="text-base fas fa-phone pr-1"></i>
                             <p class="text-base leading-loose text-body-color group">
-                                <span>+639 (612) 126 52</span>
+                                <span>09175934434</span>
                                 <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-slate-100 transition-all group-hover:w-full"></span>
                             </p>
                         <div>
                     </li>
                     <li>
                         <div class="flex items-center intro-x">
-                            <i class="text-base fas fa-envelope"></i>
+                            <i class="text-base fas fa-envelope pr-1"></i>
                             <p class="text-base leading-loose text-body-color group">
-                                <span>godentalph@gmail.com</span>
+                                <span>webernet24@gmail.com</span>
                                 <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-slate-100 transition-all group-hover:w-full"></span>
                             </p>
                         </div>
                     </li>
+                    <li>
+                        <div class="flex items-center mt-2 mb-2 intro-x">
+                            <i class="text-base fa-brands fa-facebook-f pr-1"></i>
+                            <a target="_blank" href="https://www.facebook.com/profile.php?id=61555294767667">
+                                <p class="text-base leading-loose text-body-color group">
+                                    <span>Maliknet Team Pasay</span>
+                                    <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-slate-100 transition-all group-hover:w-full"></span>
+                                </p>
+                            </a>
+
+                        <div>
+                    </li>
+
               </ul>
               <!-- Legal / Div2.1 -->
 
@@ -45,24 +58,7 @@
                 <p class="inline-block mb-2 text-base leading-loose text-gray-200">
                     {{ env('APP_ADDRESS') }}
                 </p>
-                <h4 class="mb-2 text-lg font-semibold text-center text-gray-200">Follow Us</h4>
-                <div class="flex flex-row mx-auto justify-evenly">
-                    <div class="flex justify-center flex-none px-1 hover:scale-125">
-                        <a href="{{ url('https://www.instagram.com/godentalsph/') }}" class="">
-                            <i class="text-4xl text-gray-700 fa-brands fa-instagram"></i>
-                        </a>
-                    </div>
-                    <div class="flex justify-center flex-none hover:scale-125">
-                        <a href="{{ url('https://www.facebook.com/profile.php?id=61555294767667') }}" class="">
-                            <i class="text-4xl text-gray-700 fa fa-facebook-f"></i>
-                        </a>
-                    </div>
-                    <div class="flex justify-center flex-none hover:scale-125">
-                        <a href="{{ url('https://twitter.com/GoDentals?t=QY7sxhxreDBsxUHKBwxEbA&s=09') }}" target="_blank" class="hover:text-primary">
-                            <i class="text-4xl text-gray-700 fa-brands fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
+
           </div>
       </div>
     </div>

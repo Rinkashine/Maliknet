@@ -536,7 +536,7 @@
                                 <table  border="0" cellspacing="0" width="100%">
                                     <tbody>
                                         <tr>
-                                            <td width="350">Subtotal:</td>
+                                            <td width="350">Total:</td>
                                             <td width="350" style="text-align: right">₱
                                                 @php
                                                     $subtotal = 0
@@ -546,14 +546,6 @@
                                                 @endforeach
                                                 {!! $subtotal !!}
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td width="350">Shipping fee:</td>
-                                            <td width="350" style="text-align: right">₱{!! $shipping_fee !!}</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="350">Total:</td>
-                                            <td width="350" style="text-align: right">₱{!! $subtotal + $shipping_fee !!}</td>
                                         </tr>
                                     </tbody>
                                 </table>
