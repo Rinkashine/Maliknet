@@ -148,8 +148,8 @@
         <div class="w-100" style="padding: 20px; ">
                 <h2 class="">{{ config('app.name') }} </h2>
                     <div style="margin: auto; width: 30%;">
-                        <h5 class="text-left header-title">Address: Grand Royale Subdivision</h5>
-                        <h5 class="text-left header-title">Contact No: +639 (612) 126 52</h5>
+                        <h5 class="text-left header-title">Address: {{ config('app.address') }} </h5>
+                        <h5 class="text-left header-title">Contact No:  {{ config('app.contact') }} </h5>
                     </div>
                 <div style="clear: both;"></div>
         </div>
