@@ -2,13 +2,13 @@
     <div class="h-full flex items-center">
         <!-- BEGIN: Logo -->
         <div href="" class="-intro-x hidden md:flex w-auto">
-            <img alt="{{ env('APP_NAME') }} Logo" class="w-12" src="{{asset('dist/images/MaliknetLogo.jpg')}}" data-action="zoom">
+            <img alt="{{ config('app.name') }} Logo" class="w-12" src="{{asset('dist/images/MaliknetLogo.jpg')}}" data-action="zoom">
         </div>
 
         <!-- END: Logo -->
         <nav aria-label="breadcrumb" class="-intro-x h-full mr-auto">
             <ol class="breadcrumb breadcrumb-light">
-                <li class="breadcrumb-item w-20 "><p>{{ env('APP_NAME') }}  </p></li>
+                <li class="breadcrumb-item w-20 "><p> {{ config('app.name') }}  </p></li>
                 <li class="breadcrumb-item active" aria-current="page">@yield('title')</li>
             </ol>
         </nav>

@@ -5,8 +5,13 @@
             <a href="{{Route('report.index')}}" class="mr-2 bg-white btn">←</a> Product Ratings Report
         </h2>
         @can('report_export')
-        <a href="{{Route('export.ProductRatings', ['sorting'=>$sorting,'startdate'=>$from,'enddate'=>$to])}}" class="btn btn-primary">Export</a>
+            <a href="{{ Route('export.ProductRatings', [
+                'sorting' => $sorting,
+                'startdate' => $from ?? '',
+                'enddate' => $to ?? ''
+            ]) }}" class="btn btn-primary">Export</a>
         @endcan
+
     </div>
 
     <div class="mt-5 sm:mt-10 intro-y box">

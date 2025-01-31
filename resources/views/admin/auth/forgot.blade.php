@@ -5,11 +5,11 @@
     <div class="block xl:grid grid-cols-2 gap-4">
         <div class="hidden xl:flex flex-col min-h-screen">
             <a href="#" class="-intro-x flex items-center pt-5">
-                <img alt="Maliknet Logo" class="w-6" src="{{asset('dist/images/MaliknetLogo.jpg')}}">
+                <img alt="{{ config('app.name') }}  Logo" class="w-6" src="{{asset('dist/images/MaliknetLogo.jpg')}}">
                 <span class="text-white text-lg ml-3">{{ env('APP_NAME')  }}</span>
             </a>
             <div class="my-auto">
-                <img alt="Maliknet Image " class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/login_shop.svg') }}">
+                <img alt="{{ config('app.name') }}  Image " class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/login_shop.svg') }}">
                 <div class="-intro-x text-white font-medium text-3xl leading-tight mt-10"> Create a new password for {{$email}}</div>
             </div>
         </div>

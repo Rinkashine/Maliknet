@@ -13,9 +13,9 @@ class ProductSales extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $from = '2023-01-01T00:00';
+    public $from = null;
 
-    public $to = '2023-12-31T00:00';
+    public $to = null;
 
     public $sorting = 'product_name_asc';
 

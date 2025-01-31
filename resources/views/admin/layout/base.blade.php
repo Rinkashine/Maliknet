@@ -11,7 +11,7 @@
         <meta name="description" content="Maliknet E-Commerce Seller">
         <meta name="keywords" content="Maliknet">
         <meta name="author" content="Mark Joseph Manalo">
-        <title>Maliknet - @yield('title')</title>
+        <title>{{ config('app.name') }}  - @yield('title')</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
          <!-- Google tag (gtag.js) -->
          @laravelPWA

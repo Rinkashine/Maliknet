@@ -6,7 +6,7 @@
       <div class="flex flex-col w-10/12 mx-auto gap-9 md:flex-row">
         <!-- Div1 -->
         <div class="flex-auto text-gray-200 intro-x md:w-72 ">
-            <p class="mb-4 text-lg font-semibold md:text-center">{{ env('APP_NAME') }}</p>
+            <p class="mb-4 text-lg font-semibold md:text-center">{{ config('app.name') }} </p>
             <span class="text-xl font-light mb-7">
                 Our products are Original and Genuine. usually may video muna ng order/pacel bago i-pack and i-ship out. You can chat with us
                 if you have any question. Happy shopping! from Team Pasay
@@ -20,7 +20,7 @@
                         <div class="flex items-center mt-2 mb-2 intro-x">
                             <i class="text-base fas fa-phone pr-1"></i>
                             <p class="text-base leading-loose text-body-color group">
-                                <span>09175934434</span>
+                                <span>{{ config('app.contact') }} </span>
                                 <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-slate-100 transition-all group-hover:w-full"></span>
                             </p>
                         <div>
@@ -29,7 +29,7 @@
                         <div class="flex items-center intro-x">
                             <i class="text-base fas fa-envelope pr-1"></i>
                             <p class="text-base leading-loose text-body-color group">
-                                <span>webernet24@gmail.com</span>
+                                <span>{{ config('app.email') }} </span>
                                 <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-slate-100 transition-all group-hover:w-full"></span>
                             </p>
                         </div>

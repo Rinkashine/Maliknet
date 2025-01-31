@@ -4,7 +4,6 @@ use App\Http\Controllers\ColorSchemeController;
 //Dark Mode and Color Switcher Import
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\Frontend\Account\CustomerCancellationController;
-//Import Customer Page(About Us, Frequently Asked Question, Contact Page)
 use App\Http\Controllers\Frontend\Account\CustomerOrdersController;
 use App\Http\Controllers\Frontend\Account\CustomerReturnsController;
 //Transactions Controller
@@ -33,11 +32,6 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/auth/{provider}/redirect',[ProviderController::class,'redirect'])->name('redirect');
 Route::get('/auth/{provider}/callback',[ProviderController::class,'callback']);
-
-//Dark Mode Switcher Route
-Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('dark-mode-switcher');
-//Color Mode Switcher Route
-Route::get('color-scheme-switcher/{color_scheme}', [ColorSchemeController::class, 'switch'])->name('color-scheme-switcher');
 
 Route::middleware(['PreventBackHistory'])->group(function () {
     Route::get('/', function () {

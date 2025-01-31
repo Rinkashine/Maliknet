@@ -66,7 +66,8 @@ Route::group(['prefix' => 'admin'], function () {
         //Begin: Export files for the Type of Payment
         Route::get('/report/PaymentByType/pdf/{startdate}/{enddate}', [PaymentByTypeController::class, 'exportPaymentByType'])->name('export.PaymentType');
         //Begin: Export files for the list of products and their respective ratings
-        Route::get('/report/ProductRatings/pdf/{sorting}/{startdate}/{enddate}',[ProductRatingController::class,'exportProductRatings'])->name('export.ProductRatings');
+        Route::get('/report/ProductRatings/pdf/{sorting}/{startdate?}/{enddate?}', [ProductRatingController::class, 'exportProductRatings'])
+        ->name('export.ProductRatings');
         //Begin: Export Files for the products and list of customers who rate that product
         Route::get('/report/ProductRatings/ProductRatingsByCustomer/pdf/{sorting}/{startdate}/{enddate}/{name}',[RatingsByCustomerController::class,'exportProductRatingsByCustomer'])->name('export.ProductRatingsByCustomer');
         //Begin Export Files for Sales Overtime

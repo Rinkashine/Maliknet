@@ -20,12 +20,6 @@
                 <div class="menu__title"> Login  </div>
             </a>
         </li>
-        <li>
-            <a href="{{Route('register.index')}}" class="menu">
-                <div class="menu__icon"> <i class="fa-solid fa-user-plus"></i> </div>
-                <div class="menu__title"> Sign Up  </div>
-            </a>
-        </li>
         @endif
     </ul>
 </div>

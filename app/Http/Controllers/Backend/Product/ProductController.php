@@ -58,20 +58,6 @@ class ProductController extends Controller
           ]);
       }
 
-    public function ProductInventoryHistory($id)
-    {
-        $product = Product::findorfail($id);
-
-        return view('admin.page.product.inventoryhistory', [
-            'product' => $product,
-        ]);
-    }
-
-    public function FeaturedProductIndex(){
-        abort_if(Gate::denies('product_edit'),403);
-
-        return view('admin.page.product.productfeatured');
-    }
 
     //Export Product to Excel
     public function exportproductexcel()

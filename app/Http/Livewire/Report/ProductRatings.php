@@ -12,9 +12,9 @@ class ProductRatings extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $from = '2025-01-01T00:00';
+    public $from = null;
 
-    public $to = '2030-12-31T00:00';
+    public $to = null;
 
     public $sorting = 'product_name_asc';
 
@@ -30,6 +30,19 @@ class ProductRatings extends Component
 
     public function render()
     {
+        // Set default values for from and to
+        if (is_null($this->from)) {
+            $this->from = Product::leftJoin('customer_order_item', 'product.id', '=', 'customer_order_item.product_id')
+                ->leftJoin('product_review', 'product_review.customer_order_item_id', '=', 'customer_order_item.id')
+                ->min('product_review.created_at');
+        }
+
+        if (is_null($this->to)) {
+            $this->to = Product::leftJoin('customer_order_item', 'product.id', '=', 'customer_order_item.product_id')
+                ->leftJoin('product_review', 'product_review.customer_order_item_id', '=', 'customer_order_item.id')
+                ->max('product_review.created_at');
+        }
+
         if ($this->sorting == 'product_name_asc') {
             $this->column_name = 'product.name';
             $this->order_name = 'asc';
@@ -62,24 +75,23 @@ class ProductRatings extends Component
         $products = Product::select([
             'product.name',
             'product.id',
-
-            DB::raw(value: 'COUNT(CASE WHEN product_review.customer_order_item_id = customer_order_item.id then product.id end) AS total'),
-            DB::raw(value: 'SUM(CASE WHEN product_review.customer_order_item_id = customer_order_item.id then rate end) AS rate'),
-            DB::raw(value: '(SUM(CASE WHEN product_review.customer_order_item_id = customer_order_item.id then rate end)/COUNT(CASE WHEN product_review.customer_order_item_id = customer_order_item.id then product.id end)) AS ave')
+            DB::raw('COUNT(CASE WHEN product_review.customer_order_item_id = customer_order_item.id then product.id end) AS total'),
+            DB::raw('SUM(CASE WHEN product_review.customer_order_item_id = customer_order_item.id then rate end) AS rate'),
+            DB::raw('(SUM(CASE WHEN product_review.customer_order_item_id = customer_order_item.id then rate end)/COUNT(CASE WHEN product_review.customer_order_item_id = customer_order_item.id then product.id end)) AS ave')
         ])
-        ->leftjoin('customer_order_item', 'product.id', '=', 'customer_order_item.product_id')
-        ->leftjoin('product_review',function($join){
+        ->leftJoin('customer_order_item', 'product.id', '=', 'customer_order_item.product_id')
+        ->leftJoin('product_review', function($join) {
             $join->on('product_review.customer_order_item_id', '=', 'customer_order_item.id')
-            ->where('product_review.created_at', '>=', $this->from)
-            ->where('product_review.created_at', '<=', $this->to);
+                ->whereBetween('product_review.created_at', [$this->from, $this->to]);
         })
-        ->where('product.name','like','%'.$this->search.'%')
-        ->groupBy('product.id','product.name')
+        ->where('product.name', 'like', '%' . $this->search . '%')
+        ->groupBy('product.id', 'product.name')
         ->orderBy($this->column_name, $this->order_name)
         ->paginate($this->perPage);
 
-        return view('livewire.report.product-ratings',[
+        return view('livewire.report.product-ratings', [
             'products' => $products,
         ]);
     }
+
 }

@@ -146,7 +146,7 @@
             <img style="width:100px; height:100px;" src="{{ public_path('dist/images/MaliknetLogo.jpg') }}" alt="Logo">
         </div>
         <div class="w-100" style="padding: 20px; ">
-                <h2 class="">Roman Dental Supplies Trading</h2>
+                <h2 class="">{{ config('app.name') }} </h2>
                     <div style="margin: auto; width: 30%;">
                         <h5 class="text-left header-title">Address: Grand Royale Subdivision</h5>
                         <h5 class="text-left header-title">Contact No: +639 (612) 126 52</h5>

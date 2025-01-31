@@ -23,12 +23,7 @@ class ProductExport implements FromCollection, ShouldAutoSize, WithHeadings, Wit
         return [
             $product->name,
             $product->category->name,
-            $product->brand->name,
-            $product->stock,
-            $product->SKU,
-            $product->cprice,
-            $product->sprice,
-            $product->weight,
+            $product->price,
             $product->description,
         ];
     }
@@ -38,12 +33,7 @@ class ProductExport implements FromCollection, ShouldAutoSize, WithHeadings, Wit
         return [
             'Product Name',
             'Category Name',
-            'Brand Name',
-            'Inventory Stock',
-            'SKU',
-            'Cost Price',
-            'Selling Price',
-            'Weight',
+            'Price',
             'Description',
         ];
     }
