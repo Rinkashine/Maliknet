@@ -27,6 +27,7 @@
 <livewire:admin.category.category-edit-form/>
 <!-- End: Category Edit Form Modal -->
 
+
 <!--Begin: Success Notification -->
 <div id="success-notification-content" class="toastify-content hidden flex non-sticky-notification-content">
     <i class="fa-regular fa-circle-check fa-3x text-success mx-auto"></i>
@@ -66,7 +67,7 @@
     const editItemModal = tailwind.Modal.getInstance(document.querySelector("#edit-item-modal"));
     window.addEventListener('OpenEditModal',event => {
         editItemModal.show();
-    });
+    });g
     //Hide Add Form Modal
     window.addEventListener('closeEditModal',event => {
         editItemModal.hide();
@@ -77,6 +78,7 @@
     ForceCloseEditItemModal.addEventListener('hidden.tw.modal', function(event) {
         livewire.emit('forceCloseEditModal');
     });
+
 
 
     //SuccessAlert

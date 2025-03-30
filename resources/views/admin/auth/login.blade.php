@@ -8,7 +8,7 @@
             <p class="-intro-x flex items-center pt-5">
                 <img alt="{{ config('app.name') }}  Logo" class="w-12" data-action="zoom" src="{{asset('dist/images/MaliknetLogo.jpg')}}">
                 <span class="text-white text-lg ml-3">
-                    {{ config('app.name') }} 
+                    {{ config('app.name') }}
                 </span>
             </p>
             <div class="my-auto">
