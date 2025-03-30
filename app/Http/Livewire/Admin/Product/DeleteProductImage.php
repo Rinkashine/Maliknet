@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Product;
 
-use App\Models\ProductImage;
+use App\Models\ProductGallery;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
@@ -40,13 +40,13 @@ class DeleteProductImage extends Component
 
     public function delete()
     {
-        $image = ProductImage::findorfail($this->modelId);
-        Storage::delete('public/product_photos/'.$image->images);
-        $image->delete();
+        $gallery = ProductGallery::findorfail($this->modelId);
+        Storage::delete('public/product_gallery/'.$gallery->file);
+        $gallery->delete();
         $this->emit('refreshParent');
         $this->cleanVars();
         $this->dispatchBrowserEvent('CloseDeleteModal');
-        $this->dispatchBrowserEvent('s', [
+        $this->dispatchBrowserEvent('SuccessAlert', [
             'name' => 'Image was permanently deleted',
             'title' => 'Image was Deleted Successfully',
         ]);

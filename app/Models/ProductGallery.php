@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProductImage extends Model
+class ProductGallery extends Model
 {
-    protected $table = 'product_images';
+    protected $table = 'product_gallery';
 
     protected $fillable = [
         'product_id',
-        'images',
+        'file',
     ];
 
     public function Product_Image_Transaction()

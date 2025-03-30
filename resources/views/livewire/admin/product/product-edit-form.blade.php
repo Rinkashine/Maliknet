@@ -123,32 +123,54 @@
                                 <div class="form-label xl:w-64 xl:!mr-10">
                                     <div class="text-left">
                                         <div class="flex items-center">
-                                            <div class="font-medium">Product Photos</div>
+                                            <div class="font-medium">Product Gallery</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1" >
-                                    <input  id="upload{{ $iteration }}" type="file" class="form-control p-2" wire:model="images" multiple accept="image/*" >
+                                    <input  id="upload{{ $iteration }}" type="file" class="form-control p-2" wire:model="galleries" multiple >
                                     <div class="text-danger mt-2">@error('images.*'){{$message}}@enderror</div>
-                                    <div wire:loading wire:target="images">Uploading...</div>
+                                    <div wire:loading wire:target="galleries">Uploading...</div>
                                 </div>
                                 <div class="flex justify-end">
-                                    <button type="button" class="ml-2 btn btn-primary" wire:click="StoreNewImages" >Add New Image</button>
+                                    <button type="button" class="ml-2 btn btn-primary" wire:click="StoreNewImages" >Upload</button>
                                 </div>
                             </div>
                             <div class="intro-y grid grid-cols-12 gap-6 mt-5" id="datatable">
-                                @foreach ($product_images as $image)
-                                    <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4 ">
-                                        <div class="p-5">
-                                            <div class="flex items-center justify-center ">
-                                                <img class="object-contain h-48 " src="{{ url('storage/product_photos/'.$image->images) }}"  data-action="zoom" alt="Missing Product Image" onerror="this.onerror=null;this.src='{{ asset('dist/images/ImageNotFound.png') }}'">
-                                            </div>
-                                            <div class="flex justify-center">
-                                                <button type="button" wire:click="selectItem({{$image->id}},'delete')"   class="block font-medium text-center mt-2">Delete</button>
-                                            </div>
+                                @foreach ($product_galleries as $gallery)
+                                @php
+                                    $fileExtension = pathinfo($gallery->file, PATHINFO_EXTENSION);
+                                    $videoExtensions = ['mp4', 'avi', 'mov', 'wmv', 'flv'];
+                                    $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+                                @endphp
+
+                                <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4">
+                                    <div class="p-5">
+                                        <div class="flex items-center justify-center">
+                                            @if(in_array(strtolower($fileExtension), $imageExtensions))
+                                                <img class="object-contain h-48"
+                                                     src="{{ url('storage/product_gallery/'.$gallery->file) }}"
+                                                     data-action="zoom"
+                                                     alt="Missing Product Image"
+                                                     onerror="this.onerror=null;this.src='{{ asset('dist/images/ImageNotFound.png') }}'">
+                                            @elseif(in_array(strtolower($fileExtension), $videoExtensions))
+                                                <video class="h-48" controls>
+                                                    <source src="{{ url('storage/product_gallery/'.$gallery->file) }}" type="video/{{ $fileExtension }}">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            @else
+                                                <p>Unsupported file format</p>
+                                            @endif
+                                        </div>
+                                        <div class="flex justify-center">
+                                            <button type="button" wire:click="selectItem({{ $gallery->id }}, 'delete')" class="block font-medium text-center mt-2">
+                                                Delete
+                                            </button>
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
+                            @endforeach
+
                             </div>
                         </div>
                     </div>

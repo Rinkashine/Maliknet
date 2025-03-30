@@ -212,7 +212,7 @@
     </main>
     <footer class="mt-10 text-center">
         <p class="">Thank you for shopping with us!</p>
-        <p class="text-bold">GoDental</p>
+        <p class="text-bold">Maliknet</p>
     </footer>
 
     <script type="text/php">

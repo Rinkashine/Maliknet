@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('product', function (Blueprint $table) {
-            $table->string('video')->nullable();
+        Schema::create('product_gallery', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('product_id')->constrained('product')->onDelete('cascade');
+            $table->string('file');
+            $table->timestamps();
         });
     }
 
@@ -25,7 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('product', function (Blueprint $table) {
-        });
+        Schema::dropIfExists('product_gallery');
     }
 };

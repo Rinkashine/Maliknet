@@ -88,7 +88,7 @@
                                                 <div class="text-slate-500 mt-2">Something went wrong!</div>
                                             </div>
                                             <div class="px-5 pb-8 text-center">
-                                                <button type="button" data-tw-dismiss="modal" class="btn w-24 btn-primary">Ok</button>
+                                                <a href="{{ Route('customer.address') }}" class="btn w-full btn-primary">Add Shipping Address</a>
                                             </div>
                                             <div class="p-5 text-center border-t border-slate-200/60 dark:border-darkmode-400">
                                                 <a href="{{ Route('customer.address') }}" target="_blank" class="text-primary">Please Add Shipping Address Before Checking Out!</a>

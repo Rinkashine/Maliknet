@@ -1,7 +1,7 @@
 <nav class="side-nav">
     <div class="intro-x flex items-center pl-5 pt-4 mt-3">
         <img alt="{{ config('app.name') }} " class="w-10" src="{{asset('dist/images/MaliknetLogo.jpg')}}" data-action="zoom">
-        <span class="hidden xl:block text-white text-lg ml-3"> {{ env('APP_NAME') }}  </span>
+        <span class="hidden xl:block text-white text-lg ml-3"> {{ config('app.name') }}  </span>
     </div>
     <div class="side-nav__devider my-6"></div>
     <ul>

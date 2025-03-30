@@ -47,43 +47,89 @@
                             </div>
                             <div class="p-5">
                                 <div class="flex justify-center">
-                                    @if(count($product->images) == 0)
-                                        <!-- Begin: Product Image if there is no image -->
+                                    @php
+                                    $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+                                    $videoExtensions = ['mp4', 'avi', 'mov', 'wmv', 'flv'];
+
+                                    // Filter images and videos separately
+                                    $imageFiles = $product->galleries->filter(function ($gallery) use ($imageExtensions) {
+                                        return in_array(strtolower(pathinfo($gallery->file, PATHINFO_EXTENSION)), $imageExtensions);
+                                    });
+
+                                    $videoFiles = $product->galleries->filter(function ($gallery) use ($videoExtensions) {
+                                        return in_array(strtolower(pathinfo($gallery->file, PATHINFO_EXTENSION)), $videoExtensions);
+                                    });
+                                @endphp
+
+                                @if ($product->galleries->isEmpty())
+                                    <!-- No media available -->
+                                    <div>
+                                        <img alt="Missing Image" class="object-fill w-full h-full"
+                                             src="{{ asset('dist/images/MaliknetLogo.jpg') }}">
+                                    </div>
+
+                                @elseif ($product->galleries->count() == 1)
+                                    <!-- Single Media (Image or Video) -->
+                                    @foreach ($product->galleries as $gallery)
                                         <div>
-                                            <img alt="Missing Image" class="object-fill w-full h-full" src="{{ asset('dist/images/MaliknetLogo.jpg') }}">
-                                        </div>
-                                        <!-- END: Product Image if there is no image -->
-                                    @elseif(count($product->images) == 1)
-                                        <!-- Begin: Product Image if there is one image -->
-                                        @foreach ($product->images as $model)
-                                            <div>
-                                                @if (Storage::disk('public')->exists('product_photos/'.$model->images))
-                                                    <img alt="Missing Image" data-action="zoom" class="object-fill w-full h-full " src="{{ url('storage/product_photos/'.$model->images) }}">
+                                            @php $fileExtension = strtolower(pathinfo($gallery->file, PATHINFO_EXTENSION)); @endphp
+
+                                            @if (in_array($fileExtension, $imageExtensions))
+                                                <!-- Display Image -->
+                                                @if (Storage::disk('public')->exists('product_gallery/'.$gallery->file))
+                                                    <img alt="Product Image" data-action="zoom"
+                                                         class="object-fill w-full h-full"
+                                                         src="{{ url('storage/product_gallery/'.$gallery->file) }}">
                                                 @else
-                                                    <img alt="Missing Image" class="object-scale-down w-full h-48 rounded-md" src="{{  asset('dist/images/ImageNotFound.png') }}" >
+                                                    <img alt="Missing Image" class="object-scale-down w-full h-48 rounded-md"
+                                                         src="{{ asset('dist/images/ImageNotFound.png') }}">
                                                 @endif
-                                            </div>
-                                        @endforeach
-                                        <!-- END: Product Image if there is one image -->
-                                    @else
-                                        <!-- Begin: Product Image Slider -->
-                                        <div class="pb-8 mx-6 mt-5 "  >
-                                            <div class="fade-mode" style="height: 100%;">
-                                                @foreach ($product->images as $model)
+
+                                            @elseif (in_array($fileExtension, $videoExtensions))
+                                                <!-- Display Video -->
+                                                <video class="w-full h-full" controls>
+                                                    <source src="{{ url('storage/product_gallery/'.$gallery->file) }}"
+                                                            type="video/{{ $fileExtension }}">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            @endif
+                                        </div>
+                                    @endforeach
+
+                                @else
+                                    <!-- Media Slider -->
+                                    <div class="pb-8 mx-6 mt-5">
+                                        <div class="fade-mode" style="height: 100%;">
+                                            @foreach ($product->galleries as $gallery)
                                                 <div class="h-64 px-2">
                                                     <div class="object-fill w-full h-full" style="height: 100%;">
-                                                        @if (Storage::disk('public')->exists('product_photos/'.$model->images))
-                                                            <img alt="Missing Image" src="{{ url('storage/product_photos/'.$model->images) }}" data-action="zoom" style="height: 100%;" class=""/>
-                                                        @else
-                                                             <img alt="Missing Image"  src="{{  asset('dist/images/ImageNotFound.png') }}" data-action="zoom" style="height: 100%;" class="object-scale-down w-full h-48 rounded-md"/>
+                                                        @php $fileExtension = strtolower(pathinfo($gallery->file, PATHINFO_EXTENSION)); @endphp
+
+                                                        @if (in_array($fileExtension, $imageExtensions))
+                                                            <!-- Display Image -->
+                                                            @if (Storage::disk('public')->exists('product_gallery/'.$gallery->file))
+                                                                <img alt="Product Image" src="{{ url('storage/product_gallery/'.$gallery->file) }}"
+                                                                     data-action="zoom" style="height: 100%;" class=""/>
+                                                            @else
+                                                                <img alt="Missing Image" src="{{ asset('dist/images/ImageNotFound.png') }}"
+                                                                     data-action="zoom" style="height: 100%;" class="object-scale-down w-full h-48 rounded-md"/>
+                                                            @endif
+
+                                                        @elseif (in_array($fileExtension, $videoExtensions))
+                                                            <!-- Display Video -->
+                                                            <video class="w-full h-full" controls muted>
+                                                                <source src="{{ url('storage/product_gallery/'.$gallery->file) }}"
+                                                                        type="video/{{ $fileExtension }}">
+                                                                Your browser does not support the video tag.
+                                                            </video>
                                                         @endif
                                                     </div>
                                                 </div>
-                                                @endforeach
-                                            </div>
+                                            @endforeach
                                         </div>
-                                        <!-- END: Begin Product Image Slider -->
-                                    @endif
+                                    </div>
+                                @endif
+
                                 </div>
                             </div>
                         </div>

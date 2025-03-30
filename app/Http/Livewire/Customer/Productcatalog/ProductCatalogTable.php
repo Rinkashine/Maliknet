@@ -13,7 +13,7 @@ class ProductCatalogTable extends Component
     public function render()
     {
         $categories = Category::with(['categoryTransactions' => function ($query) {
-            $query->where('status', 1)->with('images')->orderBy('name', 'asc');
+            $query->where('status', 1)->with('galleries')->orderBy('name', 'asc');
         }])->get();
 
 

@@ -4,7 +4,7 @@
 <!-- Begin: Header -->
 <div class="intro-y flex items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">
-        Welcome to {{ env('APP_NAME') }}!
+        Welcome to {{ config('app.name') }}!
     </h2>
 </div>
 <!-- End: Header -->

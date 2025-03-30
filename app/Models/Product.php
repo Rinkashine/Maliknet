@@ -32,9 +32,9 @@ class Product extends Model
          return $this->belongsTo(Category::class);
      }
 
-    public function images()
+    public function galleries()
     {
-        return $this->hasMany(ProductImage::class);
+        return $this->hasMany(ProductGallery::class);
     }
 
     public function ProductTransaction()

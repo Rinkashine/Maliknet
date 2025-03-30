@@ -15,10 +15,11 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
-    'address' => env('APP_ADDRESS', "Laravel"),
-    'contact' => env('APP_CONTACT', "Contact"),
-    'email' => env('APP_EMAIL', "Laravel"),
+    'name' => env('APP_NAME', 'Maliknet'),
+    'address' => env('APP_ADDRESS', "2576 Decena Street, Pasay City, Philippines"),
+    'contact' => env('APP_CONTACT', "09175934434"),
+    'email' => env('APP_EMAIL', "webernet24@gmail.com"),
+    'url' => env('APP_URL', "https://maliknet.com/"),
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -32,7 +32,7 @@ class ResetPassword extends Mailable implements ShouldQueue
     {
         return $this->subject('Maliknet Reset Password')
         ->markdown('admin.mail.email-forgot')
-        ->from('godentalnoreply@gmail.com', 'Maliknet')
+        ->from('webernet24@gmail.com', 'Maliknet')
         ->with([
             'email' => $this->details['email'],
             'action_link' => $this->details['action_link'],

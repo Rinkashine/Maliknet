@@ -33,10 +33,10 @@
                                         <div class="text-slate-500 mt-2">Before Ordering Create Account First</div>
                                     </div>
                                     <div class="px-5 pb-8 text-center">
-                                        <button  data-tw-dismiss="modal" class="btn w-24 btn-primary">Ok</button>
+                                        <a href="{{ Route('CLogin.index') }}" data-tw-dismiss="modal" class="btn w-full btn-primary">Go to Login</a>
                                     </div>
                                     <div class="p-5 text-center border-t border-slate-200/60 dark:border-darkmode-400">
-                                        <a href="{{ Route('CLogin.index') }}" class="text-primary">Please Login your {{ env('APP_NAME') }} Account First Before Ordering</a>
+                                        <a href="{{ Route('CLogin.index') }}" class="text-primary">Please Login your {{ config('app.name') }}Account First Before Ordering</a>
                                     </div>
                                 </div>
                             </div>

@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Admin\Product;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\ProductImage;
+use App\Models\ProductGallery;
 use App\Models\Supplier;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -33,7 +33,7 @@ class ProductEditForm extends Component
 
     public $status;
 
-    public $images = [];
+    public $galleries = [];
 
     public $product;
 
@@ -69,21 +69,21 @@ class ProductEditForm extends Component
     public function StoreNewImages()
     {
         $validatedData = $this->validate([
-            'images.*' => 'required|image',
+            'galleries.*' => 'required|mimes:jpeg,png,jpg,gif,mp4,mov,avi,wmv|max:10240', // Accepts images & videos up to 10MB
         ]);
 
-        if (! Storage::disk('public')->exists('product_photos')) {
-            Storage::disk('public')->makeDirectory('product_photos', 0775, true);
+        if (! Storage::disk('public')->exists('product_gallery')) {
+            Storage::disk('public')->makeDirectory('product_gallery', 0775, true);
         }
 
-        foreach ($this->images as $image) {
-            $image->store('public/product_photos');
-            ProductImage::create([
+        foreach ($this->galleries as $gallery) {
+            $gallery->store('public/product_gallery');
+            ProductGallery::create([
                 'product_id' => $this->product->id,
-                'images' => $image->hashName(),
+                'file' => $gallery->hashName(),
             ]);
         }
-        if ($this->images != []) {
+        if ($this->galleries != []) {
             $this->dispatchBrowserEvent('SuccessAlert', [
                 'name' => 'Image was sucessfully added for '.$this->name,
                 'title' => 'Successfully Added New Image',
@@ -128,7 +128,7 @@ class ProductEditForm extends Component
         $this->category = null;
         $this->description = null;
         $this->price = null;
-        $this->images = [];
+        $this->galleries = [];
     }
 
     public function updated($fields)
@@ -139,7 +139,7 @@ class ProductEditForm extends Component
             'price' => 'required|numeric|min:1',
             'description' => 'required',
             'status' => 'required',
-            'images.*' => 'image',
+            'galleries.*' => 'mimes:jpeg,png,jpg,gif,mp4,mov,avi,wmv|max:10240', // Accepts images & videos up to 10MB
         ]);
     }
 
@@ -151,7 +151,7 @@ class ProductEditForm extends Component
             'price' => 'required|numeric|min:1',
             'description' => 'required',
             'status' => 'required',
-            'images.*' => 'image',
+            'galleries.*' => 'mimes:jpeg,png,jpg,gif,mp4,mov,avi,wmv|max:10240', // Accepts images & videos up to 10MB
 
         ];
     }
@@ -163,11 +163,11 @@ class ProductEditForm extends Component
         }
 
         $categories = Category::orderBy('name')->get();
-        $product_images = $this->product->images;
+        $product_galleries = $this->product->galleries;
 
         return view('livewire.admin.product.product-edit-form', [
             'categories' => $categories,
-            'product_images' => $product_images,
+            'product_galleries' => $product_galleries,
         ]);
     }
 }

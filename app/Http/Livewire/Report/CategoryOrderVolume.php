@@ -13,9 +13,9 @@ class CategoryOrderVolume extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $from = '2023-01-01T00:00';
+    public $from = null;
 
-    public $to = '2023-12-31T00:00';
+    public $to = null;
 
     public $sorting = 'order_quantity_desc';
 
@@ -42,6 +42,8 @@ class CategoryOrderVolume extends Component
     public function render()
     {
         $this->cleanvars();
+        $this->from = $this->from ?? DB::table('customer_order')->min('created_at');
+        $this->to = $this->to ?? DB::table('customer_order')->max('created_at');
 
         if ($this->sorting == 'category_name_asc') {
             $this->column_name = 'name';

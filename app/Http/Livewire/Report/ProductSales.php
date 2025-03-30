@@ -31,6 +31,11 @@ class ProductSales extends Component
 
     public function render()
     {
+        // Fetch min and max dates if not set
+        $this->from = $this->from ?? DB::table('customer_order')->min('created_at');
+        $this->to = $this->to ?? DB::table('customer_order')->max('created_at');
+
+        // Determine sorting column and order
         if ($this->sorting == 'product_name_asc') {
             $this->column_name = 'name';
             $this->order_name = 'asc';
@@ -54,19 +59,19 @@ class ProductSales extends Component
             $this->order_name = 'asc';
         }
 
+        // Fetch product sales data
         $products = Product::select([
             'product.id',
             'product.name',
-            DB::raw(value: 'SUM(CASE WHEN customer_order.status = "Completed" then customer_order_item.quantity else 0 end) AS quantity'),
-            DB::raw(value: 'SUM(CASE WHEN customer_order.status = "Completed" then customer_order_item.quantity * customer_order_item.price  else 0 end) as total_sales'),
+            DB::raw('SUM(CASE WHEN customer_order.status = "Completed" then customer_order_item.quantity else 0 end) AS quantity'),
+            DB::raw('SUM(CASE WHEN customer_order.status = "Completed" then customer_order_item.quantity * customer_order_item.price else 0 end) as total_sales'),
         ])
-        ->leftjoin('customer_order_item', 'product.id', '=', 'customer_order_item.product_id')
-        ->leftjoin('customer_order', function ($join) {
+        ->leftJoin('customer_order_item', 'product.id', '=', 'customer_order_item.product_id')
+        ->leftJoin('customer_order', function ($join) {
             $join->on('customer_order_item.customer_order_id', '=', 'customer_order.id')
-            ->where('customer_order.created_at', '>', $this->from)
-            ->where('customer_order.created_at', '<', $this->to);
+                ->whereBetween('customer_order.created_at', [$this->from, $this->to]);
         })
-        ->where('name', 'like', '%'.$this->search.'%')
+        ->where('product.name', 'like', '%'.$this->search.'%')
         ->groupBy('product.name', 'product.id')
         ->orderBy($this->column_name, $this->order_name)
         ->paginate($this->perPage);
@@ -75,4 +80,5 @@ class ProductSales extends Component
             'products' => $products,
         ]);
     }
+
 }

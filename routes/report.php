@@ -35,55 +35,37 @@ use App\Http\Controllers\Backend\Reports\YearlySalesController;
 
 Route::group(['prefix' => 'admin'], function () {
     Route::middleware(['auth:web'])->group(function () {
-        //Begin: Export Files for User Type
-        Route::get('/report/UserType/{startdate}/{enddate}/pdf', [UserTypeController::class, 'exportUserType'])->name('export.UserType');
-        //Begin: Export Files for Number of Cancelled Orders
-        Route::get('/report/cancelledorders/pdf',[CancelledOrderController::class,'exportCancelledOrders'])->name('export.CancelledOrders');
-        //Begin: Export Files  for Cancellation Reason
-        Route::get('/report/cancellationreasons/pdf',[CancellationReasonController::class,'exportCancellationReason'])->name('export.CancellationReason');
-        //Begin: Export Files for Number of Reject Orders
-        Route::get('/report/rejectedorders/pdf',[NumberRejectedOrderController::class,'exportRejectedOrders'])->name('export.RejectedOrders');
-        //Begin: Export Files for Number of cancelled orders overtime
-        Route::get('/report/cancellationovertime/pdf',[CancellationOverTimeController::class,'exportCancellationOverTime'])->name('export.CancellationOverTime');
-        //Begin: Export Files for Monthly Cancellation Reports
-        Route::get('/report/monthlycancellation/pdf/{month}/{year}',[MonthlyCancellationController::class,'exportMonthlyCancellation'])->name('export.MonthlyCancellation');
-        //Begin: Export Files for Numbers of Created Customers Per Month
-        Route::get('/report/MonthlyGainedCustomer/pdf',[CustomersGainedPerMonthController::class,'exportMonthlyGainedCustomers'])->name('export.MonthlyGainedCustomers');
-        //Begin: Export Files for List of Customers Created between that month
-        Route::get('/report/MonthlyGainedCustomer/{from}/{to}/pdf',[CustomerGainedPerMonthListController::class,'exportCustomerPerMonthList'])->name('export.ShowMonthlyGainedCustomers');
-        //Begin: Export Files for Number of Products Bought by the Customer
-        Route::get('/report/productbycustomer/pdf/',[ProductBuyerController::class,'exportProductByCustomer'])->name('export.ProductByCustomer');
-        //Begin: Export Files for Number of Verified Accounts
-        Route::get('/report/VerifiedAccount/pdf/{sorting}',[VerifiedAccountController::class,'exportVerifiedAccountsExcel'])->name('report.exportVerifiedAccountsExcel');
-        //Begin: Export Files for Non Verified Accounts
-        Route::get('/report/NonVerifiedAccount/pdf/{sorting}',[NonVerifiedAccountController::class,'exportNonVerifiedAccount'])->name('export.NonVerifiedAccount');
-        //Begin:
-        Route::get('/report/ProductOrderVolume/pdf/{sorting}',[ProductOrderVolumeController::class,'exportProductOrderVolume'])->name('export.ProductOrderVolume');
-        //Begin:
-        Route::get('/report/CustomerOrderVolume/pdf/{sorting}',[CustomerOrderVolume::class,'exportCustomerOrderVolume'])->name('export.CustomerOrderVolume');
-        //Begin:
-        Route::get('/report/customerbyproduct/pdf/{name}',[CustomerBoughtProductController::class,'exportCustomerByProduct'])->name('export.CustomerByProduct');
-        //Begin: Export files for the Type of Payment
-        Route::get('/report/PaymentByType/pdf/{startdate}/{enddate}', [PaymentByTypeController::class, 'exportPaymentByType'])->name('export.PaymentType');
-        //Begin: Export files for the list of products and their respective ratings
-        Route::get('/report/ProductRatings/pdf/{sorting}/{startdate?}/{enddate?}', [ProductRatingController::class, 'exportProductRatings'])
-        ->name('export.ProductRatings');
-        //Begin: Export Files for the products and list of customers who rate that product
-        Route::get('/report/ProductRatings/ProductRatingsByCustomer/pdf/{sorting}/{startdate}/{enddate}/{name}',[RatingsByCustomerController::class,'exportProductRatingsByCustomer'])->name('export.ProductRatingsByCustomer');
-        //Begin Export Files for Sales Overtime
-        Route::get('/report/MonthlySales/pdf', [MonthlySalesController::class, 'exportMonthlySales'])->name('export.MonthlySales');
-        //Begin: Export Files for Sales by Product
-        Route::get('/report/salesprod/pdf/{sorting}/{startdate}/{enddate}', [SalesByProductController::class, 'exportProductSales'])->name('export.ProductSales');
-        //Begin: Export Files For Sales by Category
-        Route::get('/report/CategorySales/pdf/{sorting}/{startdate}/{enddate}', [SalesByCategoryController::class, 'exportCategorySales'])->name('export.CategorySales');
-        //Begin: Export Files for number of category ordered
-        Route::get('/report/CategoryVolume/pdf/{sorting}/{startdate}/{enddate}', [CategoryVolumeController::class, 'exportCategoryVolume'])->name('export.CategoryVolume');
-        //Begin: Export Files for customers total spent
-        Route::get('/report/CustomerExpenditure/pdf/{sorting}/{startdate}/{enddate}',[CustomerTotalSpentController::class,'exportCustomerTotalSpent'])->name('export.CustomerTotalSpent');
-        //Begin: Export Files for Account Verification
-        Route::get('/report/accountverification/pdf',[AccountVerificationController::class,'exportAccountVerification'])->name('export.AccountVerification');
-        //export
-        Route::get('/report/YearlySales/pdf',[YearlySalesController::class,'exportYearlySales'])->name('export.YearlySales');
+
+
+        Route::prefix('report')->group(function () {
+            // Reports with optional startdate and enddate
+            Route::get('/UserType/{startdate?}/{enddate?}/pdf', [UserTypeController::class, 'exportUserType'])->name('export.UserType');
+            Route::get('/PaymentByType/pdf/{startdate?}/{enddate?}', [PaymentByTypeController::class, 'exportPaymentByType'])->name('export.PaymentType');
+            Route::get('/ProductRatings/pdf/{sorting}/{startdate?}/{enddate?}', [ProductRatingController::class, 'exportProductRatings'])->name('export.ProductRatings');
+            Route::get('/ProductRatings/ProductRatingsByCustomer/pdf/{sorting}/{startdate?}/{enddate?}/{name}', [RatingsByCustomerController::class, 'exportProductRatingsByCustomer'])->name('export.ProductRatingsByCustomer');
+            Route::get('/salesprod/pdf/{sorting}/{startdate?}/{enddate?}', [SalesByProductController::class, 'exportProductSales'])->name('export.ProductSales');
+            Route::get('/CategorySales/pdf/{sorting}/{startdate?}/{enddate?}', [SalesByCategoryController::class, 'exportCategorySales'])->name('export.CategorySales');
+            Route::get('/CategoryVolume/pdf/{sorting}/{startdate?}/{enddate?}', [CategoryVolumeController::class, 'exportCategoryVolume'])->name('export.CategoryVolume');
+            Route::get('/CustomerExpenditure/pdf/{sorting}/{startdate?}/{enddate?}', [CustomerTotalSpentController::class, 'exportCustomerTotalSpent'])->name('export.CustomerTotalSpent');
+
+            // Reports without date parameters
+            Route::get('/cancelledorders/pdf', [CancelledOrderController::class, 'exportCancelledOrders'])->name('export.CancelledOrders');
+            Route::get('/cancellationreasons/pdf', [CancellationReasonController::class, 'exportCancellationReason'])->name('export.CancellationReason');
+            Route::get('/rejectedorders/pdf', [NumberRejectedOrderController::class, 'exportRejectedOrders'])->name('export.RejectedOrders');
+            Route::get('/cancellationovertime/pdf', [CancellationOverTimeController::class, 'exportCancellationOverTime'])->name('export.CancellationOverTime');
+            Route::get('/monthlycancellation/pdf/{month}/{year}', [MonthlyCancellationController::class, 'exportMonthlyCancellation'])->name('export.MonthlyCancellation');
+            Route::get('/MonthlyGainedCustomer/pdf', [CustomersGainedPerMonthController::class, 'exportMonthlyGainedCustomers'])->name('export.MonthlyGainedCustomers');
+            Route::get('/MonthlyGainedCustomer/{from}/{to}/pdf', [CustomerGainedPerMonthListController::class, 'exportCustomerPerMonthList'])->name('export.ShowMonthlyGainedCustomers');
+            Route::get('/productbycustomer/pdf/', [ProductBuyerController::class, 'exportProductByCustomer'])->name('export.ProductByCustomer');
+            Route::get('/VerifiedAccount/pdf/{sorting}', [VerifiedAccountController::class, 'exportVerifiedAccountsExcel'])->name('report.exportVerifiedAccountsExcel');
+            Route::get('/NonVerifiedAccount/pdf/{sorting}', [NonVerifiedAccountController::class, 'exportNonVerifiedAccount'])->name('export.NonVerifiedAccount');
+            Route::get('/ProductOrderVolume/pdf/{sorting}', [ProductOrderVolumeController::class, 'exportProductOrderVolume'])->name('export.ProductOrderVolume');
+            Route::get('/CustomerOrderVolume/pdf/{sorting}', [CustomerOrderVolume::class, 'exportCustomerOrderVolume'])->name('export.CustomerOrderVolume');
+            Route::get('/customerbyproduct/pdf/{name}', [CustomerBoughtProductController::class, 'exportCustomerByProduct'])->name('export.CustomerByProduct');
+            Route::get('/MonthlySales/pdf', [MonthlySalesController::class, 'exportMonthlySales'])->name('export.MonthlySales');
+            Route::get('/accountverification/pdf', [AccountVerificationController::class, 'exportAccountVerification'])->name('export.AccountVerification');
+            Route::get('/YearlySales/pdf', [YearlySalesController::class, 'exportYearlySales'])->name('export.YearlySales');
+        });
         Route::middleware(['PreventBackHistory'])->group(function () {
             //Begin: Reports Table
             Route::resource('report', ReportController::class)->only(['index']);

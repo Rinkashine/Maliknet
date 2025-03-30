@@ -251,7 +251,7 @@ import { tns } from "tiny-slider/src/tiny-slider";
                 container: this,
                 slideBy: "page",
                 mouseDrag: true,
-                autoplay: true,
+                autoplay: false,
                 controls: true,
                 arrowKeys:false,
                 prevButton:false,

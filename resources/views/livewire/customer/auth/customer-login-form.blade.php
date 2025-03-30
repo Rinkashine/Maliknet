@@ -2,14 +2,14 @@
 <div class="container w-full flex flex-col lg:flex-row items-center py-5 mt-10 px-5">
     <!-- Image -->
     <div class="intro-y flex justify-center flex-1 z-10  hidden  sm:hidden md:hidden lg:hidden xl:block 2xl:block	">
-        <img  src="{{ asset('dist/images/login.svg') }}" alt="{{ env('APP_NAME') }} Login Image" />
+        <img  src="{{ asset('dist/images/login.svg') }}" alt="{{ config('app.name') }} Login Image" />
     </div>
     <!-- Content -->
     <div class="items-center justify-center flex flex-1 w-full ">
         <div class="box  ">
             <div class="p-5 border-b-2 border-slate-100 ">
                 <h2 class="intro-x text-2xl sm:text-xl font-medium  text-center mr-auto ">
-                    Welcome to {{ env('APP_NAME') }} Please Login
+                    Welcome to {{ config('app.name') }} Please Login
                 </h2>
             </div>
             <div class="p-5">

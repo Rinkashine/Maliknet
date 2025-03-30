@@ -23,17 +23,29 @@
                                     <div class="w-full flex justify-center border-t border-slate-200/60 dark:border-darkmode-400 mt-2"> </div>
                                     <div class="p-5">
                                         <div class="h-48">
-                                            @if(count($product->images) == 0)
-                                                <img alt="Missing Image" class="object-cover h-full rounded-md w-full" src="{{ asset('dist/images/MaliknetLogo.jpg') }}" onerror="this.onerror=null;this.src='{{ asset('dist/images/ImageNotFound.png') }}'">
-                                            @else
-                                                @foreach ($product->images->take(1)  as $model)
-                                                    @if (Storage::disk('public')->exists('product_photos/'.$model->images))
-                                                        <img alt="Missing Image" class="object-cover h-full rounded-md w-full" src="{{ url('storage/product_photos/'.$model->images) }}">
-                                                    @else
-                                                        <img alt="Missing Image" class="object-cover h-full rounded-md w-full" src="{{  asset('dist/images/ImageNotFound.png') }}" >
-                                                    @endif
-                                                @endforeach
-                                            @endif
+                                            @php
+                                            $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+                                            $imageFiles = $product->galleries->filter(function ($gallery) use ($imageExtensions) {
+                                                return in_array(strtolower(pathinfo($gallery->file, PATHINFO_EXTENSION)), $imageExtensions);
+                                            });
+                                        @endphp
+
+                                        @if ($imageFiles->isEmpty())
+                                            <img alt="Missing Image" class="object-cover h-full rounded-md w-full"
+                                                 src="{{ asset('dist/images/MaliknetLogo.jpg') }}"
+                                                 onerror="this.onerror=null;this.src='{{ asset('dist/images/ImageNotFound.png') }}'">
+                                        @else
+                                            @foreach ($imageFiles->take(1) as $gallery)
+                                                @if (Storage::disk('public')->exists('product_gallery/'.$gallery->file))
+                                                    <img alt="Product Image" class="object-cover h-full rounded-md w-full"
+                                                         src="{{ url('storage/product_gallery/'.$gallery->file) }}">
+                                                @else
+                                                    <img alt="Missing Image" class="object-cover h-full rounded-md w-full"
+                                                         src="{{ asset('dist/images/ImageNotFound.png') }}">
+                                                @endif
+                                            @endforeach
+                                        @endif
+
                                         </div>
                                     </div>
                                     <div class="ml-3">

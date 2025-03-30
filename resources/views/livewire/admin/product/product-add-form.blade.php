@@ -52,15 +52,16 @@
                                 <div class="form-label xl:w-64 xl:!mr-10">
                                     <div class="text-left">
                                         <div class="flex items-center">
-                                            <div class="font-medium">Product Photos</div>
+                                            <div class="font-medium">Product Gallery</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1" >
-                                    <input type="file" class="form-control p-2" wire:model="images" multiple accept="image/*">
-                                    <div class="text-danger mt-2">@error('images.*'){{$message}}@enderror</div>
+                                    <input type="file" class="form-control p-2" wire:model="galleries" multiple>
+                                    <div class="text-danger mt-2">@error('galleries.*'){{$message}}@enderror</div>
                                 </div>
                             </div>
+                            <!-- END: Product Photos -->
                             <!-- BEGIN: Product Price -->
                             <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
                                 <div class="form-label xl:w-64 xl:!mr-10">
@@ -99,7 +100,8 @@
                                 </div>
                             </div>
 
-                            <!-- END: Prodcut Status -->
+                            <!-- END: Product Status -->
+
                         </div>
                     </div>
                 </div>

@@ -473,7 +473,7 @@
                       <div class="f-fallback">
                         <h1 style="margin-top: 0; color: #333333; font-size: 22px; font-weight: bold; text-align: left;" align="left">Forgot password Email</h1>
                         <p style="font-size: 16px; line-height: 1.625; color: #51545E; margin: .4em 0 1.1875em;">
-                            We have received a request to reset password for <b>{{ env('APP_NAME') }} </b> account associated with  {!! $email !!} You can reset your password by clicking the link below
+                            We have received a request to reset password for <b>{{ config('app.name') }} </b> account associated with  {!! $email !!} You can reset your password by clicking the link below
                         </p>
 
 
@@ -520,7 +520,7 @@
                     <td class="content-cell" align="center" style="word-break: break-word; font-family: &quot;Nunito Sans&quot;, Helvetica, Arial, sans-serif; font-size: 16px; padding: 45px;">
                       <p class="f-fallback sub align-center" style="font-size: 13px; line-height: 1.625; text-align: center; color: #A8AAAF; margin: .4em 0 1.1875em;" align="center">© 2024 {{ env('APP_NAME') }}. All rights reserved.</p>
                       <p class="f-fallback sub align-center" style="font-size: 13px; line-height: 1.625; text-align: center; color: #A8AAAF; margin: .4em 0 1.1875em;" align="center">
-                        {{ env('APP_NAME') }}
+                        {{ config('app.name') }}
                         <br />{{ env('APP_ADDRESS') }}
                       </p>
                     </td>

@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Admin\Product;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\ProductImage;
+use App\Models\ProductGallery;
 use App\Models\Supplier;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -17,7 +17,7 @@ class ProductAddForm extends Component
     public $name,$category,$description,$price,$status;
 
 
-    public $images = [];
+    public $galleries = [];
 
     protected $listeners = [
         'refreshChild' => '$refresh',
@@ -52,7 +52,7 @@ class ProductAddForm extends Component
             'price' => 'required|numeric|min:1',
             'description' => 'required',
             'status' => 'required',
-            'images.*' => 'image',
+            'galleries.*' => 'mimes:jpeg,png,jpg,gif,mp4,mov,avi,wmv|max:10240', // Accepts images & videos up to 10MB
         ]);
     }
 
@@ -64,13 +64,15 @@ class ProductAddForm extends Component
             'price' => 'required|numeric|min:1',
             'description' => 'required',
             'status' => 'required',
-            'images.*' => 'image',
+            'galleries.*' => 'mimes:jpeg,png,jpg,gif,mp4,mov,avi,wmv|max:10240', // Accepts images & videos up to 10MB
         ];
     }
 
     public function StoreProductData()
     {
         $this->validate();
+        // Save the product with the video path
+
         $product = Product::create([
             'name' => $this->name,
             'category_id' => $this->category,
@@ -78,12 +80,13 @@ class ProductAddForm extends Component
             'status' => $this->status,
             'description' => $this->description,
         ]);
+
         if ($product) {
-            foreach ($this->images as $image) {
-                $image->store('public/product_photos');
-                ProductImage::create([
+            foreach ($this->galleries as $gallery) {
+                $gallery->store('public/product_gallery');
+                ProductGallery::create([
                     'product_id' => $product->id,
-                    'images' => $image->hashName(),
+                    'file' => $gallery->hashName(),
                 ]);
             }
         }

@@ -16,37 +16,44 @@ class SalesByProductController extends Controller
         abort_if(Gate::denies('report_access'),403);
         return view('admin.page.Report.productsales');
     }
-    //Export Product Sales
-    public function exportProductSales(Request $request){
-        abort_if(Gate::denies('report_export'),403);
-        $start = $request->startdate;
-        $end = $request->enddate;
+    public function exportProductSales(Request $request)
+    {
+        abort_if(Gate::denies('report_export'), 403);
+
+        // Get min and max date from database if startdate or enddate is null
+        $dateRange = DB::table('customer_order')
+            ->selectRaw('MIN(created_at) as min_date, MAX(created_at) as max_date')
+            ->first();
+
+        $start = $request->startdate ?? $dateRange->min_date; // Default to earliest date if null
+        $end = $request->enddate ?? $dateRange->max_date; // Default to latest date if null
+
         $column_name = "";
         $order_name = "";
         $prepared_by = Auth::guard('web')->user()->name;
 
         if ($request->sorting == 'product_name_asc') {
-            $sort  = 'Product Name (A-Z)';
+            $sort = 'Product Name (A-Z)';
             $column_name = 'name';
             $order_name = 'asc';
         } elseif ($request->sorting == 'product_name_desc') {
-            $sort  = 'Product Name (Z-A)';
+            $sort = 'Product Name (Z-A)';
             $column_name = 'name';
             $order_name = 'desc';
         } elseif ($request->sorting == 'total_sales_asc') {
-            $sort  = 'Total Sales (Low to High)';
+            $sort = 'Total Sales (Low to High)';
             $column_name = 'total_sales';
             $order_name = 'asc';
         } elseif ($request->sorting == 'total_sales_desc') {
-            $sort  = 'Total Sales (High to Low)';
+            $sort = 'Total Sales (High to Low)';
             $column_name = 'total_sales';
             $order_name = 'desc';
         } elseif ($request->sorting == 'order_quantity_asc') {
-            $sort  = 'Order Quantity (Low to High)';
+            $sort = 'Order Quantity (Low to High)';
             $column_name = 'quantity';
             $order_name = 'asc';
         } elseif ($request->sorting == 'order_quantity_desc') {
-            $sort  = 'Order Quantity (High to Low)';
+            $sort = 'Order Quantity (High to Low)';
             $column_name = 'quantity';
             $order_name = 'desc';
         } else {
@@ -57,14 +64,13 @@ class SalesByProductController extends Controller
         $products = Product::select([
             'product.id',
             'product.name',
-            DB::raw(value: 'SUM(CASE WHEN customer_order.status = "Completed" then customer_order_item.quantity else 0 end) AS quantity'),
-            DB::raw(value: 'SUM(CASE WHEN customer_order.status = "Completed" then customer_order_item.quantity * customer_order_item.price  else 0 end) as total_sales'),
+            DB::raw('SUM(CASE WHEN customer_order.status = "Completed" THEN customer_order_item.quantity ELSE 0 END) AS quantity'),
+            DB::raw('SUM(CASE WHEN customer_order.status = "Completed" THEN customer_order_item.quantity * customer_order_item.price ELSE 0 END) as total_sales'),
         ])
-        ->leftjoin('customer_order_item', 'product.id', '=', 'customer_order_item.product_id')
-        ->leftjoin('customer_order', function ($join) use ($start,$end) {
+        ->leftJoin('customer_order_item', 'product.id', '=', 'customer_order_item.product_id')
+        ->leftJoin('customer_order', function ($join) use ($start, $end) {
             $join->on('customer_order_item.customer_order_id', '=', 'customer_order.id')
-            ->where('customer_order.created_at', '>=', $start)
-            ->where('customer_order.created_at', '<=', $end);
+                 ->whereBetween('customer_order.created_at', [$start, $end]);
         })
         ->groupBy('product.name', 'product.id')
         ->orderBy($column_name, $order_name)
@@ -73,7 +79,7 @@ class SalesByProductController extends Controller
         $from = Carbon::parse($start)->format("F d, Y H:i A");
         $to = Carbon::parse($end)->format("F d, Y H:i A");
 
-        $pdf = PDF::loadView('admin.export.sales-by-product',[
+        $pdf = PDF::loadView('admin.export.sales-by-product', [
             'products' => $products,
             'from' => $from,
             'to' => $to,
@@ -82,4 +88,6 @@ class SalesByProductController extends Controller
 
         return $pdf->download("Product Sales.pdf");
     }
+
+
 }

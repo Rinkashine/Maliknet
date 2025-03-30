@@ -1,7 +1,7 @@
 <div class="mobile-menu md:hidden">
     <div class="mobile-menu-bar">
         <div class="flex mr-auto">
-            <img alt="{{ env('APP_NAME') }} Logo" class="w-12" src="{{asset('dist/images/MaliknetLogo.jpg')}}" data-action="zoom">
+            <img alt="{{ config('app.name') }} Logo" class="w-12" src="{{asset('dist/images/MaliknetLogo.jpg')}}" data-action="zoom">
         </div>
         <a href="javascript:;" id="mobile-menu-toggler"> <i data-lucide="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
     </div>
